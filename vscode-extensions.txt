@@ -1,0 +1,11 @@
+code --install-extension nick-rudenko.back-n-forth
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension MS-vsliveshare.vsliveshare
+code --install-extension mhutchie.git-graph
+code --install-extension donjayamanne.githistory
+code --install-extension eamodio.gitlens
+code --install-extension jakebathman.mysql-syntax
+code --install-extension ckolkman.vscode-postgres
+code --install-extension ms-dotnettools.csharp
+code --install-extension formulahendry.dotnet-test-explorer
+code --install-extension adrianwilczynski.user-secrets
