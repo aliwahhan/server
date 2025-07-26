@@ -9,3 +9,10 @@ code --install-extension ckolkman.vscode-postgres
 code --install-extension ms-dotnettools.csharp
 code --install-extension formulahendry.dotnet-test-explorer
 code --install-extension adrianwilczynski.user-secrets
+
+-----------------------------------
+dotnet restore bitwarden-server.sln
+ dotnet build bitwarden-server.sln
+cd src
+ cd Api
+dotnet run 
