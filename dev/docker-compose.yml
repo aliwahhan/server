@@ -1,4 +1,3 @@
-version: "3.9"
 
 services:
   mssql:
@@ -109,6 +108,10 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq_delayed_message_exchange-4.1.0.ez:/opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange-4.1.0.ez
+
+
+
     profiles:
       - rabbitmq
 
@@ -130,7 +133,7 @@ services:
     volumes:
       - "./servicebusemulator_config.json:/ServiceBus_Emulator/ConfigFiles/Config.json"
     ports:
-      - "5672:5672"
+      - "5673:5672"
     environment:
       SQL_SERVER: mssql
       MSSQL_SA_PASSWORD: "${MSSQL_PASSWORD}"
@@ -155,3 +158,4 @@ volumes:
   mysql_dev_data:
   rabbitmq_data:
   redis_data:
+  mariadb_dev_data:
