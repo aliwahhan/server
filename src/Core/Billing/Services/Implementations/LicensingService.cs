@@ -58,8 +58,8 @@ public class LicensingService : ILicensingService
         _userLicenseClaimsFactory = userLicenseClaimsFactory;
 
         var certThumbprint = environment.IsDevelopment() ?
-            "207E64A231E8AA32AAF68A61037C075EBEBD553F" :
-            "‎B34876439FCDA2846505B2EFBBA6C4A951313EBE";
+            "EEDE00640865146CA8DBBDE11585CDFAB9AC6568" :
+            "207E64A231E8AA32AAF68A61037C075EBEBD553F";//207E64A231E8AA32AAF68A61037C075EBEBD553F
         if (_globalSettings.SelfHosted)
         {
             _certificate = CoreHelpers.GetEmbeddedCertificateAsync(environment.IsDevelopment() ? "licensing_dev.cer" : "licensing.cer", null)
