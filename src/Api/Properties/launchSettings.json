@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:4000",
-      "sslPort": 0
+      "applicationUrl": "https://localhost:4000",
+      "sslPort": 1
     }
   },
   "profiles": {
@@ -16,14 +16,14 @@
     },
     "Api": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:4000",
+      "applicationUrl": "https://localhost:4000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Api-SelfHost": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:4001",
+      "applicationUrl": "https://localhost:4001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "developSelfHosted": "true"

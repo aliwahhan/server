@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:51822",
-      "sslPort": 0
+      "applicationUrl": "https://localhost:51822",
+      "sslPort": 1
     }
   },
   "profiles": {
@@ -16,14 +16,14 @@
     },
     "Sso": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:51822",
+      "applicationUrl": "https://localhost:51822",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Sso-SelfHost": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:51823",
+      "applicationUrl": "https://localhost:51823",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "developSelfHosted": "true"

@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:62911/",
-      "sslPort": 0
+      "applicationUrl": "https://localhost:62911",
+      "sslPort": 1
     }
   },
   "profiles": {
@@ -16,14 +16,14 @@
     },
     "Admin": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:62911/",
+      "applicationUrl": "https://localhost:62911",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Admin-SelfHost": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:62912/",
+      "applicationUrl": "https://localhost:62912",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "developSelfHosted": "true"
