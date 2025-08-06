@@ -28,7 +28,7 @@ public class IconHttpRequestTests
         var uriService = Substitute.For<IUriService>();
         uriService.TryGetUri(Arg.Any<Uri>(), out Arg.Any<IconUri>()).Returns(x =>
         {
-            x[1] = new IconUri(new Uri("https://icon.test"), IPAddress.Parse("192.0.2.1"));
+            x[1] = new IconUri(new Uri("https://icon.test"), IPAddress.Parse("127.0.0.1"));
             return true;
         });
         var result = await IconHttpRequest.FetchAsync(new Uri("https://icon.test"), NullLogger<IIconFetchingService>.Instance, clientFactory, uriService);

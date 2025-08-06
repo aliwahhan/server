@@ -23,6 +23,7 @@ public class EnvironmentFileBuilder
             ["ASPNETCORE_ENVIRONMENT"] = "Production",
             ["globalSettings__selfHosted"] = "true",
             ["globalSettings__baseServiceUri__vault"] = "http://localhost",
+            //update url push 
             ["globalSettings__pushRelayBaseUri"] = "https://push.bitwarden.com",
         };
         _mssqlValues = new Dictionary<string, string>
@@ -120,7 +121,7 @@ public class EnvironmentFileBuilder
         _keyConnectorOverrideValues = new Dictionary<string, string>
         {
             ["keyConnectorSettings__webVaultUri"] = _context.Config.Url,
-            ["keyConnectorSettings__identityServerUri"] = "http://identity:5000",
+            ["keyConnectorSettings__identityServerUri"] = "https://localhost:33656",
             ["keyConnectorSettings__database__provider"] = "json",
             ["keyConnectorSettings__database__jsonFilePath"] = "/etc/bitwarden/key-connector/data.json",
             ["keyConnectorSettings__rsaKey__provider"] = "certificate",

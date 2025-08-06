@@ -653,7 +653,10 @@ public static class CoreHelpers
             // Safari extension origin
             origin == "file://" ||
             // Product website
-            (!globalSettings.SelfHosted && origin == "https://bitwarden.com");
+            //
+            origin == "https://localhost:8080" ||
+            origin == "https://127.0.0.1:8080" ||
+            (!globalSettings.SelfHosted && origin == "https://localhost:8080");
     }
 
     public static X509Certificate2? GetIdentityServerCertificate(GlobalSettings globalSettings)

@@ -8,12 +8,12 @@ public class NginxConfigBuilder
     private const string ConfFile = "/bitwarden/nginx/default.conf";
 
     private const string DefaultContentSecurityPolicy = "default-src 'self'; " +
-        "script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; " +
-        "img-src 'self' data: https://haveibeenpwned.com; " +
-        "child-src 'self' https://*.duosecurity.com https://*.duofederal.com; " +
-        "frame-src 'self' https://*.duosecurity.com https://*.duofederal.com; " +
-        "connect-src 'self' wss://{0} https://api.pwnedpasswords.com " +
-        "https://api.2fa.directory; object-src 'self' blob:;";
+     "script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; " +
+     "img-src 'self' data: blob: https://localhost:50024 https://*.paypal.com https://www.paypalobjects.com https://q.stripe.com https://haveibeenpwned.com; " + // تم إضافة blob:
+     "child-src 'self' https://*.duosecurity.com https://*.duofederal.com; " +
+     "frame-src 'self' https://*.duosecurity.com https://*.duofederal.com; " +
+     "connect-src 'self' wss://{0} https://api.pwnedpasswords.com " +
+     "https://api.2fa.directory; object-src 'self' blob:;";
 
     private readonly Context _context;
 

@@ -73,7 +73,7 @@ public class HandlebarsMailServiceTests
             { ("maxSeatCount", typeof(int)), 5 },
             { ("userIdentifier", typeof(string)), "test_user" },
             { ("adminEmails", typeof(IEnumerable<string>)), new [] { "test@bitwarden.com" }},
-            { ("returnUrl", typeof(string)), "https://bitwarden.com/" },
+            { ("returnUrl", typeof(string)), "https://deepbitwarden.com/" },
             { ("amount", typeof(decimal)), 1.00M },
             { ("dueDate", typeof(DateTime)), DateTime.UtcNow.AddDays(1) },
             { ("items", typeof(List<string>)), new List<string> { "test@bitwarden.com" }},

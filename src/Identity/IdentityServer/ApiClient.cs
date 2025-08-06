@@ -41,7 +41,7 @@ public class ApiClient : Client
             desktopUris.Add("bitwarden://sso-callback");
             for (var port = 8065; port <= 8070; port++)
             {
-                desktopUris.Add(string.Format("http://localhost:{0}", port));
+                desktopUris.Add(string.Format("https://localhost:{0}", port));
             }
             RedirectUris = desktopUris;
             PostLogoutRedirectUris = new[] { "bitwarden://logged-out" };
@@ -51,7 +51,7 @@ public class ApiClient : Client
             var connectorUris = new List<string>();
             for (var port = 8065; port <= 8070; port++)
             {
-                connectorUris.Add(string.Format("http://localhost:{0}", port));
+                connectorUris.Add(string.Format("https://localhost:{0}", port));
             }
             RedirectUris = connectorUris.Append("bwdc://sso-callback").ToList();
             PostLogoutRedirectUris = connectorUris.Append("bwdc://logged-out").ToList();
@@ -67,7 +67,7 @@ public class ApiClient : Client
             var cliUris = new List<string>();
             for (var port = 8065; port <= 8070; port++)
             {
-                cliUris.Add(string.Format("http://localhost:{0}", port));
+                cliUris.Add(string.Format("https://localhost:{0}", port));
             }
             RedirectUris = cliUris;
             PostLogoutRedirectUris = cliUris;

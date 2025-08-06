@@ -625,12 +625,12 @@ public class GlobalSettings : IGlobalSettings
         public string Key { get; set; }
         public string IdentityUri
         {
-            get => string.IsNullOrWhiteSpace(_identityUri) ? "https://identity.bitwarden.com" : _identityUri;
+            get => string.IsNullOrWhiteSpace(_identityUri) ? "https://localhost:33656" : _identityUri;
             set => _identityUri = value;
         }
         public string ApiUri
         {
-            get => string.IsNullOrWhiteSpace(_apiUri) ? "https://api.bitwarden.com" : _apiUri;
+            get => string.IsNullOrWhiteSpace(_apiUri) ? "https://localhost:4000" : _apiUri;
             set => _apiUri = value;
         }
 

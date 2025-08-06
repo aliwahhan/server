@@ -56,6 +56,6 @@ WORKDIR /app
 COPY --from=build /source/src/Icons/out /app
 COPY ./src/Icons/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-HEALTHCHECK CMD curl -f http://localhost:5000/google.com/icon.png || exit 1
+HEALTHCHECK CMD curl -f https://localhost:5000/google.com/icon.png || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

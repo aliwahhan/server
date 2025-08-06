@@ -35,6 +35,6 @@ RUN chown -R $USERNAME:$GROUPNAME /var/run/nginx && \
     chown -R $USERNAME:$GROUPNAME /var/log/nginx
     
 
-HEALTHCHECK CMD curl --insecure -Lfs https://localhost:8443/alive || curl -Lfs http://localhost:8080/alive || exit 1
+HEALTHCHECK CMD curl --insecure -Lfs https://localhost:8443/alive || curl -Lfs https://localhost:8080/alive || exit 1
 
 USER bitwarden

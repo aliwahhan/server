@@ -15,7 +15,19 @@ cp .env.example .env
 
 docker compose --profile mssql --profile mail up -d
 
-docker compose --profile mssql --profile mail --profile storage --profile mariadb up -d
+docker compose `
+  --profile mssql `
+  --profile storage `
+  --profile mail `
+  --profile postgres `
+  --profile mysql `
+  --profile mariadb `
+  --profile idp `
+  --profile rabbitmq `
+  --profile proxy `
+  --profile servicebus `
+  --profile redis `
+  up -d
 
 # will delete your development database
 
@@ -27,7 +39,7 @@ docker volume rm bitwardenserver_mssql_dev_data
 cd dev
 npm install -g azurite
 
-# ---------------------------------------------------------
+# ---------------------------------------------------------  RESOVLE PROBLEM 4000 IS AREADE USED 
 # Run API
 
 Write-Host "Attempting to terminate existing .NET host and Visual Studio Debug Adapter processes..."
@@ -169,11 +181,17 @@ docker volume rm bitwardenserver_mssql_dev_data
 docker compose --profile mssql up -d
 -------------- 
 pwsh migrate.ps1
-# ------------ 2  server\util\MsSqlMigratorUtility\
+# ------------ 2 cd server\util\MsSqlMigratorUtility\
 dotnet build
+# كماهو في ملف ال secret.json  نفس البيانات  
+
+dotnet run -- "Server=ALI-WAHHAN-VM\SQLEXPRESS;Database=vault_dev;Integrated Security=True;TrustServerCertificate=True" 
+# or 
+dotnet run -- "Server=ALI-WAHHAN-VM\SQLEXPRESS;Database=vault_dev;Integrated Security=True;TrustServerCertificate=True" -r --folder myCustomFolder
 # ------------ 3 cd dev
 pwsh migrate.ps1
 
+Entering experimental data into the database
 
 
 
@@ -182,4 +200,36 @@ pwsh migrate.ps1
 Desktop\Bitwarden configration\server> dotnet build
 Desktop\Bitwarden configration\server> dotnet run --project src\Api
 
-//-------------------------
+# //-------------------------    bugs
+# ---------------- problem's
+fail: Bit.EventsProcessor.AzureQueueHostedService[0]
+      Error occurred processing message block.
+
+-------solved
+--> Bitwarden configration\server\dev> pwsh .\setup_azurite.ps1
+--> Bitwarden configration\server\dev> docker compose --profile servicebus up -d
+--> Bitwarden configration\server\src\EventsProcessor> dotnet build
+--> Bitwarden configration\server\src\EventsProcessor> dotnet run
+
+# ------------------------------- icon project 
+
+
+
+# --------------------------------  System Management Portal
+
+ ------ server/src/admin
+dotnet restore
+npm ci
+npm run build
+dotnet run
+
+
+# ---------------------------------   local SSO
+server\bitwarden_license\src\Sso> pwsh .\build.ps1
+dotnet restore
+npm ci
+npm run build
+dotnet run
+
+
+
