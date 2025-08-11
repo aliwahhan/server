@@ -8,9 +8,24 @@ git config --local core.hooksPath .git-hooks
 
 # Configure Docker
 
-cd dev
-cp .env.example .env
+# --------------------------------   configuration  dev   --------------------------------
+# ---------------------------------------- .env
+# 1-cp .env.example .env  
+# ---------------------------------------- secrets.json
+# 2-cp secrets.json.example .secrets.json
+# ---------------------------------------- reverse-proxy.conf
+# 3-cp reverse-proxy.conf.example reverse-proxy.conf
+# ---------------------------------------- authsources.php
+# 4-cp authsources.php.example authsources.php
 
+# ---------------------------------------- create_certificates_windows
+1- pwsh .\create_certificates_windows.ps1
+update any certificateThumbprint => Thumbprint certificates
+# ---------------------------------------- setup_secrets
+2- pwsh .\setup_secrets.ps1
+
+
+# ---------------------------------------- Docker
 # Start the Docker containers.
 
 docker compose --profile mssql --profile mail up -d
@@ -29,15 +44,17 @@ docker compose `
   --profile redis `
   up -d
 
+  # ---------------------------------------- setup_azurite
+npm install -g azurite
+3- pwsh .\setup_azurite.ps1
+# ---------------------------------------- migrate
+4- pwsh .\migrate.ps1 
+
 # will delete your development database
 
 docker compose --profile mssql down
 docker volume rm bitwardenserver_mssql_dev_data
 # ---------------------------------------------------------
-# Azurite
-
-cd dev
-npm install -g azurite
 
 # ---------------------------------------------------------  RESOVLE PROBLEM 4000 IS AREADE USED 
 # Run API
@@ -98,45 +115,6 @@ Acquire a ClientId and Key from Yubico here. Note that this requires that you ha
  https://upgrade.yubico.com/getapikey/
 
 
- ## ---------------------------------- Reverse Proxy Setup -----------
-
-cd dev
-cp reverse-proxy.conf.example reverse-proxy.conf
-# ------------------           code reverse proxy
- Begin API Service
-
-upstream api_loadbalancer {
-    # Add additional API services here uniquely identified by their port
-    # Below assumes two services running on the docker host machine on ports 4000 and 4002
-    server host.docker.internal:4000;
-    server host.docker.internal:4002;
-}
-
-server {
-    listen 4100; # The port clients will connect to for the Api, must be exposed via Docker
-    location / {
-        proxy_pass http://api_loadbalancer;
-    }
-}
-
-# End API Service
-
-# Begin Identity Service
-
-upstream identity_loadbalancer {
-    # Add additional Identity services here uniquely identified by their port
-    # Below assumes two services running on the docker host machine on ports 33656 and 33658
-    server host.docker.internal:33656;
-    server host.docker.internal:33658;
-}
-
-server {
-    listen 33756; # The port clients will connect to for the Identity, must be exposed via Docker
-    location / {
-        proxy_pass http://identity_loadbalancer;
-    }
-}
-
 # End Identity Service
 # ------------------           .env
 # Optional reverse proxy configuration
@@ -173,7 +151,11 @@ dotnet nuget add source `
 
 
 # ------------------------  Database  mssql
-# ------------ 1 cd dev
+dotnet tool uninstall --global dotnet-ef
+dotnet tool install --global dotnet-ef
+dotnet tool restore
+pwsh migrate.ps1 -all
+# ------------ 1  mssql migration
 
 pwsh setup_secrets.ps1 -clear
 docker compose --profile mssql down
@@ -183,7 +165,7 @@ docker compose --profile mssql up -d
 pwsh migrate.ps1
 # ------------ 2 cd server\util\MsSqlMigratorUtility\
 dotnet build
-# كماهو في ملف ال secret.json  نفس البيانات  
+# كماهو في ملف ال secret.json 
 
 dotnet run -- "Server=ALI-WAHHAN-VM\SQLEXPRESS;Database=vault_dev;Integrated Security=True;TrustServerCertificate=True" 
 # or 
@@ -231,5 +213,16 @@ npm ci
 npm run build
 dotnet run
 
+# ---------------------------------  Run Projects
+cd bitwarden_license/src/sso && dotnet run 
+cd bitwarden_license/src/scim && dotnet run 
+cd src/admin && dotnet build && dotnet run
+cd src/api && dotnet build && dotnet run
+cd src/Billing && dotnet build && dotnet run
+cd src/Events && dotnet build && dotnet run
+cd src/EventsProcessor && dotnet build && dotnet run
+cd src/Icons && dotnet build && dotnet run
+cd src/Identity && dotnet build && dotnet run
+cd src/Notifications && dotnet build && dotnet run
 
-
+# ----------------------------- pass A@limansour1234Ali1234Ali!
