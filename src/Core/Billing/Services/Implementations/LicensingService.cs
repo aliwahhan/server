@@ -58,7 +58,7 @@ public class LicensingService : ILicensingService
         _userLicenseClaimsFactory = userLicenseClaimsFactory;
 
         var certThumbprint = environment.IsDevelopment() ?
-            "EEDE00640865146CA8DBBDE11585CDFAB9AC6568" :
+            "823188F03E9EDED2C7F8A2FAAACB32C2C7A7AEFB" :
             "207E64A231E8AA32AAF68A61037C075EBEBD553F";//207E64A231E8AA32AAF68A61037C075EBEBD553F
         if (_globalSettings.SelfHosted)
         {
@@ -324,7 +324,7 @@ public class LicensingService : ILicensingService
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new X509SecurityKey(_certificate),
             ValidateIssuer = true,
-            ValidIssuer = "bitwarden",
+            ValidIssuer = "DeepSafer",
             ValidateAudience = true,
             ValidAudience = audience,
             ValidateLifetime = true,
@@ -378,7 +378,7 @@ public class LicensingService : ILicensingService
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Issuer = "bitwarden",
+            Issuer = "DeepSafer",
             Audience = audience,
             NotBefore = DateTime.UtcNow,
             Expires = DateTime.UtcNow.AddYears(1), // Org expiration is a claim
