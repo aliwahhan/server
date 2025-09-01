@@ -35,7 +35,7 @@ public class ImportOrganizationUsersAndGroupsCommandTests : IClassFixture<ApiApp
     public async Task InitializeAsync()
     {
         // Create the owner account
-        _ownerEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _ownerEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_ownerEmail);
 
         // Create the organization
@@ -92,7 +92,7 @@ public class ImportOrganizationUsersAndGroupsCommandTests : IClassFixture<ApiApp
     [Fact]
     public async Task Import_New_Organization_User_Succeeds()
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
 
         var externalId = Guid.NewGuid().ToString();
@@ -133,7 +133,7 @@ public class ImportOrganizationUsersAndGroupsCommandTests : IClassFixture<ApiApp
         var existingExternalId = Guid.NewGuid().ToString();
 
         // New organization user
-        var newEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var newEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(newEmail);
         var newExternalId = Guid.NewGuid().ToString();
 

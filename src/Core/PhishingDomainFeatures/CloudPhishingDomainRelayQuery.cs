@@ -10,7 +10,7 @@ namespace Bit.Core.PhishingDomainFeatures;
 
 /// <summary>
 /// Implementation of ICloudPhishingDomainQuery for self-hosted environments
-/// that relays the request to the Bitwarden cloud API
+/// that relays the request to the Deepsafer cloud API
 /// </summary>
 public class CloudPhishingDomainRelayQuery : BaseIdentityClientService, ICloudPhishingDomainQuery
 {
@@ -56,13 +56,13 @@ public class CloudPhishingDomainRelayQuery : BaseIdentityClientService, ICloudPh
 
         try
         {
-            // For self-hosted environments, we get the checksum from the Bitwarden cloud API
+            // For self-hosted environments, we get the checksum from the Deepsafer cloud API
             var result = await SendAsync<object, string>(HttpMethod.Get, "phishing-domains/checksum", null, true);
             return result ?? string.Empty;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving phishing domain checksum from Bitwarden cloud API");
+            _logger.LogError(ex, "Error retrieving phishing domain checksum from Deepsafer cloud API");
             return string.Empty;
         }
     }

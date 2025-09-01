@@ -53,7 +53,7 @@ public class AccountsKeyManagementControllerTests : IClassFixture<ApiApplication
 
     public async Task InitializeAsync()
     {
-        _ownerEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _ownerEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_ownerEmail);
     }
 
@@ -72,7 +72,7 @@ public class AccountsKeyManagementControllerTests : IClassFixture<ApiApplication
         localFactory.UpdateConfiguration("globalSettings:launchDarkly:flagValues:pm-12241-private-key-regeneration",
             "false");
         var localClient = localFactory.CreateClient();
-        var localEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var localEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         var localLoginHelper = new LoginHelper(localFactory, localClient);
         await localFactory.LoginWithNewAccount(localEmail);
         await localLoginHelper.LoginAsync(localEmail);
@@ -157,7 +157,7 @@ public class AccountsKeyManagementControllerTests : IClassFixture<ApiApplication
 
     private async Task CreateDesignatedEmergencyAccessAsync(EmergencyAccessStatusType emergencyAccessStatus)
     {
-        var tempEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var tempEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(tempEmail);
 
         var tempUser = await _userRepository.GetByEmailAsync(tempEmail);
@@ -284,7 +284,7 @@ public class AccountsKeyManagementControllerTests : IClassFixture<ApiApplication
         organization.Identifier = organizationSsoIdentifier;
         await _organizationRepository.ReplaceAsync(organization);
 
-        var ssoUserEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var ssoUserEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(ssoUserEmail);
         await _loginHelper.LoginAsync(ssoUserEmail);
 
@@ -337,7 +337,7 @@ public class AccountsKeyManagementControllerTests : IClassFixture<ApiApplication
         organization.UseSso = true;
         await _organizationRepository.ReplaceAsync(organization);
 
-        var ssoUserEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var ssoUserEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(ssoUserEmail);
         await _loginHelper.LoginAsync(ssoUserEmail);
 

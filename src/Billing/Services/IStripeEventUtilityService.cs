@@ -29,7 +29,7 @@ public interface IStripeEventUtilityService
     bool IsSponsoredSubscription(Subscription subscription);
 
     /// <summary>
-    /// Converts a Stripe Charge object to a Bitwarden Transaction object.
+    /// Converts a Stripe Charge object to a Deepsafer Transaction object.
     /// </summary>
     /// <param name="charge"></param>
     /// <param name="organizationId"></param>

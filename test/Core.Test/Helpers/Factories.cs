@@ -8,7 +8,7 @@ public static class GlobalSettingsFactory
     public static GlobalSettings GlobalSettings { get; } = new();
     static GlobalSettingsFactory()
     {
-        var configBuilder = new ConfigurationBuilder().AddUserSecrets("bitwarden-Api");
+        var configBuilder = new ConfigurationBuilder().AddUserSecrets("deepsafer-Api");
         var Configuration = configBuilder.Build();
         ConfigurationBinder.Bind(Configuration.GetSection("GlobalSettings"), GlobalSettings);
     }

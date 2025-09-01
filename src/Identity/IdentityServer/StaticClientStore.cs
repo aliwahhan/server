@@ -11,12 +11,12 @@ public class StaticClientStore
     {
         ApiClients = new List<Client>
         {
-            new ApiClient(globalSettings, BitwardenClient.Mobile, 60, 1),
-            new ApiClient(globalSettings, BitwardenClient.Web, 7, 1),
-            new ApiClient(globalSettings, BitwardenClient.Browser, 30, 1),
-            new ApiClient(globalSettings, BitwardenClient.Desktop, 30, 1),
-            new ApiClient(globalSettings, BitwardenClient.Cli, 30, 1),
-            new ApiClient(globalSettings, BitwardenClient.DirectoryConnector, 30, 24)
+            new ApiClient(globalSettings, DeepsaferClient.Mobile, 60, 1),
+            new ApiClient(globalSettings, DeepsaferClient.Web, 7, 1),
+            new ApiClient(globalSettings, DeepsaferClient.Browser, 30, 1),
+            new ApiClient(globalSettings, DeepsaferClient.Desktop, 30, 1),
+            new ApiClient(globalSettings, DeepsaferClient.Cli, 30, 1),
+            new ApiClient(globalSettings, DeepsaferClient.DirectoryConnector, 30, 24)
         }.ToFrozenDictionary(c => c.ClientId);
     }
 

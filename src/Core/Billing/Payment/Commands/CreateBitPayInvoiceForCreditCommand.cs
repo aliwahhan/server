@@ -37,7 +37,7 @@ public class CreateBitPayInvoiceForCreditCommand(
             Currency = "USD",
             ExtendedNotifications = true,
             FullNotifications = true,
-            ItemDesc = "Bitwarden",
+            ItemDesc = "Deepsafer",
             NotificationUrl = globalSettings.BitPay.NotificationUrl,
             PosData = posData,
             Price = Convert.ToDouble(amount),

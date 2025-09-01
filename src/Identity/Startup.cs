@@ -67,7 +67,7 @@ public class Startup
         services.AddSwaggerGen(c =>
         {
             c.SchemaFilter<EnumSchemaFilter>();
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bitwarden Identity", Version = "v1" });
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Deepsafer Identity", Version = "v1" });
         });
 
         if (!globalSettings.SelfHosted)
@@ -94,7 +94,7 @@ public class Startup
         services
             .AddDistributedIdentityServices()
             .AddAuthentication()
-            .AddCookie(AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme)
+            .AddCookie(AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme)
             .AddOpenIdConnect("sso", "Single Sign On", options =>
             {
                 options.Authority = globalSettings.BaseServiceUri.InternalSso;
@@ -104,7 +104,7 @@ public class Startup
                 options.ClientSecret = globalSettings.OidcIdentityClientKey;
                 options.ResponseMode = "form_post";
 
-                options.SignInScheme = AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme;
+                options.SignInScheme = AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme;
                 options.ResponseType = "code";
                 options.SaveTokens = false;
                 options.GetClaimsFromUserInfoEndpoint = true;

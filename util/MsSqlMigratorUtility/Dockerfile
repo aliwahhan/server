@@ -41,9 +41,9 @@ RUN . /tmp/rid.txt && dotnet publish \
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 ARG TARGETPLATFORM
-LABEL com.bitwarden.product="bitwarden"
+LABEL ye.vault.deepsafer.product="deepsafer"
 
-ENV SSL_CERT_DIR=/etc/bitwarden/ca-certificates
+ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
 
 # Copy app from the build stage
 WORKDIR /app

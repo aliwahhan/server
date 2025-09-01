@@ -43,7 +43,7 @@ public static class PolicyTypeExtensions
             PolicyType.DisablePersonalVaultExport => "Remove individual vault export",
             PolicyType.ActivateAutofill => "Active auto-fill",
             PolicyType.AutomaticAppLogIn => "Automatically log in users for allowed applications",
-            PolicyType.FreeFamiliesSponsorshipPolicy => "Remove Free Bitwarden Families sponsorship",
+            PolicyType.FreeFamiliesSponsorshipPolicy => "Remove Free Deepsafer Families sponsorship",
             PolicyType.RemoveUnlockWithPin => "Remove unlock with PIN",
             PolicyType.RestrictedItemTypesPolicy => "Restricted item types",
         };

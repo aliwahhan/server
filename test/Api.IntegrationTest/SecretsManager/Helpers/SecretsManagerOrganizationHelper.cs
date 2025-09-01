@@ -65,7 +65,7 @@ public class SecretsManagerOrganizationHelper
 
     public async Task<Organization> CreateSmOrganizationAsync()
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var (organization, _) = await OrganizationTestHelpers.SignUpAsync(_factory, ownerEmail: email, billingEmail: email);
         return organization;
@@ -73,7 +73,7 @@ public class SecretsManagerOrganizationHelper
 
     public async Task<(string email, OrganizationUser orgUser)> CreateNewUser(OrganizationUserType userType, bool accessSecrets)
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var orgUser = await OrganizationTestHelpers.CreateUserAsync(_factory, _organization.Id, email, userType, accessSecrets);
 

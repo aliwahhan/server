@@ -43,7 +43,7 @@ public class EventsApplicationFactory : WebApplicationFactoryBase<Startup>
     /// <summary>
     /// Helper for registering and logging in to a new account
     /// </summary>
-    public async Task<(string Token, string RefreshToken)> LoginWithNewAccount(string email = "integration-test@bitwarden.com", string masterPasswordHash = "master_password_hash")
+    public async Task<(string Token, string RefreshToken)> LoginWithNewAccount(string email = "integration-test@vault.deepsafer.ye", string masterPasswordHash = "master_password_hash")
     {
         // This might be the first action in a test and since it forwards to the Identity server, we need to ensure that
         // this server is initialized since it's responsible for seeding the database.

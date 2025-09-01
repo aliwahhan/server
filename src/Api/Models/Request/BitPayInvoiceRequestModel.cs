@@ -52,11 +52,11 @@ public class BitPayInvoiceRequestModel : IValidatableObject
         if (Credit)
         {
             posData += ",accountCredit:1";
-            inv.ItemDesc = "Bitwarden Account Credit";
+            inv.ItemDesc = "Deepsafer Account Credit";
         }
         else
         {
-            inv.ItemDesc = "Bitwarden";
+            inv.ItemDesc = "Deepsafer";
         }
 
         inv.PosData = posData;

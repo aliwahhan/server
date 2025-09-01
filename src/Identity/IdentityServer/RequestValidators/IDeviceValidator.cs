@@ -7,10 +7,10 @@ public interface IDeviceValidator
 {
     /// <summary>
     /// Fetches device from the database using the Device Identifier and the User Id to know if the user
-    /// has ever tried to authenticate with this specific instance of Bitwarden.
+    /// has ever tried to authenticate with this specific instance of Deepsafer.
     /// </summary>
     /// <param name="user">user attempting to authenticate</param>
-    /// <param name="device">current instance of Bitwarden the user is interacting with</param>
+    /// <param name="device">current instance of Deepsafer the user is interacting with</param>
     /// <returns>null or Device</returns>
     Task<Device> GetKnownDeviceAsync(User user, Device device);
 

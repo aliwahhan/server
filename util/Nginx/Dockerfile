@@ -1,9 +1,9 @@
 FROM --platform=$BUILDPLATFORM nginx:stable
 
 ARG TARGETPLATFORM
-LABEL com.bitwarden.product="bitwarden"
+LABEL ye.vault.deepsafer.product="deepsafer"
 
-ENV SSL_CERT_DIR=/etc/bitwarden/ca-certificates
+ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \

@@ -18,7 +18,7 @@ public class CreateBitPayInvoiceForCreditCommandTests
     {
         BitPay = new GlobalSettings.BitPaySettings { NotificationUrl = "https://example.com/bitpay/notification" }
     };
-    private const string _redirectUrl = "https://bitwarden.com/redirect";
+    private const string _redirectUrl = "https://vault.deepsafer.ye/redirect";
     private readonly CreateBitPayInvoiceForCreditCommand _command;
 
     public CreateBitPayInvoiceForCreditCommandTests()

@@ -129,7 +129,7 @@ public class GlobalSettings : IGlobalSettings
         {
             return null;
         }
-        return string.Concat("/etc/bitwarden", appendedPath);
+        return string.Concat("/etc/deepsafer", appendedPath);
     }
 
     public class BaseServiceUriSettings : IBaseServiceUriSettings
@@ -532,7 +532,7 @@ public class GlobalSettings : IGlobalSettings
         /// <value></value>
         public string CertificatePassword { get; set; }
         /// <summary>
-        /// The thumbprint of the certificate in the X.509 certificate store for personal certificates for the user account running Bitwarden.
+        /// The thumbprint of the certificate in the X.509 certificate store for personal certificates for the user account running Deepsafer.
         /// </summary>
         /// <value></value>
         public string CertificateThumbprint { get; set; }

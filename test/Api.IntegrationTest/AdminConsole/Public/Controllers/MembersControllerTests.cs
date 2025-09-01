@@ -35,7 +35,7 @@ public class MembersControllerTests : IClassFixture<ApiApplicationFactory>, IAsy
     public async Task InitializeAsync()
     {
         // Create the owner account
-        _ownerEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _ownerEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_ownerEmail);
 
         // Create the organization
@@ -111,7 +111,7 @@ public class MembersControllerTests : IClassFixture<ApiApplicationFactory>, IAsy
     [Fact]
     public async Task Post_CustomMember_Success()
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         var request = new MemberCreateRequestModel
         {
             Email = email,

@@ -10,7 +10,7 @@ public interface IPremiumUserBillingService
     Task Credit(User user, decimal amount);
 
     /// <summary>
-    /// <para>Establishes the Stripe entities necessary for a Bitwarden <see cref="User"/> using the provided <paramref name="sale"/>.</para>
+    /// <para>Establishes the Stripe entities necessary for a Deepsafer <see cref="User"/> using the provided <paramref name="sale"/>.</para>
     /// <para>
     /// The method first checks to see if the
     /// provided <see cref="PremiumUserSale.User"/> already has a Stripe <see cref="Stripe.Customer"/> using the <see cref="User.GatewayCustomerId"/>.

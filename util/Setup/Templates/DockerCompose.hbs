@@ -16,8 +16,8 @@
 services:
 {{#if EnableBuiltInMsSql}}
   mssql:
-    image: ghcr.io/bitwarden/mssql:{{{CoreVersion}}}
-    container_name: bitwarden-mssql
+    image: ghcr.io/deepsafer/mssql:{{{CoreVersion}}}
+    container_name: deepsafer-mssql
     restart: always
     stop_grace_period: 60s
     volumes:
@@ -27,7 +27,7 @@ services:
       - ../mssql/data:/var/opt/mssql/data
 {{/if}}
       - ../logs/mssql:/var/opt/mssql/log
-      - ../mssql/backups:/etc/bitwarden/mssql/backups
+      - ../mssql/backups:/etc/deepsafer/mssql/backups
     env_file:
       - mssql.env
       - ../env/uid.env
@@ -35,33 +35,33 @@ services:
 
 {{/if}}
   web:
-    image: ghcr.io/bitwarden/web:{{{WebVersion}}}
-    container_name: bitwarden-web
+    image: ghcr.io/deepsafer/web:{{{WebVersion}}}
+    container_name: deepsafer-web
     restart: always
     volumes:
-      - ../web:/etc/bitwarden/web
+      - ../web:/etc/deepsafer/web
     env_file:
       - global.env
       - ../env/uid.env
 
   attachments:
-    image: ghcr.io/bitwarden/attachments:{{{CoreVersion}}}
-    container_name: bitwarden-attachments
+    image: ghcr.io/deepsafer/attachments:{{{CoreVersion}}}
+    container_name: deepsafer-attachments
     restart: always
     volumes:
-      - ../core/attachments:/etc/bitwarden/core/attachments
+      - ../core/attachments:/etc/deepsafer/core/attachments
     env_file:
       - global.env
       - ../env/uid.env
 
   api:
-    image: ghcr.io/bitwarden/api:{{{CoreVersion}}}
-    container_name: bitwarden-api
+    image: ghcr.io/deepsafer/api:{{{CoreVersion}}}
+    container_name: deepsafer-api
     restart: always
     volumes:
-      - ../core:/etc/bitwarden/core
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/api:/etc/bitwarden/logs
+      - ../core:/etc/deepsafer/core
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/api:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -71,14 +71,14 @@ services:
       - public
 
   identity:
-    image: ghcr.io/bitwarden/identity:{{{CoreVersion}}}
-    container_name: bitwarden-identity
+    image: ghcr.io/deepsafer/identity:{{{CoreVersion}}}
+    container_name: deepsafer-identity
     restart: always
     volumes:
-      - ../identity:/etc/bitwarden/identity
-      - ../core:/etc/bitwarden/core
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/identity:/etc/bitwarden/logs
+      - ../identity:/etc/deepsafer/identity
+      - ../core:/etc/deepsafer/core
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/identity:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -88,14 +88,14 @@ services:
       - public
 
   sso:
-    image: ghcr.io/bitwarden/sso:{{{CoreVersion}}}
-    container_name: bitwarden-sso
+    image: ghcr.io/deepsafer/sso:{{{CoreVersion}}}
+    container_name: deepsafer-sso
     restart: always
     volumes:
-      - ../identity:/etc/bitwarden/identity
-      - ../core:/etc/bitwarden/core
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/sso:/etc/bitwarden/logs
+      - ../identity:/etc/deepsafer/identity
+      - ../core:/etc/deepsafer/core
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/sso:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -105,17 +105,17 @@ services:
       - public
 
   admin:
-    image: ghcr.io/bitwarden/admin:{{{CoreVersion}}}
-    container_name: bitwarden-admin
+    image: ghcr.io/deepsafer/admin:{{{CoreVersion}}}
+    container_name: deepsafer-admin
     restart: always
 {{#if EnableBuiltInMsSql}}
     depends_on:
       - mssql
 {{/if}}
     volumes:
-      - ../core:/etc/bitwarden/core
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/admin:/etc/bitwarden/logs
+      - ../core:/etc/deepsafer/core
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/admin:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -125,12 +125,12 @@ services:
       - public
 
   icons:
-    image: ghcr.io/bitwarden/icons:{{{CoreVersion}}}
-    container_name: bitwarden-icons
+    image: ghcr.io/deepsafer/icons:{{{CoreVersion}}}
+    container_name: deepsafer-icons
     restart: always
     volumes:
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/icons:/etc/bitwarden/logs
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/icons:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -139,12 +139,12 @@ services:
       - public
 
   notifications:
-    image: ghcr.io/bitwarden/notifications:{{{CoreVersion}}}
-    container_name: bitwarden-notifications
+    image: ghcr.io/deepsafer/notifications:{{{CoreVersion}}}
+    container_name: deepsafer-notifications
     restart: always
     volumes:
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/notifications:/etc/bitwarden/logs
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/notifications:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -154,12 +154,12 @@ services:
       - public
 
   events:
-    image: ghcr.io/bitwarden/events:{{{CoreVersion}}}
-    container_name: bitwarden-events
+    image: ghcr.io/deepsafer/events:{{{CoreVersion}}}
+    container_name: deepsafer-events
     restart: always
     volumes:
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/events:/etc/bitwarden/logs
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/events:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -169,8 +169,8 @@ services:
       - public
 
   nginx:
-    image: ghcr.io/bitwarden/nginx:{{{CoreVersion}}}
-    container_name: bitwarden-nginx
+    image: ghcr.io/deepsafer/nginx:{{{CoreVersion}}}
+    container_name: deepsafer-nginx
     restart: always
     depends_on:
       - web
@@ -187,7 +187,7 @@ services:
 {{/if}}
 {{/if}}
     volumes:
-      - ../nginx:/etc/bitwarden/nginx
+      - ../nginx:/etc/deepsafer/nginx
       - ../letsencrypt:/etc/letsencrypt
       - ../ssl:/etc/ssl
       - ../logs/nginx:/var/log/nginx
@@ -199,13 +199,13 @@ services:
 
 {{#if EnableKeyConnector}}
   key-connector:
-    image: ghcr.io/bitwarden/key-connector:{{{KeyConnectorVersion}}}
-    container_name: bitwarden-key-connector
+    image: ghcr.io/deepsafer/key-connector:{{{KeyConnectorVersion}}}
+    container_name: deepsafer-key-connector
     restart: always
     volumes:
-      - ../key-connector:/etc/bitwarden/key-connector
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/key-connector:/etc/bitwarden/logs
+      - ../key-connector:/etc/deepsafer/key-connector
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/key-connector:/etc/deepsafer/logs
     env_file:
       - ../env/uid.env
       - ../env/key-connector.override.env
@@ -216,13 +216,13 @@ services:
 {{#if EnableScim}}
 
   scim:
-    image: ghcr.io/bitwarden/scim:{{{CoreVersion}}}
-    container_name: bitwarden-scim
+    image: ghcr.io/deepsafer/scim:{{{CoreVersion}}}
+    container_name: deepsafer-Scim
     restart: always
     volumes:
-      - ../core:/etc/bitwarden/core
-      - ../ca-certificates:/etc/bitwarden/ca-certificates
-      - ../logs/scim:/etc/bitwarden/logs
+      - ../core:/etc/deepsafer/core
+      - ../ca-certificates:/etc/deepsafer/ca-certificates
+      - ../logs/scim:/etc/deepsafer/logs
     env_file:
       - global.env
       - ../env/uid.env
@@ -236,7 +236,7 @@ services:
 volumes:
   mssql_data:
     labels:
-      com.bitwarden.product: bitwarden
+      ye.vault.deepsafer.product: deepsafer
 {{/if}}
 
 networks:

@@ -634,7 +634,7 @@ public class AuthRequestServiceTests
 
     /// <summary>
     /// Story: A bad actor is able to get ahold of the request id of a valid <see cref="AuthRequest" />
-    /// and tries to approve it from their own Bitwarden account. We need to validate that the currently signed in user
+    /// and tries to approve it from their own Deepsafer account. We need to validate that the currently signed in user
     /// is the same user that originally created the request and we want to pretend it does not exist at all by throwing
     /// NotFoundException.
     /// </summary>

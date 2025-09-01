@@ -86,7 +86,7 @@ public class OrganizationUserControllerTests : IClassFixture<ApiApplicationFacto
 
     public async Task InitializeAsync()
     {
-        _ownerEmail = $"org-user-integration-test-{Guid.NewGuid()}@bitwarden.com";
+        _ownerEmail = $"org-user-integration-test-{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_ownerEmail);
 
         (_organization, _) = await OrganizationTestHelpers.SignUpAsync(_factory, plan: PlanType.EnterpriseAnnually2023,

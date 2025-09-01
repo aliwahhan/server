@@ -16,7 +16,7 @@ public class GlobalSettingsFactory
         GlobalSettings = new GlobalSettings();
         // UserSecretsId here should match what is in Api.csproj
         var config = new ConfigurationBuilder()
-            .AddUserSecrets("bitwarden-Api")
+            .AddUserSecrets("deepsafer-Api")
             .AddCommandLine(args)
             .Build();
 

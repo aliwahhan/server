@@ -1,6 +1,6 @@
-# Bitwarden Database Seeder Utility
+# Deepsafer Database Seeder Utility
 
-A command-line utility for generating and managing test data for Bitwarden databases.
+A command-line utility for generating and managing test data for Deepsafer databases.
 
 ## Overview
 

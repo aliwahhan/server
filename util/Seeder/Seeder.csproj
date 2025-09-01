@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>Bit.Seeder</RootNamespace>
     <UserSecretsId>Bit.Seeder</UserSecretsId>
-    <Description>Core library for generating and managing test data for Bitwarden</Description>
+    <Description>Core library for generating and managing test data for Deepsafer</Description>
     <OutputType>library</OutputType>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

@@ -8,7 +8,7 @@ namespace Bit.Core.Platform.Installations;
 
 /// <summary>
 /// The base entity for the SQL table `dbo.Installation`. Used to store
-/// information pertinent to self hosted Bitwarden installations.
+/// information pertinent to self hosted Deepsafer installations.
 /// </summary>
 public class Installation : ITableObject<Guid>
 {

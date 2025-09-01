@@ -1,6 +1,6 @@
 ﻿namespace Bit.Core.Enums;
 
-public static class BitwardenClient
+public static class DeepsaferClient
 {
     public const string
         Web = "web",

@@ -50,7 +50,7 @@ public class ServiceAccountsControllerTests : IClassFixture<ApiApplicationFactor
 
     public async Task InitializeAsync()
     {
-        _email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_email);
         _organizationHelper = new SecretsManagerOrganizationHelper(_factory, _email);
     }

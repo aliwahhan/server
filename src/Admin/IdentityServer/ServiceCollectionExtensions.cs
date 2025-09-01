@@ -34,7 +34,7 @@ public static class ServiceCollectionExtensions
             options.LoginPath = "/login";
             options.LogoutPath = "/";
             options.AccessDeniedPath = "/login?accessDenied=true";
-            options.Cookie.Name = $"Bitwarden_{globalSettings.ProjectName}";
+            options.Cookie.Name = $"Deepsafer_{globalSettings.ProjectName}";
             options.Cookie.HttpOnly = true;
             options.ExpireTimeSpan = TimeSpan.FromDays(2);
             options.ReturnUrlParameter = "returnUrl";

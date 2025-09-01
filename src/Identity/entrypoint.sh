@@ -2,8 +2,8 @@
 
 # Setup
 
-GROUPNAME="bitwarden"
-USERNAME="bitwarden"
+GROUPNAME="deepsafer"
+USERNAME="deepsafer"
 
 LUID=${LOCAL_UID:-0}
 LGID=${LOCAL_GID:-0}
@@ -32,13 +32,13 @@ then
     # The rest...
 
     chown -R $USERNAME:$GROUPNAME /app
-    mkdir -p /etc/bitwarden/core
-    mkdir -p /etc/bitwarden/logs
-    mkdir -p /etc/bitwarden/ca-certificates
-    chown -R $USERNAME:$GROUPNAME /etc/bitwarden
+    mkdir -p /etc/deepsafer/core
+    mkdir -p /etc/deepsafer/logs
+    mkdir -p /etc/deepsafer/ca-certificates
+    chown -R $USERNAME:$GROUPNAME /etc/deepsafer
 
-    if [[ -f "/etc/bitwarden/kerberos/bitwarden.keytab" && -f "/etc/bitwarden/kerberos/krb5.conf" ]]; then
-      chown -R $USERNAME:$GROUPNAME /etc/bitwarden/kerberos
+    if [[ -f "/etc/deepsafer/kerberos/deepsafer.keytab" && -f "/etc/deepsafer/kerberos/krb5.conf" ]]; then
+      chown -R $USERNAME:$GROUPNAME /etc/deepsafer/kerberos
     fi
 
     gosu_cmd="gosu $USERNAME:$GROUPNAME"
@@ -46,14 +46,14 @@ else
     gosu_cmd=""
 fi
 
-if [[ -f "/etc/bitwarden/kerberos/bitwarden.keytab" && -f "/etc/bitwarden/kerberos/krb5.conf" ]]; then
-    cp -f /etc/bitwarden/kerberos/krb5.conf /etc/krb5.conf
-    $gosu_cmd kinit $globalSettings__kerberosUser -k -t /etc/bitwarden/kerberos/bitwarden.keytab
+if [[ -f "/etc/deepsafer/kerberos/deepsafer.keytab" && -f "/etc/deepsafer/kerberos/krb5.conf" ]]; then
+    cp -f /etc/deepsafer/kerberos/krb5.conf /etc/krb5.conf
+    $gosu_cmd kinit $globalSettings__kerberosUser -k -t /etc/deepsafer/kerberos/deepsafer.keytab
 fi
 
 if [[ $globalSettings__selfHosted == "true" ]]; then
     if [[ -z $globalSettings__identityServer__certificateLocation ]]; then
-        export globalSettings__identityServer__certificateLocation=/etc/bitwarden/identity/identity.pfx
+        export globalSettings__identityServer__certificateLocation=/etc/deepsafer/identity/identity.pfx
     fi
 fi
 

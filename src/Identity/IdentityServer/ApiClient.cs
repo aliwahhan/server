@@ -38,13 +38,13 @@ public class ApiClient : Client
         else if (id == "desktop")
         {
             var desktopUris = new List<string>();
-            desktopUris.Add("bitwarden://sso-callback");
+            desktopUris.Add("deepsafer://sso-callback");
             for (var port = 8065; port <= 8070; port++)
             {
                 desktopUris.Add(string.Format("https://localhost:{0}", port));
             }
             RedirectUris = desktopUris;
-            PostLogoutRedirectUris = new[] { "bitwarden://logged-out" };
+            PostLogoutRedirectUris = new[] { "deepsafer://logged-out" };
         }
         else if (id == "connector")
         {
@@ -74,8 +74,8 @@ public class ApiClient : Client
         }
         else if (id == "mobile")
         {
-            RedirectUris = new[] { "bitwarden://sso-callback" };
-            PostLogoutRedirectUris = new[] { "bitwarden://logged-out" };
+            RedirectUris = new[] { "deepsafer://sso-callback" };
+            PostLogoutRedirectUris = new[] { "deepsafer://logged-out" };
         }
 
         if (scopes == null)

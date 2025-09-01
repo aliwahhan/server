@@ -49,7 +49,7 @@ public class Context
     public bool Quiet { get; set; }
     public bool Stub { get; set; }
     public IDictionary<string, string> Parameters { get; set; }
-    public string OutputDir { get; set; } = "/etc/bitwarden";
+    public string OutputDir { get; set; } = "/etc/deepsafer";
     public string HostOS { get; set; } = "win";
     public string CoreVersion { get; set; } = "latest";
     public string WebVersion { get; set; } = "latest";
@@ -80,7 +80,7 @@ public class Context
             var push = Helpers.GetValueFromEnvFile("global", "globalSettings__pushRelayBaseUri");
             Config.PushNotifications = push != "REPLACE";
 
-            var composeFile = "/bitwarden/docker/docker-compose.yml";
+            var composeFile = "/deepsafer/docker/docker-compose.yml";
             if (File.Exists(composeFile))
             {
                 var fileLines = File.ReadAllLines(composeFile);
@@ -118,7 +118,7 @@ public class Context
                 }
             }
 
-            var nginxFile = "/bitwarden/nginx/default.conf";
+            var nginxFile = "/deepsafer/nginx/default.conf";
             if (File.Exists(nginxFile))
             {
                 var confContent = File.ReadAllText(nginxFile);
@@ -177,7 +177,7 @@ public class Context
             .WithEmissionPhaseObjectGraphVisitor(args => new CommentsObjectGraphVisitor(args.InnerVisitor))
             .Build();
         var yaml = serializer.Serialize(Config);
-        Directory.CreateDirectory("/bitwarden/");
+        Directory.CreateDirectory("/deepsafer/");
         using (var sw = File.CreateText(ConfigPath))
         {
             sw.Write(yaml);

@@ -127,7 +127,7 @@ public class UpdateOrganizationUserCommand : IUpdateOrganizationUserCommand
             var additionalSmSeatsRequired = await _countNewSmSeatsRequiredQuery.CountNewSmSeatsRequiredAsync(organizationUser.OrganizationId, 1);
             if (additionalSmSeatsRequired > 0)
             {
-                // TODO: https://bitwarden.atlassian.net/browse/PM-17012
+                // TODO: https://vault.deepsafer.atlassian.net/browse/PM-17012
                 var plan = await _pricingClient.GetPlanOrThrow(organization.PlanType);
                 var update = new SecretsManagerSubscriptionUpdate(organization, plan, true)
                     .AdjustSeats(additionalSmSeatsRequired);

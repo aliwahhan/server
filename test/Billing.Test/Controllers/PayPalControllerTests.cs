@@ -163,7 +163,7 @@ public class PayPalControllerTests
 
         HasStatusCode(result, 200);
 
-        LoggedWarning(logger, "PayPal IPN (2PK15573S8089712Y): Receiver ID (NHDYKLQ3L4LWL) does not match Bitwarden business ID (INCORRECT)");
+        LoggedWarning(logger, "PayPal IPN (2PK15573S8089712Y): Receiver ID (NHDYKLQ3L4LWL) does not match Deepsafer business ID (INCORRECT)");
     }
 
     [Fact]

@@ -2,8 +2,8 @@
 
 # Setup
 
-GROUPNAME="bitwarden"
-USERNAME="bitwarden"
+GROUPNAME="deepsafer"
+USERNAME="deepsafer"
 
 LUID=${LOCAL_UID:-0}
 LGID=${LOCAL_GID:-0}
@@ -49,8 +49,8 @@ fi
 
 # The rest...
 
-mkdir -p /etc/bitwarden/mssql/backups
-chown -R $USERNAME:$GROUPNAME /etc/bitwarden
+mkdir -p /etc/deepsafer/mssql/backups
+chown -R $USERNAME:$GROUPNAME /etc/deepsafer
 mkdir -p /var/opt/mssql/data
 chown -R $USERNAME:$GROUPNAME /var/opt/mssql
 chown $USERNAME:$GROUPNAME /backup-db.sh

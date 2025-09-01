@@ -3,7 +3,7 @@ import { check, fail } from "k6";
 import encoding from "k6/encoding";
 
 /**
- * Authenticate using OAuth against Bitwarden
+ * Authenticate using OAuth against Deepsafer
  * @function
  * @param {string} identityUrl - Identity Server URL
  * @param {string} clientHeader - X-ClientId header value

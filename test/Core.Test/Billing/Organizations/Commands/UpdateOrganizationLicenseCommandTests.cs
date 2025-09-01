@@ -23,7 +23,7 @@ public class UpdateOrganizationLicenseCommandTests
     private static Lazy<string> OrganizationLicenseDirectory => new(() =>
     {
         // Create a temporary directory to write the license file to
-        var directory = Path.Combine(Path.GetTempPath(), "bitwarden/");
+        var directory = Path.Combine(Path.GetTempPath(), "deepsafer/");
         if (!Directory.Exists(directory))
         {
             Directory.CreateDirectory(directory);

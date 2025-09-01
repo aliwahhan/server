@@ -6,7 +6,7 @@ public class TempDirectory : IDisposable
 
     public TempDirectory()
     {
-        Directory = Path.Combine(Path.GetTempPath(), $"bitwarden_{Guid.NewGuid().ToString().Replace("-", "")}");
+        Directory = Path.Combine(Path.GetTempPath(), $"deepsafer_{Guid.NewGuid().ToString().Replace("-", "")}");
     }
 
     public override string ToString() => Directory;

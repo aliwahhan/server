@@ -95,12 +95,12 @@ public static class Helpers
 
     public static string GetValueFromEnvFile(string envFile, string key)
     {
-        if (!File.Exists($"/bitwarden/env/{envFile}.override.env"))
+        if (!File.Exists($"/deepsafer/env/{envFile}.override.env"))
         {
             return null;
         }
 
-        var lines = File.ReadAllLines($"/bitwarden/env/{envFile}.override.env");
+        var lines = File.ReadAllLines($"/deepsafer/env/{envFile}.override.env");
         foreach (var line in lines)
         {
             if (line.StartsWith($"{key}="))

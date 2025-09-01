@@ -2,8 +2,8 @@
 
 # Setup
 
-GROUPNAME="bitwarden"
-USERNAME="bitwarden"
+GROUPNAME="deepsafer"
+USERNAME="deepsafer"
 
 LUID=${LOCAL_UID:-0}
 LGID=${LOCAL_GID:-0}
@@ -32,14 +32,14 @@ then
     # The rest...
 
     chown -R $USERNAME:$GROUPNAME /app
-    mkdir -p /bitwarden/env
-    mkdir -p /bitwarden/docker
-    mkdir -p /bitwarden/ssl
-    mkdir -p /bitwarden/letsencrypt
-    mkdir -p /bitwarden/identity
-    mkdir -p /bitwarden/nginx
-    mkdir -p /bitwarden/ca-certificates
-    chown -R $USERNAME:$GROUPNAME /bitwarden
+    mkdir -p /deepsafer/env
+    mkdir -p /deepsafer/docker
+    mkdir -p /deepsafer/ssl
+    mkdir -p /deepsafer/letsencrypt
+    mkdir -p /deepsafer/identity
+    mkdir -p /deepsafer/nginx
+    mkdir -p /deepsafer/ca-certificates
+    chown -R $USERNAME:$GROUPNAME /deepsafer
 
     gosu_cmd="gosu $USERNAME:$GROUPNAME"
 else

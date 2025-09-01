@@ -40,7 +40,7 @@ public class ImportOrganizationUsersAndGroupsCommandTests
         // fix mocked email format, mock OrganizationUsers.
         foreach (var u in importedUsers)
         {
-            u.Email += "@bitwardentest.com";
+            u.Email += "@vault.deepsafer.ye";
             orgUsers.Add(new OrganizationUser { Email = u.Email, ExternalId = u.ExternalId });
         }
 
@@ -113,12 +113,12 @@ public class ImportOrganizationUsersAndGroupsCommandTests
         // fix email formatting, mock orgUsers to be returned
         foreach (var u in existingUsers)
         {
-            u.Email += "@bitwardentest.com";
+            u.Email += "@vault.deepsafer.ye";
             orgUsers.Add(new OrganizationUser { Email = u.Email, ExternalId = u.ExternalId });
         }
         foreach (var u in importedUsers)
         {
-            u.Email += "@bitwardentest.com";
+            u.Email += "@vault.deepsafer.ye";
             orgUsers.Add(new OrganizationUser { Email = u.Email, ExternalId = u.ExternalId });
         }
 

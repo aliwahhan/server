@@ -41,10 +41,10 @@ RUN . /tmp/rid.txt && dotnet publish \
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 ARG TARGETPLATFORM
-LABEL com.bitwarden.product="bitwarden"
+LABEL ye.vault.deepsafer.product="deepsafer"
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV ASPNETCORE_URLS=http://+:5000
-ENV SSL_CERT_DIR=/etc/bitwarden/ca-certificates
+ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
 EXPOSE 5000
 
 RUN apt-get update \
@@ -54,8 +54,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy app from the build stage
-WORKDIR /bitwarden_server
-COPY --from=build /source/util/Server/out /bitwarden_server
+WORKDIR /deepsafer_server
+COPY --from=build /source/util/Server/out /deepsafer_server
 COPY util/Attachments/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 

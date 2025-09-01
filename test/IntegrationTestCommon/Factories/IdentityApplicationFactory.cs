@@ -21,7 +21,7 @@ namespace Bit.IntegrationTestCommon.Factories;
 public class IdentityApplicationFactory : WebApplicationFactoryBase<Startup>
 {
     public const string DefaultDeviceIdentifier = "92b9d953-b9b6-4eaf-9d3e-11d57144dfeb";
-    public const string DefaultUserEmail = "DefaultEmail@bitwarden.com";
+    public const string DefaultUserEmail = "DefaultEmail@vault.deepsafer.ye";
     public const string DefaultUserPasswordHash = "default_password_hash";
 
     /// <summary>

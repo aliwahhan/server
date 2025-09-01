@@ -21,7 +21,7 @@ public class OrganizationUserInvitedViewModel : BaseTitleContactUsMailModel
         ExpiringToken expiringToken,
         GlobalSettings globalSettings)
     {
-        var freeOrgTitle = "A Bitwarden member invited you to an organization. Join now to start securing your passwords!";
+        var freeOrgTitle = "A Deepsafer member invited you to an organization. Join now to start securing your passwords!";
         return new OrganizationUserInvitedViewModel
         {
             TitleFirst = orgInvitesInfo.IsFreeOrg ? freeOrgTitle : "Join ",
@@ -29,7 +29,7 @@ public class OrganizationUserInvitedViewModel : BaseTitleContactUsMailModel
                 orgInvitesInfo.IsFreeOrg
                     ? string.Empty
                     : CoreHelpers.SanitizeForEmail(orgInvitesInfo.OrganizationName, false),
-            TitleThird = orgInvitesInfo.IsFreeOrg ? string.Empty : " on Bitwarden and start securing your passwords!",
+            TitleThird = orgInvitesInfo.IsFreeOrg ? string.Empty : " on Deepsafer and start securing your passwords!",
             OrganizationName = CoreHelpers.SanitizeForEmail(orgInvitesInfo.OrganizationName, false) + orgUser.Status,
             Email = WebUtility.UrlEncode(orgUser.Email),
             OrganizationId = orgUser.OrganizationId.ToString(),

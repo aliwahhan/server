@@ -2,8 +2,8 @@
 
 # Setup
 
-GROUPNAME="bitwarden"
-USERNAME="bitwarden"
+GROUPNAME="deepsafer"
+USERNAME="deepsafer"
 
 LUID=${LOCAL_UID:-0}
 LGID=${LOCAL_GID:-0}
@@ -29,8 +29,8 @@ mkhomedir_helper $USERNAME
 
 # The rest...
 
-chown -R $USERNAME:$GROUPNAME /etc/bitwarden
-cp /etc/bitwarden/nginx/*.conf /etc/nginx/conf.d/
+chown -R $USERNAME:$GROUPNAME /etc/deepsafer
+cp /etc/deepsafer/nginx/*.conf /etc/nginx/conf.d/
 mkdir -p /etc/letsencrypt
 chown -R $USERNAME:$GROUPNAME /etc/letsencrypt
 mkdir -p /etc/ssl

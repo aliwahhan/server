@@ -99,7 +99,7 @@ public class CurrentContext : ICurrentContext
             MaybeBot = cfMaybeBot == "1";
         }
 
-        if (httpContext.Request.Headers.TryGetValue("Bitwarden-Client-Version", out var bitWardenClientVersion) && Version.TryParse(bitWardenClientVersion, out var cVersion))
+        if (httpContext.Request.Headers.TryGetValue("Deepsafer-Client-Version", out var deepsaferClientVersion) && Version.TryParse(deepsaferClientVersion, out var cVersion))
         {
             ClientVersion = cVersion;
         }

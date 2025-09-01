@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Script for generating and installing the Bitwarden development certificates on Linux.
+# Script for generating and installing the Deepsafer development certificates on Linux.
 
 IDENTITY_SERVER_KEY=identity_server_dev.key
 IDENTITY_SERVER_CERT=identity_server_dev.crt
-IDENTITY_SERVER_CN="Bitwarden Identity Server Dev"
+IDENTITY_SERVER_CN="Deepsafer Identity Server Dev"
 
 # Detect management command to trust generated certificates.
 if [ -x "$(command -v update-ca-certificates)" ]; then

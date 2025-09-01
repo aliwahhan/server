@@ -1,8 +1,8 @@
 {
-  "name": "bitwarden-admin",
+  "name": "deepsafer-admin",
   "version": "0.0.0",
-  "description": "Bitwarden System Admin Portal",
-  "repository": "https://github.com/bitwarden/server",
+  "description": "deepsafer System Admin Portal",
+  "repository": "https://github.com/deepsafer/server",
   "license": "GPL-3.0",
   "scripts": {
     "build": "webpack"

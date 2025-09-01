@@ -41,9 +41,9 @@ RUN . /tmp/rid.txt && dotnet publish \
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 ARG TARGETPLATFORM
-LABEL com.bitwarden.product="bitwarden" com.bitwarden.project="setup"
+LABEL ye.vault.deepsafer.product="deepsafer" ye.vault.deepsafer.project="setup"
 
-ENV SSL_CERT_DIR=/etc/bitwarden/ca-certificates
+ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \

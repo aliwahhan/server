@@ -135,7 +135,7 @@ public class StripeEventUtilityService : IStripeEventUtilityService
                 .Any(i => i.Plan.Id == p.StripePlanId));
 
     /// <summary>
-    /// Converts a Stripe Charge object to a Bitwarden Transaction object.
+    /// Converts a Stripe Charge object to a Deepsafer Transaction object.
     /// </summary>
     /// <param name="charge"></param>
     /// <param name="organizationId"></param>

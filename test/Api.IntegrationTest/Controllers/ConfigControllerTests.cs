@@ -23,7 +23,7 @@ public class ConfigControllerTests : IClassFixture<ApiApplicationFactory>, IAsyn
 
     public async Task InitializeAsync()
     {
-        _email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
 
         var tokens = await _factory.LoginWithNewAccount(_email);
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokens.Token);
@@ -74,7 +74,7 @@ public class ConfigControllerTests : IClassFixture<ApiApplicationFactory>, IAsyn
     {
         for (var i = 0; i < orgCount; i++)
         {
-            var ownerEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+            var ownerEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
             await _factory.LoginWithNewAccount(ownerEmail);
 
             Organization org;

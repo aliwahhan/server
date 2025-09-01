@@ -1,6 +1,6 @@
-# Bitwarden MSSQL Database Migrator Utility
+# Deepsafer MSSQL Database Migrator Utility
 
-A command-line utility for performing MSSQL database migrations for Bitwarden's self-hosted and cloud deployments.
+A command-line utility for performing MSSQL database migrations for Deepsafer's self-hosted and cloud deployments.
 
 ## Overview
 
@@ -13,4 +13,4 @@ The MSSQL Migrator Utility is a specialized tool that leverages the [Migrator li
 - Execution inside or outside of transactions for different application scenarios
 - Script execution tracking to prevent duplicate migrations and support retries
 
-See the [documentation](https://contributing.bitwarden.com/getting-started/server/database/mssql/#updating-the-database) for usage.
+See the [documentation](https://contributing.vault.deepsafer.ye/getting-started/server/database/mssql/#updating-the-database) for usage.

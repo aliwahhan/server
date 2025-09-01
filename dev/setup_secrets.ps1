@@ -24,8 +24,8 @@ $projects = @{
     Icons = "../src/Icons"
     Identity = "../src/Identity"
     Notifications = "../src/Notifications"
-    Sso = "../bitwarden_license/src/Sso"
-    Scim = "../bitwarden_license/src/Scim"
+    Sso = "../deepsafer_license/src/Sso"
+    Scim = "../deepsafer_license/src/Scim"
     IntegrationTests = "../test/Infrastructure.IntegrationTest"
 }
 

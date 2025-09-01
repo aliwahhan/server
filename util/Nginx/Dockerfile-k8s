@@ -1,9 +1,9 @@
 FROM nginx:stable
 
-LABEL com.bitwarden.product="bitwarden"
+LABEL ye.vault.deepsafer.product="deepsafer"
 
-ENV USERNAME="bitwarden"
-ENV GROUPNAME="bitwarden"
+ENV USERNAME="deepsafer"
+ENV GROUPNAME="deepsafer"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -33,8 +33,8 @@ RUN mkdir -p /var/run/nginx && \
 RUN chown -R $USERNAME:$GROUPNAME /var/run/nginx && \
     chown -R $USERNAME:$GROUPNAME /var/cache/nginx && \
     chown -R $USERNAME:$GROUPNAME /var/log/nginx
-    
+
 
 HEALTHCHECK CMD curl --insecure -Lfs https://localhost:8443/alive || curl -Lfs https://localhost:8080/alive || exit 1
 
-USER bitwarden
+USER deepsafer

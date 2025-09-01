@@ -112,7 +112,7 @@ public class PayPalController : Controller
         if (transactionModel.ReceiverId != _billingSettings.PayPal.BusinessId)
         {
             _logger.LogWarning(
-                "PayPal IPN ({Id}): Receiver ID ({ReceiverId}) does not match Bitwarden business ID ({BusinessId})",
+                "PayPal IPN ({Id}): Receiver ID ({ReceiverId}) does not match Deepsafer business ID ({BusinessId})",
                 transactionModel.TransactionId,
                 transactionModel.ReceiverId,
                 _billingSettings.PayPal.BusinessId);

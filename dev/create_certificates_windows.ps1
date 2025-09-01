@@ -1,4 +1,4 @@
-# Script for generating and installing the Bitwarden development certificates on Windows.
+# Script for generating and installing the Deepsafer development certificates on Windows.
 
 $params = @{
     'KeyAlgorithm' = 'RSA';
@@ -7,5 +7,5 @@ $params = @{
     'CertStoreLocation' = 'Cert:\CurrentUser\My';
 };
 
-$params['Subject'] = 'CN=Bitwarden Identity Server Dev';
+$params['Subject'] = 'CN=Deepsafer Identity Server Dev';
 New-SelfSignedCertificate @params;

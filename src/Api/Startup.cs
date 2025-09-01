@@ -300,10 +300,10 @@ public class Startup
             });
             app.UseSwaggerUI(config =>
             {
-                config.DocumentTitle = "Bitwarden API Documentation";
+                config.DocumentTitle = "Deepsafer API Documentation";
                 config.RoutePrefix = "docs";
                 config.SwaggerEndpoint($"{globalSettings.BaseServiceUri.Api}/specs/public/swagger.json",
-                    "Bitwarden Public API");
+                    "Deepsafer Public API");
                 config.OAuthClientId("accountType.id");
                 config.OAuthClientSecret("secretKey");
 

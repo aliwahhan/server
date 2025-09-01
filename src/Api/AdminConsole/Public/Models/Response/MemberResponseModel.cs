@@ -69,7 +69,7 @@ public class MemberResponseModel : MemberBaseModel, IResponseModel
     [Required]
     public Guid Id { get; set; }
     /// <summary>
-    /// The member's unique identifier across Bitwarden.
+    /// The member's unique identifier across Deepsafer.
     /// </summary>
     /// <example>48b47ee1-493e-4c67-aef7-014996c40eca</example>
     [Required]

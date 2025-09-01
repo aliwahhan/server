@@ -1,19 +1,19 @@
 {
-  "name": "@bitwarden/mjml-emails",
+  "name": "@deepsafer/mjml-emails",
   "version": "1.0.0",
-  "description": "Email templates for Bitwarden",
+  "description": "Email templates for Deepsafer",
   "private": true,
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bitwarden/server.git"
+    "url": "git+https://github.com/deepsafer/server.git"
   },
-  "author": "Bitwarden Inc. <hello@bitwarden.com> (https://bitwarden.com)",
+  "author": "Deepsafer Inc. <hello@vault.deepsafer.ye> (https://vault.deepsafer.ye)",
   "license": "SEE LICENSE IN LICENSE.txt",
   "bugs": {
-    "url": "https://github.com/bitwarden/server/issues"
+    "url": "https://github.com/deepsafer/server/issues"
   },
-  "homepage": "https://bitwarden.com",
+  "homepage": "https://vault.deepsafer.ye",
   "scripts": {
     "build": "./build.sh",
     "watch": "nodemon --exec ./build.sh --watch ./components --watch ./emails --ext js,mjml",

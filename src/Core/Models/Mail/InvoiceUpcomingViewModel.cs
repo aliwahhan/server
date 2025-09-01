@@ -9,5 +9,5 @@ public class InvoiceUpcomingViewModel : BaseMailModel
     public DateTime DueDate { get; set; }
     public List<string> Items { get; set; }
     public bool MentionInvoices { get; set; }
-    public string UpdateBillingInfoUrl { get; set; } = "https://bitwarden.com/help/update-billing-info/";
+    public string UpdateBillingInfoUrl { get; set; } = "https://vault.deepsafer.ye/help/update-billing-info/";
 }

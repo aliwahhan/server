@@ -17,9 +17,9 @@ public static class OrganizationTestHelpers
 {
     public static async Task<Tuple<Organization, OrganizationUser>> SignUpAsync<T>(WebApplicationFactoryBase<T> factory,
         PlanType plan = PlanType.Free,
-        string ownerEmail = "integration-test@bitwarden.com",
+        string ownerEmail = "integration-test@vault.deepsafer.ye",
         string name = "Integration Test Org",
-        string billingEmail = "integration-test@bitwarden.com",
+        string billingEmail = "integration-test@vault.deepsafer.ye",
         string ownerKey = "test-key",
         int passwordManagerSeats = 0,
         PaymentMethodType paymentMethod = PaymentMethodType.None) where T : class
@@ -103,7 +103,7 @@ public static class OrganizationTestHelpers
         Permissions? permissions = null
     )
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
 
         // Create user
         await factory.LoginWithNewAccount(email);

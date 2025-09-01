@@ -9,7 +9,7 @@ namespace Bit.Core.Billing.Organizations.Services;
 public interface IOrganizationBillingService
 {
     /// <summary>
-    /// <para>Establishes the Stripe entities necessary for a Bitwarden <see cref="Organization"/> using the provided <paramref name="sale"/>.</para>
+    /// <para>Establishes the Stripe entities necessary for a Deepsafer <see cref="Organization"/> using the provided <paramref name="sale"/>.</para>
     /// <para>
     /// The method first checks to see if the
     /// provided <see cref="OrganizationSale.Organization"/> already has a Stripe <see cref="Stripe.Customer"/> using the <see cref="Organization.GatewayCustomerId"/>.

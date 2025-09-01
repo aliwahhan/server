@@ -168,13 +168,13 @@ public class RestoreOrganizationUserCommandTests
                 Users = 1
             });
         var user = new User();
-        user.Email = "test@bitwarden.com";
+        user.Email = "test@vault.deepsafer.ye";
         sutProvider.GetDependency<IUserRepository>().GetByIdAsync(organizationUser.UserId.Value).Returns(user);
 
         var exception = await Assert.ThrowsAsync<BadRequestException>(
             () => sutProvider.Sut.RestoreUserAsync(organizationUser, owner.Id));
 
-        Assert.Contains("test@bitwarden.com belongs to an organization that doesn't allow them to join multiple organizations", exception.Message.ToLowerInvariant());
+        Assert.Contains("test@vault.deepsafer.ye belongs to an organization that doesn't allow them to join multiple organizations", exception.Message.ToLowerInvariant());
 
         await sutProvider.GetDependency<IOrganizationUserRepository>()
             .DidNotReceiveWithAnyArgs()
@@ -212,13 +212,13 @@ public class RestoreOrganizationUserCommandTests
             .Returns(new[] { new OrganizationUserPolicyDetails { OrganizationId = organizationUser.OrganizationId, PolicyType = PolicyType.TwoFactorAuthentication } });
 
         var user = new User();
-        user.Email = "test@bitwarden.com";
+        user.Email = "test@vault.deepsafer.ye";
         sutProvider.GetDependency<IUserRepository>().GetByIdAsync(organizationUser.UserId.Value).Returns(user);
 
         var exception = await Assert.ThrowsAsync<BadRequestException>(
             () => sutProvider.Sut.RestoreUserAsync(organizationUser, owner.Id));
 
-        Assert.Contains("test@bitwarden.com is not compliant with the two-step login policy", exception.Message.ToLowerInvariant());
+        Assert.Contains("test@vault.deepsafer.ye is not compliant with the two-step login policy", exception.Message.ToLowerInvariant());
 
         await sutProvider.GetDependency<IOrganizationUserRepository>()
             .DidNotReceiveWithAnyArgs()
@@ -268,13 +268,13 @@ public class RestoreOrganizationUserCommandTests
             ]));
 
         var user = new User();
-        user.Email = "test@bitwarden.com";
+        user.Email = "test@vault.deepsafer.ye";
         sutProvider.GetDependency<IUserRepository>().GetByIdAsync(organizationUser.UserId.Value).Returns(user);
 
         var exception = await Assert.ThrowsAsync<BadRequestException>(
             () => sutProvider.Sut.RestoreUserAsync(organizationUser, owner.Id));
 
-        Assert.Contains("test@bitwarden.com is not compliant with the two-step login policy", exception.Message.ToLowerInvariant());
+        Assert.Contains("test@vault.deepsafer.ye is not compliant with the two-step login policy", exception.Message.ToLowerInvariant());
 
         await sutProvider.GetDependency<IOrganizationUserRepository>()
             .DidNotReceiveWithAnyArgs()
@@ -391,13 +391,13 @@ public class RestoreOrganizationUserCommandTests
             });
 
         var user = new User();
-        user.Email = "test@bitwarden.com";
+        user.Email = "test@vault.deepsafer.ye";
         sutProvider.GetDependency<IUserRepository>().GetByIdAsync(organizationUser.UserId.Value).Returns(user);
 
         var exception = await Assert.ThrowsAsync<BadRequestException>(
             () => sutProvider.Sut.RestoreUserAsync(organizationUser, owner.Id));
 
-        Assert.Contains("test@bitwarden.com is not compliant with the single organization policy", exception.Message.ToLowerInvariant());
+        Assert.Contains("test@vault.deepsafer.ye is not compliant with the single organization policy", exception.Message.ToLowerInvariant());
 
         await sutProvider.GetDependency<IOrganizationUserRepository>()
             .DidNotReceiveWithAnyArgs()
@@ -443,13 +443,13 @@ public class RestoreOrganizationUserCommandTests
                 new OrganizationUserPolicyDetails { OrganizationId = organizationUser.OrganizationId, PolicyType = PolicyType.TwoFactorAuthentication, OrganizationUserStatus = OrganizationUserStatusType.Revoked }
             ]);
 
-        var user = new User { Email = "test@bitwarden.com" };
+        var user = new User { Email = "test@vault.deepsafer.ye" };
         sutProvider.GetDependency<IUserRepository>().GetByIdAsync(organizationUser.UserId.Value).Returns(user);
 
         var exception = await Assert.ThrowsAsync<BadRequestException>(
             () => sutProvider.Sut.RestoreUserAsync(organizationUser, owner.Id));
 
-        Assert.Contains("test@bitwarden.com is not compliant with the single organization and two-step login policy", exception.Message.ToLowerInvariant());
+        Assert.Contains("test@vault.deepsafer.ye is not compliant with the single organization and two-step login policy", exception.Message.ToLowerInvariant());
 
         await sutProvider.GetDependency<IOrganizationUserRepository>()
             .DidNotReceiveWithAnyArgs()
@@ -505,13 +505,13 @@ public class RestoreOrganizationUserCommandTests
                 Sponsored = 0,
                 Users = 1
             });
-        var user = new User { Email = "test@bitwarden.com" };
+        var user = new User { Email = "test@vault.deepsafer.ye" };
         sutProvider.GetDependency<IUserRepository>().GetByIdAsync(organizationUser.UserId.Value).Returns(user);
 
         var exception = await Assert.ThrowsAsync<BadRequestException>(
             () => sutProvider.Sut.RestoreUserAsync(organizationUser, owner.Id));
 
-        Assert.Contains("test@bitwarden.com is not compliant with the single organization and two-step login policy", exception.Message.ToLowerInvariant());
+        Assert.Contains("test@vault.deepsafer.ye is not compliant with the single organization and two-step login policy", exception.Message.ToLowerInvariant());
 
         await sutProvider.GetDependency<IOrganizationUserRepository>()
             .DidNotReceiveWithAnyArgs()

@@ -31,8 +31,8 @@ public class TrialInitiationVerifyEmail : RegisterVerifyEmail
 
     public string VerifyYourEmailTextCopy =>
         TrialLength == 7
-            ? "Verify your email address using the link below and start your free trial of Bitwarden."
-            : $"Verify your email address using the link below and start your {ProductTier.GetDisplayName()} Bitwarden plan.";
+            ? "Verify your email address using the link below and start your free trial of Deepsafer."
+            : $"Verify your email address using the link below and start your {ProductTier.GetDisplayName()} Deepsafer plan.";
 
     public ProductTierType ProductTier { get; set; }
 

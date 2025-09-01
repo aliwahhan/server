@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 namespace Bit.Core.Platform.Push.Internal;
 
 /// <summary>
-/// Sends mobile push notifications to the Bitwarden Cloud API, then relayed to Azure Notification Hub.
+/// Sends mobile push notifications to the Deepsafer Cloud API, then relayed to Azure Notification Hub.
 /// Used by Self-Hosted environments.
 /// Received by PushController endpoint in Api project.
 /// </summary>

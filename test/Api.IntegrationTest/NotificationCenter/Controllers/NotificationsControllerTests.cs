@@ -52,7 +52,7 @@ public class NotificationsControllerTests : IClassFixture<ApiApplicationFactory>
     public async Task InitializeAsync()
     {
         // Create the owner account
-        _ownerEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _ownerEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_ownerEmail);
 
         // Create the organization
@@ -240,7 +240,7 @@ public class NotificationsControllerTests : IClassFixture<ApiApplicationFactory>
     [Fact]
     private async void MarkAsDeletedAsync_UserIdNotMatching_NotFound()
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var user = (await _userRepository.GetByEmailAsync(email))!;
         var notifications = await CreateNotificationsAsync(user.Id);
@@ -255,7 +255,7 @@ public class NotificationsControllerTests : IClassFixture<ApiApplicationFactory>
     [Fact]
     private async void MarkAsDeletedAsync_OrganizationIdNotMatchingUserNotPartOfOrganization_NotFound()
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var user = (await _userRepository.GetByEmailAsync(email))!;
         var notifications = await CreateNotificationsAsync(user.Id, _organization.Id);
@@ -273,7 +273,7 @@ public class NotificationsControllerTests : IClassFixture<ApiApplicationFactory>
         var (organization, _) = await OrganizationTestHelpers.SignUpAsync(_factory,
             plan: PlanType.EnterpriseAnnually, ownerEmail: _ownerEmail, passwordManagerSeats: 10,
             paymentMethod: PaymentMethodType.Card);
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var user = (await _userRepository.GetByEmailAsync(email))!;
         await OrganizationTestHelpers.CreateUserAsync(_factory, organization.Id, email, OrganizationUserType.User);
@@ -354,7 +354,7 @@ public class NotificationsControllerTests : IClassFixture<ApiApplicationFactory>
     [Fact]
     private async void MarkAsReadAsync_UserIdNotMatching_NotFound()
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var user = (await _userRepository.GetByEmailAsync(email))!;
         var notifications = await CreateNotificationsAsync(user.Id);
@@ -369,7 +369,7 @@ public class NotificationsControllerTests : IClassFixture<ApiApplicationFactory>
     [Fact]
     private async void MarkAsReadAsync_OrganizationIdNotMatchingUserNotPartOfOrganization_NotFound()
     {
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var user = (await _userRepository.GetByEmailAsync(email))!;
         var notifications = await CreateNotificationsAsync(user.Id, _organization.Id);
@@ -387,7 +387,7 @@ public class NotificationsControllerTests : IClassFixture<ApiApplicationFactory>
         var (organization, _) = await OrganizationTestHelpers.SignUpAsync(_factory,
             plan: PlanType.EnterpriseAnnually, ownerEmail: _ownerEmail, passwordManagerSeats: 10,
             paymentMethod: PaymentMethodType.Card);
-        var email = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var email = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(email);
         var user = (await _userRepository.GetByEmailAsync(email))!;
         await OrganizationTestHelpers.CreateUserAsync(_factory, organization.Id, email, OrganizationUserType.User);

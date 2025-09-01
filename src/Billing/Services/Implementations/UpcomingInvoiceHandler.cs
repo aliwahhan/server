@@ -85,7 +85,7 @@ public class UpcomingInvoiceHandler(
             await SendUpcomingInvoiceEmailsAsync(new List<string> { organization.BillingEmail }, invoice);
 
             /*
-             * TODO: https://bitwarden.atlassian.net/browse/PM-4862
+             * TODO: https://vault.deepsafer.atlassian.net/browse/PM-4862
              * Disabling this as part of a hot fix. It needs to check whether the organization
              * belongs to a Reseller provider and only send an email to the organization owners if it does.
              * It also requires a new email template as the current one contains too much billing information.

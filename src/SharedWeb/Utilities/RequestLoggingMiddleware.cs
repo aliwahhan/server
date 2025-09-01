@@ -29,7 +29,7 @@ public sealed class RequestLoggingMiddleware
             GetHeaderValue(context, "user-agent"),
             GetHeaderValue(context, "device-type"),
             GetHeaderValue(context, "device-type"),
-            GetHeaderValue(context, "bitwarden-client-version"))))
+            GetHeaderValue(context, "deepsafer-client-version"))))
         {
             return _next(context);
         }

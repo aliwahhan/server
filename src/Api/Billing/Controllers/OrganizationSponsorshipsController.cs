@@ -86,7 +86,7 @@ public class OrganizationSponsorshipsController : Controller
 
         if (freeFamiliesSponsorshipPolicy?.Enabled == true)
         {
-            throw new BadRequestException("Free Bitwarden Families sponsorship has been disabled by your organization administrator.");
+            throw new BadRequestException("Free Deepsafer Families sponsorship has been disabled by your organization administrator.");
         }
 
         if (!_featureService.IsEnabled(Bit.Core.FeatureFlagKeys.PM17772_AdminInitiatedSponsorships))
@@ -126,7 +126,7 @@ public class OrganizationSponsorshipsController : Controller
 
         if (freeFamiliesSponsorshipPolicy?.Enabled == true)
         {
-            throw new BadRequestException("Free Bitwarden Families sponsorship has been disabled by your organization administrator.");
+            throw new BadRequestException("Free Deepsafer Families sponsorship has been disabled by your organization administrator.");
         }
 
         var sponsoringOrgUser = await _organizationUserRepository
@@ -183,7 +183,7 @@ public class OrganizationSponsorshipsController : Controller
 
         if (freeFamiliesSponsorshipPolicy?.Enabled == true)
         {
-            throw new BadRequestException("Free Bitwarden Families sponsorship has been disabled by your organization administrator.");
+            throw new BadRequestException("Free Deepsafer Families sponsorship has been disabled by your organization administrator.");
         }
 
         await _setUpSponsorshipCommand.SetUpSponsorshipAsync(

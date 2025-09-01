@@ -41,23 +41,23 @@ public class HandlebarsMailServiceTests
         var namedParameters = new Dictionary<(string, Type), object>
         {
             // TODO: Switch to use env variable
-            { ("email", typeof(string)), "test@bitwarden.com" },
+            { ("email", typeof(string)), "test@vault.deepsafer.ye" },
             { ("user", typeof(User)), new User
             {
                 Id = Guid.NewGuid(),
-                Email = "test@bitwarden.com",
+                Email = "test@vault.deepsafer.ye",
             }},
             { ("userId", typeof(Guid)), Guid.NewGuid() },
             { ("token", typeof(string)), "test_token" },
-            { ("fromEmail", typeof(string)), "test@bitwarden.com" },
-            { ("toEmail", typeof(string)), "test@bitwarden.com" },
-            { ("newEmailAddress", typeof(string)), "test@bitwarden.com" },
+            { ("fromEmail", typeof(string)), "test@vault.deepsafer.ye" },
+            { ("toEmail", typeof(string)), "test@vault.deepsafer.ye" },
+            { ("newEmailAddress", typeof(string)), "test@vault.deepsafer.ye" },
             { ("hint", typeof(string)), "Test Hint" },
             { ("organizationName", typeof(string)), "Test Organization Name" },
             { ("orgUser", typeof(OrganizationUser)), new OrganizationUser
             {
                 Id = Guid.NewGuid(),
-                Email = "test@bitwarden.com",
+                Email = "test@vault.deepsafer.ye",
                 OrganizationId = Guid.NewGuid(),
 
             }},
@@ -69,25 +69,25 @@ public class HandlebarsMailServiceTests
                 Seats = 5
             }},
             { ("initialSeatCount", typeof(int)), 5},
-            { ("ownerEmails", typeof(IEnumerable<string>)), new [] { "test@bitwarden.com" }},
+            { ("ownerEmails", typeof(IEnumerable<string>)), new [] { "test@vault.deepsafer.ye" }},
             { ("maxSeatCount", typeof(int)), 5 },
             { ("userIdentifier", typeof(string)), "test_user" },
-            { ("adminEmails", typeof(IEnumerable<string>)), new [] { "test@bitwarden.com" }},
-            { ("returnUrl", typeof(string)), "https://deepbitwarden.com/" },
+            { ("adminEmails", typeof(IEnumerable<string>)), new [] { "test@vault.deepsafer.ye" }},
+            { ("returnUrl", typeof(string)), "https://vault.deepsafer.ye/" },
             { ("amount", typeof(decimal)), 1.00M },
             { ("dueDate", typeof(DateTime)), DateTime.UtcNow.AddDays(1) },
-            { ("items", typeof(List<string>)), new List<string> { "test@bitwarden.com" }},
+            { ("items", typeof(List<string>)), new List<string> { "test@vault.deepsafer.ye" }},
             { ("mentionInvoices", typeof(bool)), true },
-            { ("emails", typeof(IEnumerable<string>)), new [] { "test@bitwarden.com" }},
+            { ("emails", typeof(IEnumerable<string>)), new [] { "test@vault.deepsafer.ye" }},
             { ("deviceType", typeof(string)), "Mobile" },
             { ("timestamp", typeof(DateTime)), DateTime.UtcNow.AddDays(1)},
             { ("ip", typeof(string)), "127.0.0.1" },
             { ("emergencyAccess", typeof(EmergencyAccess)), new EmergencyAccess
             {
                 Id = Guid.NewGuid(),
-                Email = "test@bitwarden.com",
+                Email = "test@vault.deepsafer.ye",
             }},
-            { ("granteeEmail", typeof(string)), "test@bitwarden.com" },
+            { ("granteeEmail", typeof(string)), "test@vault.deepsafer.ye" },
             { ("grantorName", typeof(string)), "Test User" },
             { ("initiatingName", typeof(string)), "Test" },
             { ("approvingName", typeof(string)), "Test Name" },
@@ -100,7 +100,7 @@ public class HandlebarsMailServiceTests
             { ("ea", typeof(EmergencyAccess)), new EmergencyAccess
             {
                 Id = Guid.NewGuid(),
-                Email = "test@bitwarden.com",
+                Email = "test@vault.deepsafer.ye",
             }},
             { ("userName", typeof(string)), "testUser" },
             { ("orgName", typeof(string)), "Test Org Name" },
@@ -110,8 +110,8 @@ public class HandlebarsMailServiceTests
                 ProviderId = Guid.NewGuid(),
                 Id = Guid.NewGuid(),
             }},
-            { ("familyUserEmail", typeof(string)), "test@bitwarden.com" },
-            { ("sponsorEmail", typeof(string)), "test@bitwarden.com" },
+            { ("familyUserEmail", typeof(string)), "test@vault.deepsafer.ye" },
+            { ("sponsorEmail", typeof(string)), "test@vault.deepsafer.ye" },
             { ("familyOrgName", typeof(string)), "Test Org Name" },
             // Swap existingAccount to true or false to generate different versions of the SendFamiliesForEnterpriseOfferEmailAsync emails.
             { ("existingAccount", typeof(bool)), false },
@@ -131,9 +131,9 @@ public class HandlebarsMailServiceTests
                     TrustServer = true,
                     Port = 10250,
                 },
-                ReplyToEmail = "noreply@bitwarden.com",
+                ReplyToEmail = "noreply@vault.deepsafer.ye",
             },
-            SiteName = "Bitwarden",
+            SiteName = "Deepsafer",
         };
 
         var mailDeliveryService = new MailKitSmtpMailDeliveryService(globalSettings, Substitute.For<ILogger<MailKitSmtpMailDeliveryService>>());

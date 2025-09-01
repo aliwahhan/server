@@ -18,7 +18,7 @@ public static class ServiceCollectionExtension
 
         // Add Data Protection services
         services.AddDataProtection()
-            .SetApplicationName("Bitwarden");
+            .SetApplicationName("Deepsafer");
 
         services.AddDatabaseRepositories(globalSettings);
     }

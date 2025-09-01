@@ -35,7 +35,7 @@ public class PoliciesControllerTests : IClassFixture<ApiApplicationFactory>, IAs
     public async Task InitializeAsync()
     {
         // Create the owner account
-        _ownerEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _ownerEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_ownerEmail);
 
         // Create the organization

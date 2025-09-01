@@ -2,8 +2,8 @@
 
 # Setup
 
-GROUPNAME="bitwarden"
-USERNAME="bitwarden"
+GROUPNAME="deepsafer"
+USERNAME="deepsafer"
 
 LUID=${LOCAL_UID:-0}
 LGID=${LOCAL_GID:-0}
@@ -31,15 +31,15 @@ then
 
     # The rest...
 
-    chown -R $USERNAME:$GROUPNAME /bitwarden_server
-    mkdir -p /etc/bitwarden/core/attachments
-    chown -R $USERNAME:$GROUPNAME /etc/bitwarden
+    chown -R $USERNAME:$GROUPNAME /deepsafer_server
+    mkdir -p /etc/deepsafer/core/attachments
+    chown -R $USERNAME:$GROUPNAME /etc/deepsafer
     gosu_cmd="gosu $USERNAME:$GROUPNAME"
 else
     gosu_cmd=""
 fi
 
-exec $gosu_cmd /bitwarden_server/Server \
-    /contentRoot=/etc/bitwarden/core/attachments \
+exec $gosu_cmd /deepsafer_server/Server \
+    /contentRoot=/etc/deepsafer/core/attachments \
     /webRoot=. \
     /serveUnknown=true

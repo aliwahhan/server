@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/mssql/server:2022-CU12-ubuntu-22.04
 
-LABEL com.bitwarden.product="bitwarden"
+LABEL ye.vault.deepsafer.product="deepsafer"
 
 USER root:root
 

@@ -44,7 +44,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> GetLatestVersion(ProjectType project, CancellationToken cancellationToken)
     {
-        var requestUri = $"https://selfhost.bitwarden.com/version.json";
+        var requestUri = $"https://selfhost.vault.deepsafer.ye/version.json";
         try
         {
             var response = await _httpClient.GetAsync(requestUri, cancellationToken);

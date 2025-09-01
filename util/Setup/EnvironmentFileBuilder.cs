@@ -36,7 +36,7 @@ public class EnvironmentFileBuilder
 
     public void BuildForInstaller()
     {
-        Directory.CreateDirectory("/bitwarden/env/");
+        Directory.CreateDirectory("/deepsafer/env/");
         Init();
         Build();
     }
@@ -174,47 +174,47 @@ public class EnvironmentFileBuilder
         var template = Helpers.ReadTemplate("EnvironmentFile");
 
         Helpers.WriteLine(_context, "Building docker environment files.");
-        Directory.CreateDirectory("/bitwarden/docker/");
-        using (var sw = File.CreateText("/bitwarden/docker/global.env"))
+        Directory.CreateDirectory("/deepsafer/docker/");
+        using (var sw = File.CreateText("/deepsafer/docker/global.env"))
         {
             sw.Write(template(new TemplateModel(_globalValues)));
         }
-        Helpers.Exec("chmod 600 /bitwarden/docker/global.env");
+        Helpers.Exec("chmod 600 /deepsafer/docker/global.env");
 
-        using (var sw = File.CreateText("/bitwarden/docker/mssql.env"))
+        using (var sw = File.CreateText("/deepsafer/docker/mssql.env"))
         {
             sw.Write(template(new TemplateModel(_mssqlValues)));
         }
-        Helpers.Exec("chmod 600 /bitwarden/docker/mssql.env");
+        Helpers.Exec("chmod 600 /deepsafer/docker/mssql.env");
 
         Helpers.WriteLine(_context, "Building docker environment override files.");
-        Directory.CreateDirectory("/bitwarden/env/");
-        using (var sw = File.CreateText("/bitwarden/env/global.override.env"))
+        Directory.CreateDirectory("/deepsafer/env/");
+        using (var sw = File.CreateText("/deepsafer/env/global.override.env"))
         {
             sw.Write(template(new TemplateModel(_globalOverrideValues)));
         }
-        Helpers.Exec("chmod 600 /bitwarden/env/global.override.env");
+        Helpers.Exec("chmod 600 /deepsafer/env/global.override.env");
 
-        using (var sw = File.CreateText("/bitwarden/env/mssql.override.env"))
+        using (var sw = File.CreateText("/deepsafer/env/mssql.override.env"))
         {
             sw.Write(template(new TemplateModel(_mssqlOverrideValues)));
         }
-        Helpers.Exec("chmod 600 /bitwarden/env/mssql.override.env");
+        Helpers.Exec("chmod 600 /deepsafer/env/mssql.override.env");
 
         if (_context.Config.EnableKeyConnector)
         {
-            using (var sw = File.CreateText("/bitwarden/env/key-connector.override.env"))
+            using (var sw = File.CreateText("/deepsafer/env/key-connector.override.env"))
             {
                 sw.Write(template(new TemplateModel(_keyConnectorOverrideValues)));
             }
 
-            Helpers.Exec("chmod 600 /bitwarden/env/key-connector.override.env");
+            Helpers.Exec("chmod 600 /deepsafer/env/key-connector.override.env");
         }
 
         // Empty uid env file. Only used on Linux hosts.
-        if (!File.Exists("/bitwarden/env/uid.env"))
+        if (!File.Exists("/deepsafer/env/uid.env"))
         {
-            using (var sw = File.CreateText("/bitwarden/env/uid.env")) { }
+            using (var sw = File.CreateText("/deepsafer/env/uid.env")) { }
         }
     }
 

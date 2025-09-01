@@ -1407,7 +1407,7 @@ public class CiphersController : Controller
             var loginData = JsonSerializer.Deserialize<CipherLoginData>(cipher.Data);
             if (loginData?.Fido2Credentials != null && _currentContext.ClientVersion < _fido2KeyCipherMinimumVersion)
             {
-                throw new BadRequestException("Cannot edit item. Update to the latest version of Bitwarden and try again.");
+                throw new BadRequestException("Cannot edit item. Update to the latest version of Deepsafer and try again.");
             }
         }
     }

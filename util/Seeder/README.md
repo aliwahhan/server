@@ -1,4 +1,4 @@
-# Bitwarden Database Seeder
+# Deepsafer Database Seeder
 
 A class library for generating and inserting test data.
 

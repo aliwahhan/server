@@ -25,7 +25,7 @@ public class AccountsControllerTest : IClassFixture<ApiApplicationFactory>
 
         var content = await response.Content.ReadFromJsonAsync<ProfileResponseModel>();
         Assert.NotNull(content);
-        Assert.Equal("integration-test@bitwarden.com", content.Email);
+        Assert.Equal("integration-test@vault.deepsafer.ye", content.Email);
         Assert.NotNull(content.Name);
         Assert.True(content.EmailVerified);
         Assert.False(content.Premium);
