@@ -11,8 +11,8 @@ code --install-extension formulahendry.dotnet-test-explorer
 code --install-extension adrianwilczynski.user-secrets
 
 -----------------------------------
-dotnet restore bitwarden-server.sln
- dotnet build bitwarden-server.sln
+dotnet restore deepsafer-server.sln
+ dotnet build deepsafer-server.sln
 cd src
  cd Api
-dotnet run 
+dotnet run

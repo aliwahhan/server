@@ -5,7 +5,7 @@ git config --global --add safe.directory /workspace
 
 get_installation_id_and_key() {
     pushd ./dev >/dev/null || exit
-    echo "Please enter your installation id and key from https://bitwarden.com/host:"
+    echo "Please enter your installation id and key from https://vault.deepsafer.ye/host:"
     read -r -p "Installation id: " INSTALLATION_ID
     read -r -p "Installation key: " INSTALLATION_KEY
     jq ".globalSettings.installation.id = \"$INSTALLATION_ID\" |
@@ -56,5 +56,5 @@ if [[ -z "${CODESPACES}" ]]; then
 else
   # Ignore interactive elements when running in codespaces since they are not supported there
   # TODO Write codespaces specific instructions and link here
-  echo "Running in codespaces, follow instructions here: https://contributing.bitwarden.com/getting-started/server/guide/ to continue the setup"
+  echo "Running in codespaces, follow instructions here: https://contributing.vault.deepsafer.ye/getting-started/server/guide/ to continue the setup"
 fi

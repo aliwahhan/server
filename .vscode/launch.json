@@ -359,9 +359,9 @@
             "requireExactSource": true,
             "type": "coreclr",
             "request": "launch",
-            "program": "${workspaceFolder}/bitwarden_license/src/Sso/bin/Debug/net8.0/Sso.dll",
+            "program": "${workspaceFolder}/deepsafer_license/src/Sso/bin/Debug/net8.0/Sso.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/bitwarden_license/src/Sso",
+            "cwd": "${workspaceFolder}/deepsafer_license/src/Sso",
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
@@ -519,9 +519,9 @@
             "requireExactSource": true,
             "type": "coreclr",
             "request": "launch",
-            "program": "${workspaceFolder}/bitwarden_license/src/Sso/bin/Debug/net8.0/Sso.dll",
+            "program": "${workspaceFolder}/deepsafer_license/src/Sso/bin/Debug/net8.0/Sso.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/bitwarden_license/src/Sso",
+            "cwd": "${workspaceFolder}/deepsafer_license/src/Sso",
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",

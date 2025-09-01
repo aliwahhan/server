@@ -1,7 +1,7 @@
 {
-  "name": "Bitwarden Community Dev",
-  "dockerComposeFile": "../../.devcontainer/bitwarden_common/docker-compose.yml",
-  "service": "bitwarden_server",
+  "name": "Deepsafer Community Dev",
+  "dockerComposeFile": "../../.devcontainer/deepsafer_common/docker-compose.yml",
+  "service": "deepsafer_server",
   "workspaceFolder": "/workspace",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {

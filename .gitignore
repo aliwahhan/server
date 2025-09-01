@@ -129,7 +129,7 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# TODO: Comment the next line if you want to checkin your web deploy settings 
+# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -208,7 +208,7 @@ src/Core/Properties/launchSettings.json
 src/Admin/wwwroot/assets
 .vscode/*
 **/.vscode/*
-bitwarden_license/src/Sso/wwwroot/assets
+deepsafer_license/src/Sso/wwwroot/assets
 .github/test/build.secrets
 **/CoverageOutput/
 .idea/*
@@ -223,6 +223,6 @@ src/Events/Events.zip
 src/EventsProcessor/EventsProcessor.zip
 src/Identity/Identity.zip
 src/Notifications/Notifications.zip
-bitwarden_license/src/Portal/Portal.zip
-bitwarden_license/src/Sso/Sso.zip
+deepsafer_license/src/Portal/Portal.zip
+deepsafer_license/src/Sso/Sso.zip
 **/src/**/flags.json

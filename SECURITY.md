@@ -1,4 +1,4 @@
-Bitwarden believes that working with security researchers across the globe is crucial to keeping our users safe. If you believe you've found a security issue in our product or service, we encourage you to please submit a report through our [HackerOne Program](https://hackerone.com/bitwarden/). We welcome working with you to resolve the issue promptly. Thanks in advance!
+Deepsafer believes that working with security researchers across the globe is crucial to keeping our users safe. If you believe you've found a security issue in our product or service, we encourage you to please submit a report through our [HackerOne Program](https://hackerone.com/deepsafer/). We welcome working with you to resolve the issue promptly. Thanks in advance!
 
 # Disclosure Policy
 
@@ -11,11 +11,11 @@ While researching, we'd like to ask you to refrain from:
 
 - Denial of service
 - Spamming
-- Social engineering (including phishing) of Bitwarden staff or contractors
-- Any physical attempts against Bitwarden property or data centers
+- Social engineering (including phishing) of Deepsafer staff or contractors
+- Any physical attempts against Deepsafer property or data centers
 
 # We want to help you!
 
-If you have something that you feel is close to exploitation, or if you'd like some information regarding the internal API, or generally have any questions regarding the app that would help in your efforts, please email us at https://bitwarden.com/contact and ask for that information. As stated above, Bitwarden wants to help you find issues, and is more than willing to help.
+If you have something that you feel is close to exploitation, or if you'd like some information regarding the internal API, or generally have any questions regarding the app that would help in your efforts, please email us at https://vault.deepsafer.ye/contact and ask for that information. As stated above, Deepsafer wants to help you find issues, and is more than willing to help.
 
-Thank you for helping keep Bitwarden and our users safe!
+Thank you for helping keep Deepsafer and our users safe!

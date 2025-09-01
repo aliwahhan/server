@@ -1,7 +1,7 @@
 services:
-  bitwarden_storage:
+  deepsafer_storage:
     image: mcr.microsoft.com/azure-storage/azurite:latest
     restart: unless-stopped
     volumes:
       - ../../dev/.data/azurite:/data
-    network_mode: service:bitwarden_server
+    network_mode: service:deepsafer_server

@@ -98,7 +98,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/bitwarden_license/src/Portal/Portal.csproj",
+                "${workspaceFolder}/deepsafer_license/src/Portal/Portal.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -111,7 +111,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/bitwarden_license/src/Sso/Sso.csproj",
+                "${workspaceFolder}/deepsafer_license/src/Sso/Sso.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

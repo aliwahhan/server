@@ -1,5 +1,5 @@
-name: Bitwarden Unified Bug Report
-name: Bitwarden Unified Deployment Bug Report
+name: Deepsafer Unified Bug Report
+name: Deepsafer Unified Deployment Bug Report
 description: File a bug report
 labels: [bug, bw-unified-deploy]
 body:
@@ -8,7 +8,7 @@ body:
       value: |
         Thanks for taking the time to fill out this bug report!
 
-        Please do not submit feature requests. The [Community Forums](https://community.bitwarden.com) has a section for submitting, voting for, and discussing product feature requests.
+        Please do not submit feature requests. The [Community Forums](https://community.vault.deepsafer.ye) has a section for submitting, voting for, and discussing product feature requests.
   - type: textarea
     id: reproduce
     attributes:
@@ -49,7 +49,7 @@ body:
     id: version
     attributes:
       label: Githash Version
-      description: Please go to https://{your-bitwarden-domain}/api/config and copy the gitHash version
+      description: Please go to https://{your-vault-deepsafer-domain}/api/config and copy the gitHash version
     validations:
       required: true
   - type: textarea
@@ -75,9 +75,9 @@ body:
     id: epic-label
     attributes:
       label: Issue-Link
-      description: Link to our pinned issue, tracking all Bitwarden Unified
+      description: Link to our pinned issue, tracking all Deepsafer Unified
       value: |
-        https://github.com/bitwarden/server/issues/2480
+        https://github.com/deepsafer/server/issues/2480
     validations:
       required: true
   - type: checkboxes
@@ -87,4 +87,4 @@ body:
       description: |
         Issue tracking information
       options:
-        - label: I understand that work is tracked outside of Github. A PR will be linked to this issue should one be opened to address it, but Bitwarden doesn't use fields like "assigned", "milestone", or "project" to track progress.
+        - label: I understand that work is tracked outside of Github. A PR will be linked to this issue should one be opened to address it, but Deepsafer doesn't use fields like "assigned", "milestone", or "project" to track progress.

@@ -11,87 +11,87 @@
 **/entrypoint.sh
 
 ## BRE team owns these workflows ##
-.github/workflows/publish.yml @bitwarden/dept-bre
+.github/workflows/publish.yml @deepsafer/dept-bre
 
 ## These are shared workflows ##
 .github/workflows/_move_edd_db_scripts.yml
 .github/workflows/release.yml
 
 # Database Operations for database changes
-src/Sql/** @bitwarden/dept-dbops
-util/EfShared/** @bitwarden/dept-dbops
-util/Migrator/** @bitwarden/team-platform-dev # The Platform team owns the Migrator project code
-util/Migrator/DbScripts/** @bitwarden/dept-dbops
-util/Migrator/DbScripts_finalization/** @bitwarden/dept-dbops
-util/Migrator/DbScripts_transition/** @bitwarden/dept-dbops
-util/Migrator/MySql/** @bitwarden/dept-dbops
-util/MySqlMigrations/** @bitwarden/dept-dbops
-util/PostgresMigrations/** @bitwarden/dept-dbops
-util/SqlServerEFScaffold/** @bitwarden/dept-dbops
-util/SqliteMigrations/** @bitwarden/dept-dbops
+src/Sql/** @deepsafer/dept-dbops
+util/EfShared/** @deepsafer/dept-dbops
+util/Migrator/** @deepsafer/team-platform-dev # The Platform team owns the Migrator project code
+util/Migrator/DbScripts/** @deepsafer/dept-dbops
+util/Migrator/DbScripts_finalization/** @deepsafer/dept-dbops
+util/Migrator/DbScripts_transition/** @deepsafer/dept-dbops
+util/Migrator/MySql/** @deepsafer/dept-dbops
+util/MySqlMigrations/** @deepsafer/dept-dbops
+util/PostgresMigrations/** @deepsafer/dept-dbops
+util/SqlServerEFScaffold/** @deepsafer/dept-dbops
+util/SqliteMigrations/** @deepsafer/dept-dbops
 
 # Shared util projects
-util/Setup/** @bitwarden/dept-bre @bitwarden/team-platform-dev
+util/Setup/** @deepsafer/dept-bre @deepsafer/team-platform-dev
 
 # UIF
-src/Core/MailTemplates/Mjml @bitwarden/team-ui-foundation # Teams are expected to own sub-directories of this project
+src/Core/MailTemplates/Mjml @deepsafer/team-ui-foundation # Teams are expected to own sub-directories of this project
 
 # Auth team
-**/Auth @bitwarden/team-auth-dev
-bitwarden_license/src/Sso @bitwarden/team-auth-dev
-src/Identity @bitwarden/team-auth-dev
-src/Core/Identity @bitwarden/team-auth-dev
-src/Core/IdentityServer @bitwarden/team-auth-dev
+**/Auth @deepsafer/team-auth-dev
+deepsafer_license/src/Sso @deepsafer/team-auth-dev
+src/Identity @deepsafer/team-auth-dev
+src/Core/Identity @deepsafer/team-auth-dev
+src/Core/IdentityServer @deepsafer/team-auth-dev
 
 # Key Management team
-**/KeyManagement @bitwarden/team-key-management-dev
+**/KeyManagement @deepsafer/team-key-management-dev
 
 # Tools team
-**/Tools @bitwarden/team-tools-dev
+**/Tools @deepsafer/team-tools-dev
 
 # Dirt (Data Insights & Reporting) team
-**/Dirt @bitwarden/team-data-insights-and-reporting-dev
+**/Dirt @deepsafer/team-data-insights-and-reporting-dev
 
 # Vault team
-**/Vault @bitwarden/team-vault-dev
-**/Vault/AuthorizationHandlers @bitwarden/team-vault-dev @bitwarden/team-admin-console-dev  # joint ownership over authorization handlers that affect organization users
+**/Vault @deepsafer/team-vault-dev
+**/Vault/AuthorizationHandlers @deepsafer/team-vault-dev @deepsafer/team-admin-console-dev  # joint ownership over authorization handlers that affect organization users
 
 # Admin Console team
-**/AdminConsole @bitwarden/team-admin-console-dev
-bitwarden_license/src/Scim @bitwarden/team-admin-console-dev
-bitwarden_license/src/test/Scim.IntegrationTest @bitwarden/team-admin-console-dev
-bitwarden_license/src/test/Scim.ScimTest @bitwarden/team-admin-console-dev
-src/Events @bitwarden/team-admin-console-dev
-src/EventsProcessor @bitwarden/team-admin-console-dev
+**/AdminConsole @deepsafer/team-admin-console-dev
+deepsafer_license/src/Scim @deepsafer/team-admin-console-dev
+deepsafer_license/src/test/Scim.IntegrationTest @deepsafer/team-admin-console-dev
+deepsafer_license/src/test/Scim.ScimTest @deepsafer/team-admin-console-dev
+src/Events @deepsafer/team-admin-console-dev
+src/EventsProcessor @deepsafer/team-admin-console-dev
 
 # Billing team
-**/*billing* @bitwarden/team-billing-dev
-**/*bitpay* @bitwarden/team-billing-dev
-**/*braintree* @bitwarden/team-billing-dev
-**/*freshdesk* @bitwarden/team-billing-dev
-**/*freshsales* @bitwarden/team-billing-dev
-**/*paypal* @bitwarden/team-billing-dev
-**/*stripe* @bitwarden/team-billing-dev
-**/*subscription* @bitwarden/team-billing-dev
-**/*payment* @bitwarden/team-billing-dev
-**/*invoice* @bitwarden/team-billing-dev
-**/*OrganizationLicense* @bitwarden/team-billing-dev
-**/Billing @bitwarden/team-billing-dev
-src/Admin/Controllers/ToolsController.cs @bitwarden/team-billing-dev
-src/Admin/Views/Tools @bitwarden/team-billing-dev
+**/*billing* @deepsafer/team-billing-dev
+**/*bitpay* @deepsafer/team-billing-dev
+**/*braintree* @deepsafer/team-billing-dev
+**/*freshdesk* @deepsafer/team-billing-dev
+**/*freshsales* @deepsafer/team-billing-dev
+**/*paypal* @deepsafer/team-billing-dev
+**/*stripe* @deepsafer/team-billing-dev
+**/*subscription* @deepsafer/team-billing-dev
+**/*payment* @deepsafer/team-billing-dev
+**/*invoice* @deepsafer/team-billing-dev
+**/*OrganizationLicense* @deepsafer/team-billing-dev
+**/Billing @deepsafer/team-billing-dev
+src/Admin/Controllers/ToolsController.cs @deepsafer/team-billing-dev
+src/Admin/Views/Tools @deepsafer/team-billing-dev
 
 # Platform team
-.github/workflows/build.yml @bitwarden/team-platform-dev
-.github/workflows/build_target.yml @bitwarden/team-platform-dev
-.github/workflows/cleanup-after-pr.yml @bitwarden/team-platform-dev
-.github/workflows/cleanup-rc-branch.yml @bitwarden/team-platform-dev
-.github/workflows/repository-management.yml @bitwarden/team-platform-dev
-.github/workflows/test-database.yml @bitwarden/team-platform-dev
-.github/workflows/test.yml @bitwarden/team-platform-dev
-**/*Platform* @bitwarden/team-platform-dev
-**/.dockerignore @bitwarden/team-platform-dev
-**/Dockerfile @bitwarden/team-platform-dev
-**/entrypoint.sh @bitwarden/team-platform-dev
+.github/workflows/build.yml @deepsafer/team-platform-dev
+.github/workflows/build_target.yml @deepsafer/team-platform-dev
+.github/workflows/cleanup-after-pr.yml @deepsafer/team-platform-dev
+.github/workflows/cleanup-rc-branch.yml @deepsafer/team-platform-dev
+.github/workflows/repository-management.yml @deepsafer/team-platform-dev
+.github/workflows/test-database.yml @deepsafer/team-platform-dev
+.github/workflows/test.yml @deepsafer/team-platform-dev
+**/*Platform* @deepsafer/team-platform-dev
+**/.dockerignore @deepsafer/team-platform-dev
+**/Dockerfile @deepsafer/team-platform-dev
+**/entrypoint.sh @deepsafer/team-platform-dev
 
 # Multiple owners - DO NOT REMOVE (BRE)
 **/packages.lock.json
