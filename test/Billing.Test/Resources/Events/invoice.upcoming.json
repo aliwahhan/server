@@ -7,7 +7,7 @@
     "object": {
       "object": "invoice",
       "account_country": "US",
-      "account_name": "Bitwarden Inc.",
+      "account_name": "Deepsafer Inc.",
       "account_tax_ids": null,
       "amount_due": 0,
       "amount_paid": 0,
@@ -36,7 +36,7 @@
         "postal_code": "90019",
         "state": null
       },
-      "customer_email": "vphan@bitwarden.com",
+      "customer_email": "vphan@vault.deepsafer.ye",
       "customer_name": null,
       "customer_phone": null,
       "customer_shipping": null,

@@ -8,7 +8,7 @@
       "id": "in_1NvKzdIGBnsLynRr8fE8cpbg",
       "object": "invoice",
       "account_country": "US",
-      "account_name": "Bitwarden Inc.",
+      "account_name": "Deepsafer Inc.",
       "account_tax_ids": null,
       "amount_due": 0,
       "amount_paid": 0,
@@ -43,7 +43,7 @@
         "postal_code": "12345",
         "state": null
       },
-      "customer_email": "cturnbull@bitwarden.com",
+      "customer_email": "cturnbull@vault.deepsafer.ye",
       "customer_name": null,
       "customer_phone": null,
       "customer_shipping": null,

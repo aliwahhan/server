@@ -23,7 +23,7 @@
       "delinquent": false,
       "description": "Premium User",
       "discount": null,
-      "email": "premium@bitwarden.com",
+      "email": "premium@vault.deepsafer.ye",
       "invoice_prefix": "C506E8CE",
       "invoice_settings": {
         "custom_fields": [
@@ -300,7 +300,7 @@
       "tax_info_verification": null
     },
     "previous_attributes": {
-      "email": "premium-new@bitwarden.com"
+      "email": "premium-new@vault.deepsafer.ye"
     }
   },
   "livemode": false,

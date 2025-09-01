@@ -27,7 +27,7 @@
         "name": null,
         "phone": null
       },
-      "calculated_statement_descriptor": "BITWARDEN",
+      "calculated_statement_descriptor": "DEEPSAFER",
       "captured": true,
       "created": 1695909299,
       "currency": "usd",
@@ -97,7 +97,7 @@
         },
         "type": "card"
       },
-      "receipt_email": "cturnbull@bitwarden.com",
+      "receipt_email": "cturnbull@vault.deepsafer.ye",
       "receipt_number": null,
       "receipt_url": "https://pay.stripe.com/receipts/invoices/CAcaFwoVYWNjdF8xOXNtSVhJR0Juc0x5blJyKLSL1qgGMgYTnk_JOUA6LBY_SDEZNtuae1guQ6Dlcuev1TUHwn712t-UNnZdIc383zS15bXv_1dby8e4?s=ap",
       "refunded": false,
