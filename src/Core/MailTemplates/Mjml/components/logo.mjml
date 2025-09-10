@@ -3,7 +3,7 @@
     <mj-image
       align="center"
       padding="10px 25px"
-      src="https://bitwarden.com/images/logo-horizontal-blue.png"
+      src="https://vault.deepsafer.ye/images/logo-horizontal-blue.png"
       width="250px"
       height="39px"
     ></mj-image>

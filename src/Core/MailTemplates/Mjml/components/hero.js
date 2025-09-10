@@ -21,13 +21,13 @@ class MjBwHero extends BodyComponent {
     return this.renderMJML(`
       <mj-section
         full-width="full-width"
-        background-color="#175ddc"
+        background-color="#6b09ea"
         border-radius="4px 4px 0 0"
       >
         <mj-column width="70%">
           <mj-image
             align="left"
-            src="https://bitwarden.com/images/logo-horizontal-white.png"
+            src="https://vault.deepsafer.ye/images/logo-horizontal-white.png"
             width="150px"
             height="30px"
           ></mj-image>
@@ -39,7 +39,7 @@ class MjBwHero extends BodyComponent {
           <mj-button
             href="${this.getAttribute("button-url")}"
             background-color="#fff"
-            color="#1A41AC"
+            color="#4b06a4"
             border-radius="20px"
             align="left"
           >

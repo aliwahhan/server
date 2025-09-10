@@ -2,50 +2,35 @@
   <mj-column>
     <mj-social icon-size="30px" inner-padding="10px" padding="0">
       <mj-social-element
-        href="https://twitter.com/bitwarden"
-        src="https://bitwarden.com/images/mail-twitter.png"
+        href="https://x.com/deepsafer"
+        src="https://pbs.twimg.com/profile_images/1855530469200109568/-qUpZ627_400x400.jpg"
       ></mj-social-element>
 
       <mj-social-element
-        href="https://www.reddit.com/r/Bitwarden/"
-        src="https://bitwarden.com/images/mail-reddit.png"
+        href="https://www.youtube.com/@Deepsafer"
+        src="https://yt3.googleusercontent.com/05TKeF1l_CsSNNVAL8OWobsPBuzR42c0OH1ez1FKyakoZFxixBlriGdq0WJMbz87ZKRQ4X2N3NM=s120-c-k-c0x00ffffff-no-rj"
       ></mj-social-element>
 
       <mj-social-element
-        href="https://community.bitwarden.com/"
-        src="https://bitwarden.com/images/mail-discourse.png"
+        href="https://www.linkedin.com/company/deepsafer/"
+       src="https://media.licdn.com/dms/image/v2/D4D0BAQHn6zU2C0FbYg/img-crop_100/B4DZYv5B0aHIAM-/0/1744560201930?e=2147483647&v=beta&t=ar5hAKnkbUaK6lwqsGAOsWuhU0mS1cHu_LWkb1ZSzmg"
       ></mj-social-element>
 
       <mj-social-element
-        href="https://github.com/bitwarden"
-        src="https://bitwarden.com/images/mail-github.png"
-      ></mj-social-element>
-
-      <mj-social-element
-        href="https://www.youtube.com/channel/UCId9a_jQqvJre0_dE2lE_Rw"
-        src="https://bitwarden.com/images/mail-youtube.png"
-      ></mj-social-element>
-
-      <mj-social-element
-        href="https://www.linkedin.com/company/bitwarden1/"
-        src="https://bitwarden.com/images/mail-linkedin.png"
-      ></mj-social-element>
-
-      <mj-social-element
-        href="https://www.facebook.com/bitwarden/"
-        src="https://bitwarden.com/images/mail-facebook.png"
+        href="https://facebook.com/deepsafer"
+        src="https://scontent.fsah2-1.fna.fbcdn.net/v/t39.30808-1/466356898_122168467310056194_2729545801622843500_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=pCz2n0ExlRoQ7kNvwEw73uc&_nc_oc=AdmHuP163Bm6jlHJUeYipR_nQfg89VkddhQWGajqTLDMyaixTRDk7qo5P0xGfIIjxZY&_nc_zt=24&_nc_ht=scontent.fsah2-1.fna&_nc_gid=6XSULt0vUn4FhY7GQJeM1Q&oh=00_AfV5b4CpGDFIzt1bDY507ZnWXU1XwbsAbGI4hRRLlpWtzA&oe=68A20F58"
       ></mj-social-element>
     </mj-social>
 
     <mj-text align="center" font-size="12px" line-height="16px" color="#5A6D91">
       <p style="margin-bottom: 5px">
-        © 2025 Bitwarden Inc. 1 N. Calle Cesar Chavez, Suite 102, Santa
+        © 2025 Deepsafer Inc. 1 N. Calle Cesar Chavez, Suite 102, Santa
         Barbara, CA, USA
       </p>
       <p style="margin-top: 5px">
-        Always confirm you are on a trusted Bitwarden domain before logging
+        Always confirm you are on a trusted Deepsafer domain before logging
         in:<br />
-        <a href="#">bitwarden.com</a> |
+        <a href="#">devDeepsafer.com</a> |
         <a href="#">Learn why we include this</a>
       </p>
     </mj-text>

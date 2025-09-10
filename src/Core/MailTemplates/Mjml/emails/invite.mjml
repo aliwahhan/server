@@ -6,8 +6,8 @@
   <mj-body>
     <mj-wrapper css-class="border-fix" padding="20px 20px">
       <mj-bw-hero
-        img-src="https://assets.bitwarden.com/email/v1/business.png"
-        title="A Bitwarden member has invited you to Bitwarden Password Manager"
+        img-src="https://vault.deepsafer.ye/wp-content/uploads/2022/04/dssafsafasf-700x1024.png"
+        title="A Deepsafer member has invited you to Deepsafer Password Manager"
         button-text="Finish account setup"
         button-url="#"
       />
@@ -15,7 +15,6 @@
       <mj-section>
         <mj-column>
           <mj-button href="#">Join Organization Now</mj-button>
-
           <mj-text>
             This invitation expires on
             <b>Tuesday, January 23, 2024 2:59PM UTC</b>.
@@ -28,7 +27,7 @@
             <h3 style="font-size: 20px; margin: 0; line-height: 28px">
               We’re here for you!
             </h3>
-            If you have any questions, search the Bitwarden
+            If you have any questions, search the Deepsafer
             <a href="#" class="link">Help</a>
             site or
             <a href="#" class="link">contact us</a>.
@@ -36,7 +35,7 @@
         </mj-column>
         <mj-column width="30%">
           <mj-image
-            src="https://assets.bitwarden.com/email/v1/chat.png"
+            src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQARirvGJMLBnXuyOVJSQg4FzRfZI9P0jDhs-ejhmJ9ZEh53g61"
             height="77px"
             width="94px"
           />

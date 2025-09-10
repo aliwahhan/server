@@ -16,7 +16,7 @@
         <mj-column>
           <mj-text>
             <p>Your two-step verification code is: <b>{{Token}}</b></p>
-            <p>Use this code to complete logging in with Bitwarden.</p>
+            <p>Use this code to complete logging in with Deepsafer.</p>
           </mj-text>
         </mj-column>
       </mj-section>
