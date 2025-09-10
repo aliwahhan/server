@@ -59,7 +59,7 @@ jobs:
 
     steps:
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepsafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -67,17 +67,17 @@ jobs:
 
       - name: Get Azure Key Vault secrets
         id: get-kv-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
+        uses: deepsafer/gh-actions/get-keyvault-secrets@main
         with:
-          keyvault: gh-org-bitwarden
+          keyvault: gh-org-deepsafer
           secrets: "BW-GHAPP-ID,BW-GHAPP-KEY"
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepsafer/gh-actions/azure-logout@main
 
       - name: Validate version input format
         if: ${{ inputs.version_number_override != '' }}
-        uses: bitwarden/gh-actions/version-check@main
+        uses: deepsafer/gh-actions/version-check@main
         with:
           version: ${{ inputs.version_number_override }}
 
@@ -134,14 +134,14 @@ jobs:
       - name: Calculate next release version
         if: ${{ inputs.version_number_override == '' }}
         id: calculate-next-version
-        uses: bitwarden/gh-actions/version-next@main
+        uses: deepsafer/gh-actions/version-next@main
         with:
           version: ${{ steps.current-version.outputs.version }}
 
       - name: Bump version props - Version Override
         if: ${{ inputs.version_number_override != '' }}
         id: bump-version-override
-        uses: bitwarden/gh-actions/version-bump@main
+        uses: deepsafer/gh-actions/version-bump@main
         with:
           file_path: "Directory.Build.props"
           version: ${{ inputs.version_number_override }}
@@ -149,7 +149,7 @@ jobs:
       - name: Bump version props - Automatic Calculation
         if: ${{ inputs.version_number_override == '' }}
         id: bump-version-automatic
-        uses: bitwarden/gh-actions/version-bump@main
+        uses: deepsafer/gh-actions/version-bump@main
         with:
           file_path: "Directory.Build.props"
           version: ${{ steps.calculate-next-version.outputs.version }}
@@ -183,7 +183,7 @@ jobs:
 
     steps:
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepsafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -191,13 +191,13 @@ jobs:
 
       - name: Get Azure Key Vault secrets
         id: get-kv-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
+        uses: deepsafer/gh-actions/get-keyvault-secrets@main
         with:
-          keyvault: gh-org-bitwarden
+          keyvault: gh-org-deepsafer
           secrets: "BW-GHAPP-ID,BW-GHAPP-KEY"
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepsafer/gh-actions/azure-logout@main
 
       - name: Generate GH App token
         uses: actions/create-github-app-token@c1a285145b9d317df6ced56c09f525b5c2b6f755 # v1.11.1

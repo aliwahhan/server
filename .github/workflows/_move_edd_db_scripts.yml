@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepSafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -29,18 +29,18 @@ jobs:
 
       - name: Retrieve secrets
         id: retrieve-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
+        uses: deepSafer/gh-actions/get-keyvault-secrets@main
         with:
-          keyvault: "bitwarden-ci"
-          secrets: "github-pat-bitwarden-devops-bot-repo-scope"
+          keyvault: "deepSafer-ci"
+          secrets: "github-pat-deepSafer-devops-bot-repo-scope"
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepSafer/gh-actions/azure-logout@main
 
       - name: Check out branch
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          token: ${{ steps.retrieve-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
+          token: ${{ steps.retrieve-secrets.outputs.github-pat-deepSafer-devops-bot-repo-scope }}
 
       - name: Get script prefix
         id: prefix
@@ -134,7 +134,7 @@ jobs:
           echo "moved_files=$moved_files" >> $GITHUB_OUTPUT
 
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepSafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -142,15 +142,15 @@ jobs:
 
       - name: Retrieve secrets
         id: retrieve-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
+        uses: deepSafer/gh-actions/get-keyvault-secrets@main
         with:
-          keyvault: "bitwarden-ci"
+          keyvault: "deepSafer-ci"
           secrets: "github-gpg-private-key,
             github-gpg-private-key-passphrase,
             devops-alerts-slack-webhook-url"
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepSafer/gh-actions/azure-logout@main
 
       - name: Import GPG keys
         uses: crazy-max/ghaction-import-gpg@cb9bde2e2525e640591a934b1fd28eef1dcaf5e5 # v6.2.0
@@ -163,8 +163,8 @@ jobs:
       - name: Commit and push changes
         id: commit
         run: |
-          git config --local user.email "106330231+bitwarden-devops-bot@users.noreply.github.com"
-          git config --local user.name "bitwarden-devops-bot"
+          git config --local user.email "106330231+deepSafer-devops-bot@users.noreply.github.com"
+          git config --local user.name "deepSafer-devops-bot"
           if [ -n "$(git status --porcelain)" ]; then
             git add .
             git commit -m "Move EDD database scripts" -a

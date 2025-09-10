@@ -15,7 +15,7 @@ on:
           - Dry Run
 
 env:
-  _AZ_REGISTRY: "bitwardenprod.azurecr.io"
+  _AZ_REGISTRY: "deepsaferprod.azurecr.io"
 
 permissions:
   contents: read
@@ -43,7 +43,7 @@ jobs:
 
       - name: Check release version
         id: version
-        uses: bitwarden/gh-actions/release-version-check@main
+        uses: deepsafer/gh-actions/release-version-check@main
         with:
           release-type: ${{ inputs.release_type }}
           project-type: dotnet
@@ -64,7 +64,7 @@ jobs:
     steps:
       - name: Download latest release Docker stubs
         if: ${{ inputs.release_type != 'Dry Run' }}
-        uses: bitwarden/gh-actions/download-artifacts@main
+        uses: deepsafer/gh-actions/download-artifacts@main
         with:
           workflow: build.yml
           workflow_conclusion: success
@@ -75,7 +75,7 @@ jobs:
 
       - name: Dry Run - Download latest release Docker stubs
         if: ${{ inputs.release_type == 'Dry Run' }}
-        uses: bitwarden/gh-actions/download-artifacts@main
+        uses: deepsafer/gh-actions/download-artifacts@main
         with:
           workflow: build.yml
           workflow_conclusion: success

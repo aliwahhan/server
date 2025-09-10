@@ -5,7 +5,7 @@ on:
     types: [closed]
 
 env:
-  _AZ_REGISTRY: "bitwardenprod.azurecr.io"
+  _AZ_REGISTRY: "deepsaferprod.azurecr.io"
 
 jobs:
   build-docker:
@@ -15,7 +15,7 @@ jobs:
       id-token: write
     steps:
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepsafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -68,4 +68,4 @@ jobs:
         run: docker logout
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepsafer/gh-actions/azure-logout@main

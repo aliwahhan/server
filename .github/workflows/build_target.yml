@@ -13,7 +13,7 @@ defaults:
 jobs:
   check-run:
     name: Check PR run
-    uses: bitwarden/gh-actions/.github/workflows/check-run.yml@main
+    uses: deepSafer/gh-actions/.github/workflows/check-run.yml@main
     permissions:
       contents: read
 

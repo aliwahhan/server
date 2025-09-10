@@ -14,7 +14,7 @@ jobs:
       id-token: write
     steps:
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepSafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -22,19 +22,19 @@ jobs:
 
       - name: Retrieve bot secrets
         id: retrieve-bot-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
+        uses: deepSafer/gh-actions/get-keyvault-secrets@main
         with:
-          keyvault: bitwarden-ci
-          secrets: "github-pat-bitwarden-devops-bot-repo-scope"
+          keyvault: deepSafer-ci
+          secrets: "github-pat-deepSafer-devops-bot-repo-scope"
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepSafer/gh-actions/azure-logout@main
 
       - name: Checkout main
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: main
-          token: ${{ steps.retrieve-bot-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
+          token: ${{ steps.retrieve-bot-secrets.outputs.github-pat-deepSafer-devops-bot-repo-scope }}
 
       - name: Check if a RC branch exists
         id: branch-check

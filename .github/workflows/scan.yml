@@ -19,7 +19,7 @@ on:
 jobs:
   check-run:
     name: Check PR run
-    uses: bitwarden/gh-actions/.github/workflows/check-run.yml@main
+    uses: deepsafer/gh-actions/.github/workflows/check-run.yml@main
     permissions:
       contents: read
 
@@ -40,7 +40,7 @@ jobs:
           ref: ${{  github.event.pull_request.head.sha }}
 
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepsafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -48,13 +48,13 @@ jobs:
 
       - name: Get Azure Key Vault secrets
         id: get-kv-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
+        uses: deepsafer/gh-actions/get-keyvault-secrets@main
         with:
-          keyvault: gh-org-bitwarden
+          keyvault: gh-org-deepsafer
           secrets: "CHECKMARX-TENANT,CHECKMARX-CLIENT-ID,CHECKMARX-SECRET"
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepsafer/gh-actions/azure-logout@main
 
       - name: Scan with Checkmarx
         uses: checkmarx/ast-github-action@184bf2f64f55d1c93fd6636d539edf274703e434 # 2.0.41
@@ -107,7 +107,7 @@ jobs:
         run: dotnet tool install dotnet-sonarscanner -g
 
       - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
+        uses: deepsafer/gh-actions/azure-login@main
         with:
           subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
@@ -115,21 +115,21 @@ jobs:
 
       - name: Get Azure Key Vault secrets
         id: get-kv-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
+        uses: deepsafer/gh-actions/get-keyvault-secrets@main
         with:
-          keyvault: gh-org-bitwarden
+          keyvault: gh-org-deepsafer
           secrets: "SONAR-TOKEN"
 
       - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+        uses: deepsafer/gh-actions/azure-logout@main
 
       - name: Scan with SonarCloud
         env:
           SONAR_TOKEN: ${{ steps.get-kv-secrets.outputs.SONAR-TOKEN }}
         run: |
           dotnet-sonarscanner begin /k:"${{ github.repository_owner }}_${{ github.event.repository.name }}" \
-          /d:sonar.test.inclusions=test/,bitwarden_license/test/ \
-          /d:sonar.exclusions=test/,bitwarden_license/test/ \
+          /d:sonar.test.inclusions=test/,deepsafer_license/test/ \
+          /d:sonar.exclusions=test/,deepsafer_license/test/ \
           /o:"${{ github.repository_owner }}" /d:sonar.token="${{ steps.get-kv-secrets.outputs.SONAR-TOKEN }}" \
           /d:sonar.host.url="https://sonarcloud.io" ${{ contains(github.event_name, 'pull_request') && format('/d:sonar.pullrequest.key={0}', github.event.pull_request.number) || '' }}
           dotnet build

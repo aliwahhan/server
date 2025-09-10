@@ -10,7 +10,7 @@ on:
   pull_request:
 
 env:
-  _AZ_REGISTRY: "bitwardenprod.azurecr.io"
+  _AZ_REGISTRY: "deepsaferprod.azurecr.io"
 
 jobs:
   testing:
@@ -40,13 +40,13 @@ jobs:
           echo "GitHub event: $GITHUB_EVENT"
 
       - name: Remove SQL project
-        run: dotnet sln bitwarden-server.sln remove src/Sql/Sql.sqlproj
+        run: dotnet sln deepsafer-server.sln remove src/Sql/Sql.sqlproj
 
       - name: Test OSS solution
         run: dotnet test ./test --configuration Debug --logger "trx;LogFileName=oss-test-results.trx" /p:CoverletOutputFormatter="cobertura" --collect:"XPlat Code Coverage"
 
-      - name: Test Bitwarden solution
-        run: dotnet test ./bitwarden_license/test --configuration Debug --logger "trx;LogFileName=bw-test-results.trx" /p:CoverletOutputFormatter="cobertura" --collect:"XPlat Code Coverage"
+      - name: Test deepsafer solution
+        run: dotnet test ./deepsafer_license/test --configuration Debug --logger "trx;LogFileName=bw-test-results.trx" /p:CoverletOutputFormatter="cobertura" --collect:"XPlat Code Coverage"
 
       - name: Report test results
         uses: dorny/test-reporter@6e6a65b7a0bd2c9197df7d0ae36ac5cee784230c # v2.0.0
