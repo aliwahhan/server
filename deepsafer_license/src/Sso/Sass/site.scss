@@ -7,9 +7,19 @@ $info: #38bdf8;
 $warning: #fb923c;
 $danger: #f87171;
 
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "primary-accent": $primary-accent,
+    "primary":$primary,
+    "success":$success,
+    "info":$info,
+    "warning":$warning,
+    "danger":$warning
 
-$theme-colors: ( "primary-accent": $primary-accent );
-$font-family-sans-serif: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  )
+);
+$font-family-sans-serif: 'Red Hat Text','Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
 $h1-font-size: 2rem;
 $h2-font-size: 1.3rem;
@@ -19,7 +29,6 @@ $h5-font-size: 1rem;
 $h6-font-size: 1rem;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-
 h1 {
     border-bottom: 1px solid $border-color;
     margin-bottom: 20px;
