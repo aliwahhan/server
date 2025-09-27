@@ -15,14 +15,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var result in Model)
+            @* @foreach (var result in Model)
             {
                 <tr>
                     <td><a href="@Url.Action("Details", "MigrateProviders", new { providerId = result.ProviderId })">@result.ProviderId</a></td>
                     <td>@result.ProviderName</td>
                     <td>@result.Result</td>
                 </tr>
-            }
-        </tbody>
+            } *@
+             @foreach (var result in Model)
+              {
+                  <tr>
+                      <td>
+                          @if (result?.ProviderId != null)
+                          {
+                              <a href="@Url.Action("Details", "MigrateProviders", new { providerId = result.ProviderId.ToString() })">
+                                  @result.ProviderId
+                              </a>
+                          }
+                          else
+                          {
+                              <span class="text-muted">N/A</span>
+                          }
+                      </td>
+                      <td>@result?.ProviderName </td>
+                      <td>@result?.Result </td>
+                  </tr>
+              }
+
+          </tbody>
     </table>
 </div>
