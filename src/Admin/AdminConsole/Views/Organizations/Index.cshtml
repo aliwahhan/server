@@ -18,11 +18,28 @@
     {
         <div class="col-12">
             <label class="visually-hidden" asp-for="Paid">Customer</label>
-            <select class="form-select" asp-for="Paid" name="paid">
-                <option asp-selected="!Model.Paid.HasValue" value="">-- Customer --</option>
-                <option asp-selected="Model.Paid.GetValueOrDefault(false)" value="true">Paid</option>
-                <option asp-selected="!Model.Paid.GetValueOrDefault(true)" value="false">Freeloader</option>
-            </select>
+            <div class="custom-dropdown">
+                <button type="button" class="dropdown-toggle" aria-expanded="false" aria-haspopup="listbox" role="button" id="paidDropdown">
+                    @if(!Model.Paid.HasValue)
+                    {
+                        <span>-- Customer --</span>
+                    }
+                    else if(Model.Paid.GetValueOrDefault(false))
+                    {
+                        <span>Paid</span>
+                    }
+                    else
+                    {
+                        <span>Freeloader</span>
+                    }
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="paidDropdown" role="listbox">
+                    <li><a class="dropdown-item @(!Model.Paid.HasValue ? "active" : "")" href="#" data-value="">-- Customer --</a></li>
+                    <li><a class="dropdown-item @(Model.Paid.GetValueOrDefault(false) ? "active" : "")" href="#" data-value="true">Paid</a></li>
+                    <li><a class="dropdown-item @(!Model.Paid.GetValueOrDefault(true) ? "active" : "")" href="#" data-value="false">Freeloader</a></li>
+                </ul>
+                <input type="hidden" asp-for="Paid" name="paid" id="paidValue" />
+            </div>
         </div>
     }
     <div class="col-12">
@@ -139,3 +156,106 @@
         }
     </ul>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdowns = document.querySelectorAll('.custom-dropdown');
+
+    function closeAll(except) {
+        dropdowns.forEach(function(dd) {
+            if (dd !== except) {
+                const t = dd.querySelector('.dropdown-toggle');
+                const m = dd.querySelector('.dropdown-menu');
+                if (m && m.classList.contains('show')) {
+                    m.classList.remove('show');
+                    if (t) t.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    }
+
+    dropdowns.forEach(function(dropdown) {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        const hiddenInput = dropdown.querySelector('#paidValue');
+        const items = dropdown.querySelectorAll('.dropdown-item');
+
+        // Initialize button text from active item
+        const active = dropdown.querySelector('.dropdown-item.active');
+        if (active && toggle) {
+            const span = toggle.querySelector('span');
+            if (span) span.textContent = active.textContent;
+            if (hiddenInput) hiddenInput.value = active.getAttribute('data-value') || '';
+        }
+
+        function open() {
+            if (!menu.classList.contains('show')) {
+                closeAll(dropdown);
+                menu.classList.add('show');
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function close() {
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        // Toggle dropdown
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (menu.classList.contains('show')) {
+                close();
+            } else {
+                open();
+            }
+        });
+
+        // Handle item selection
+        items.forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Update button text
+                const span = toggle.querySelector('span');
+                if (span) span.textContent = this.textContent;
+
+                // Update hidden input value
+                if (hiddenInput) hiddenInput.value = this.getAttribute('data-value') || '';
+
+                // Update active state
+                items.forEach(function(i) { i.classList.remove('active'); });
+                this.classList.add('active');
+
+                // Close dropdown
+                close();
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                close();
+            }
+        });
+
+        // Keyboard support
+        toggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (menu.classList.contains('show')) close(); else open();
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                open();
+                const first = menu.querySelector('.dropdown-item');
+                if (first) first.focus();
+            } else if (e.key === 'Escape') {
+                close();
+            }
+        });
+    });
+});
+</script>

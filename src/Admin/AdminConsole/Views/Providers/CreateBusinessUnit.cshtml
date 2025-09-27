@@ -26,9 +26,26 @@
                         };
                     }
                     <label asp-for="Plan" class="form-label"></label>
-                    <select class="form-select" asp-for="Plan" asp-items="Html.GetEnumSelectList(businessUnitPlanTypes)">
-                        <option value="">--</option>
-                    </select>
+                    <div class="custom-dropdown">
+                        <button type="button" class="dropdown-toggle" aria-expanded="false" aria-haspopup="listbox" role="button" id="planDropdown">
+                            @if(Model.Plan == null)
+                            {
+                                <span>--</span>
+                            }
+                            else
+                            {
+                                <span>@Model.Plan</span>
+                            }
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="planDropdown" role="listbox">
+                            <li><a class="dropdown-item @(Model.Plan == null ? "active" : "")" href="#" data-value="">--</a></li>
+                            @foreach (var planType in businessUnitPlanTypes)
+                            {
+                                <li><a class="dropdown-item @(Model.Plan == planType ? "active" : "")" href="#" data-value="@planType">@planType</a></li>
+                            }
+                        </ul>
+                        <input type="hidden" asp-for="Plan" id="planValue" />
+                    </div>
                 </div>
             </div>
             <div class="col-sm">
@@ -41,3 +58,106 @@
         <button type="submit" class="btn btn-primary">Create Provider</button>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdowns = document.querySelectorAll('.custom-dropdown');
+
+    function closeAll(except) {
+        dropdowns.forEach(function(dd) {
+            if (dd !== except) {
+                const t = dd.querySelector('.dropdown-toggle');
+                const m = dd.querySelector('.dropdown-menu');
+                if (m && m.classList.contains('show')) {
+                    m.classList.remove('show');
+                    if (t) t.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    }
+
+    dropdowns.forEach(function(dropdown) {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+        const items = dropdown.querySelectorAll('.dropdown-item');
+
+        // Initialize button text from active item
+        const active = dropdown.querySelector('.dropdown-item.active');
+        if (active && toggle) {
+            const span = toggle.querySelector('span');
+            if (span) span.textContent = active.textContent;
+            if (hiddenInput) hiddenInput.value = active.getAttribute('data-value') || '';
+        }
+
+        function open() {
+            if (!menu.classList.contains('show')) {
+                closeAll(dropdown);
+                menu.classList.add('show');
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function close() {
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        // Toggle dropdown
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (menu.classList.contains('show')) {
+                close();
+            } else {
+                open();
+            }
+        });
+
+        // Handle item selection
+        items.forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Update button text
+                const span = toggle.querySelector('span');
+                if (span) span.textContent = this.textContent;
+
+                // Update hidden input value
+                if (hiddenInput) hiddenInput.value = this.getAttribute('data-value') || '';
+
+                // Update active state
+                items.forEach(function(i) { i.classList.remove('active'); });
+                this.classList.add('active');
+
+                // Close dropdown
+                close();
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                close();
+            }
+        });
+
+        // Keyboard support
+        toggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (menu.classList.contains('show')) close(); else open();
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                open();
+                const first = menu.querySelector('.dropdown-item');
+                if (first) first.focus();
+            } else if (e.key === 'Escape') {
+                close();
+            }
+        });
+    });
+});
+</script>
