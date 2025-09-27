@@ -169,7 +169,7 @@ public class HandlebarsMailService : IMailService
 
     public async Task SendTwoFactorEmailAsync(string email, string accountEmail, string token, string deviceIp, string deviceType, TwoFactorEmailPurpose purpose)
     {
-        var message = CreateDefaultMessage("Your Bitwarden Verification Code", email);
+        var message = CreateDefaultMessage("Your Deepsafer Verification Code", email);
         var requestDateTime = DateTime.UtcNow;
         var model = new TwoFactorEmailTokenViewModel
         {
@@ -321,7 +321,7 @@ public class HandlebarsMailService : IMailService
 
     public async Task SendWelcomeEmailAsync(User user)
     {
-        var message = CreateDefaultMessage("Welcome to Bitwarden!", user.Email);
+        var message = CreateDefaultMessage("Welcome to Deepsafer!", user.Email);
         var model = new BaseMailModel
         {
             WebVaultUrl = _globalSettings.BaseServiceUri.VaultWithHash,
@@ -334,7 +334,7 @@ public class HandlebarsMailService : IMailService
 
     public async Task SendTrialInitiationEmailAsync(string userEmail)
     {
-        var message = CreateDefaultMessage("Welcome to Bitwarden; 3 steps to get started!", userEmail);
+        var message = CreateDefaultMessage("Welcome to Deepsafer; 3 steps to get started!", userEmail);
         var model = new BaseMailModel
         {
             WebVaultUrl = _globalSettings.BaseServiceUri.VaultWithHashAndSecretManagerProduct,
@@ -478,11 +478,11 @@ public class HandlebarsMailService : IMailService
         return;
 
         MailQueueMessage CreateMessage(string emailAddress, Organization org) =>
-            new(CreateDefaultMessage($"Your Bitwarden account is claimed by {org.DisplayName()}", emailAddress),
+            new(CreateDefaultMessage($"Your Deepsafer account is claimed by {org.DisplayName()}", emailAddress),
                 "AdminConsole.DomainClaimedByOrganization",
                 new ClaimedDomainUserNotificationViewModel
                 {
-                    TitleFirst = $"Your Bitwarden account is claimed by {org.DisplayName()}",
+                    TitleFirst = $"Your Deepsafer account is claimed by {org.DisplayName()}",
                     OrganizationName = CoreHelpers.SanitizeForEmail(org.DisplayName(), false)
                 });
     }
@@ -1100,7 +1100,7 @@ public class HandlebarsMailService : IMailService
 
     public async Task SendOTPEmailAsync(string email, string token)
     {
-        var message = CreateDefaultMessage("Your Bitwarden Verification Code", email);
+        var message = CreateDefaultMessage("Your Deepsafer Verification Code", email);
         var model = new UserVerificationEmailTokenViewModel
         {
             Token = token,
@@ -1200,7 +1200,7 @@ public class HandlebarsMailService : IMailService
     public async Task SendFamiliesForEnterpriseRemoveSponsorshipsEmailAsync(string email, string offerAcceptanceDate, string organizationId,
         string organizationName)
     {
-        var message = CreateDefaultMessage("Removal of Free Bitwarden Families plan", email);
+        var message = CreateDefaultMessage("Removal of Free Deepsafer Families plan", email);
         var model = new FamiliesForEnterpriseRemoveOfferViewModel
         {
             SponsoredOrganizationId = organizationId,
@@ -1258,7 +1258,7 @@ public class HandlebarsMailService : IMailService
     private string GetCloudVaultSubscriptionUrl(Guid organizationId)
         => _globalSettings.BaseServiceUri.CloudRegion?.ToLower() switch
         {
-            "eu" => $"https://vault.bitwarden.eu/#/organizations/{organizationId}/billing/subscription",
-            _ => $"https://vault.bitwarden.com/#/organizations/{organizationId}/billing/subscription"
+            "us" => $"https://vault.deepsafer.com/#/organizations/{organizationId}/billing/subscription",
+            _ => $"https://vault.deepsafer.ye/#/organizations/{organizationId}/billing/subscription"
         };
 }
