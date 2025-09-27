@@ -120,17 +120,17 @@ public class Program
         Console.WriteLine("\nIf you need to make additional configuration changes, you can modify\n" +
             "the settings in `{0}` and then run:\n{1}",
             _context.HostOS == "win" ? ".\\bwdata\\config.yml" : "./bwdata/config.yml",
-            _context.HostOS == "win" ? "`.\\bitwarden.ps1 -rebuild` or `.\\bitwarden.ps1 -update`" :
-                "`./bitwarden.sh rebuild` or `./bitwarden.sh update`");
+            _context.HostOS == "win" ? "`.\\deepsafer.ps1 -rebuild` or `.\\deepsafer.ps1 -update`" :
+                "`./deepsafer.sh rebuild` or `./deepsafer.sh update`");
 
         Console.WriteLine("\nNext steps, run:");
         if (_context.HostOS == "win")
         {
-            Console.WriteLine("`.\\bitwarden.ps1 -start`");
+            Console.WriteLine("`.\\deepsafer.ps1 -start`");
         }
         else
         {
-            Console.WriteLine("`./bitwarden.sh start`");
+            Console.WriteLine("`./deepsafer.sh start`");
         }
         Console.WriteLine(string.Empty);
     }
@@ -141,18 +141,18 @@ public class Program
         // a new cert and bag to replace the old Identity.pfx.  This fixes an issue that came up as a result of
         // moving the project to .NET 5.
         _context.Install.IdentityCertPassword = Helpers.GetValueFromEnvFile("global", "globalSettings__identityServer__certificatePassword");
-        var certCountString = Helpers.Exec("openssl pkcs12 -nokeys -info -in /bitwarden/identity/identity.pfx " +
+        var certCountString = Helpers.Exec("openssl pkcs12 -nokeys -info -in /deepsafer/identity/identity.pfx " +
             $"-passin pass:{_context.Install.IdentityCertPassword} 2> /dev/null | grep -c \"\\-----BEGIN CERTIFICATE----\"", true);
         if (int.TryParse(certCountString, out var certCount) && certCount > 1)
         {
             // Extract key from identity.pfx
-            Helpers.Exec("openssl pkcs12 -in /bitwarden/identity/identity.pfx -nocerts -nodes -out identity.key " +
+            Helpers.Exec("openssl pkcs12 -in /deepsafer/identity/identity.pfx -nocerts -nodes -out identity.key " +
                 $"-passin pass:{_context.Install.IdentityCertPassword} > /dev/null 2>&1");
             // Extract certificate from identity.pfx
-            Helpers.Exec("openssl pkcs12 -in /bitwarden/identity/identity.pfx -clcerts -nokeys -out identity.crt " +
+            Helpers.Exec("openssl pkcs12 -in /deepsafer/identity/identity.pfx -clcerts -nokeys -out identity.crt " +
                 $"-passin pass:{_context.Install.IdentityCertPassword} > /dev/null 2>&1");
             // Create new PKCS12 bag with certificate and key
-            Helpers.Exec("openssl pkcs12 -export -out /bitwarden/identity/identity.pfx -inkey identity.key " +
+            Helpers.Exec("openssl pkcs12 -export -out /deepsafer/identity/identity.pfx -inkey identity.key " +
                 $"-in identity.crt -passout pass:{_context.Install.IdentityCertPassword} > /dev/null 2>&1");
         }
 
@@ -173,17 +173,17 @@ public class Program
         {
             return;
         }
-        Console.WriteLine("\nBitwarden is up and running!");
+        Console.WriteLine("\nDeepsafer is up and running!");
         Console.WriteLine("===================================================");
         Console.WriteLine("\nvisit {0}", _context.Config.Url);
         Console.Write("to update, run ");
         if (_context.HostOS == "win")
         {
-            Console.Write("`.\\bitwarden.ps1 -updateself` and then `.\\bitwarden.ps1 -update`");
+            Console.Write("`.\\deepsafer.ps1 -updateself` and then `.\\deepsafer.ps1 -update`");
         }
         else
         {
-            Console.Write("`./bitwarden.sh updateself` and then `./bitwarden.sh update`");
+            Console.Write("`./deepsafer.sh updateself` and then `./deepsafer.sh update`");
         }
         Console.WriteLine("\n");
     }
@@ -215,7 +215,7 @@ public class Program
         }
         else
         {
-            var prompt = "Enter your installation id (get at https://bitwarden.com/host)";
+            var prompt = "Enter your installation id (get at https://vault.deepsafer.ye/host)";
             installationId = Helpers.ReadInput(prompt);
             while (string.IsNullOrEmpty(installationId))
             {
@@ -251,15 +251,15 @@ public class Program
         }
         else
         {
-            var prompt = "Enter your region (US/EU) [US]";
+            var prompt = "Enter your region (YE/US) [YE]";
             var region = Helpers.ReadInput(prompt);
-            if (string.IsNullOrEmpty(region)) region = "US";
+            if (string.IsNullOrEmpty(region)) region = "YE";
 
             while (!Enum.TryParse(region, out cloudRegion))
             {
                 Helpers.WriteError("Invalid input for region. Please try again.");
                 region = Helpers.ReadInput(prompt);
-                if (string.IsNullOrEmpty(region)) region = "US";
+                if (string.IsNullOrEmpty(region)) region = "YE";
             }
         }
 
@@ -272,12 +272,12 @@ public class Program
             string url;
             switch (cloudRegion)
             {
-                case CloudRegion.EU:
-                    url = "https://api.bitwarden.eu/installations/";
+                case CloudRegion.YE:
+                    url = "https://api.vault.deepsafer.ye/installations/";
                     break;
                 case CloudRegion.US:
                 default:
-                    url = "https://api.bitwarden.com/installations/";
+                    url = "https://api.vault.deepsafer.com/installations/";
                     break;
             }
 
@@ -314,7 +314,7 @@ public class Program
         }
         catch
         {
-            Console.WriteLine($"Unable to validate installation id. Problem contacting Bitwarden {cloudRegion.ToString()} server.");
+            Console.WriteLine($"Unable to validate installation id. Problem contacting Deepsafer {cloudRegion.ToString()} server.");
             return false;
         }
     }
