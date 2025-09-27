@@ -15,7 +15,7 @@ public class ApiHelpersTests
         var context = Substitute.For<HttpContext>();
         context.Request.ContentLength.Returns(200);
         var bytes = Encoding.UTF8.GetBytes(testFile);
-        var formFile = new FormFile(new MemoryStream(bytes), 0, bytes.Length, "bitwarden_organization_license", "bitwarden_organization_license.json");
+        var formFile = new FormFile(new MemoryStream(bytes), 0, bytes.Length, "deepsafer_organization_license", "deepsafer_organization_license.json");
 
 
         var license = await ApiHelpers.ReadJsonFileFromBody<OrganizationLicense>(context, formFile);

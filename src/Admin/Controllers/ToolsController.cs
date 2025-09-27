@@ -325,7 +325,7 @@ public class ToolsController : Controller
             var ms = new MemoryStream();
             await JsonSerializer.SerializeAsync(ms, license, JsonHelpers.Indented);
             ms.Seek(0, SeekOrigin.Begin);
-            return File(ms, "text/plain", "bitwarden_organization_license.json");
+            return File(ms, "text/plain", "deepsafer_organization_license.json");
         }
         else if (user != null)
         {
@@ -334,7 +334,7 @@ public class ToolsController : Controller
             ms.Seek(0, SeekOrigin.Begin);
             await JsonSerializer.SerializeAsync(ms, license, JsonHelpers.Indented);
             ms.Seek(0, SeekOrigin.Begin);
-            return File(ms, "text/plain", "bitwarden_premium_license.json");
+            return File(ms, "text/plain", "deepsafer_premium_license.json");
         }
         else
         {
