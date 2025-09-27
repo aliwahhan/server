@@ -86,7 +86,7 @@
                             })
                             .ToList();
                     }
-                    <select class="form-select" asp-for="PlanType" asp-items="planTypes" disabled='@(canEditPlan ? null : "disabled")'></select>
+                    <select class="form-select custom-select" asp-for="PlanType" asp-items="planTypes" disabled='@(canEditPlan ? null : "disabled")'></select>
                 </div>
             </div>
             <div class="col-sm">
@@ -288,7 +288,7 @@
             <div class="col-sm">
                 <div class="mb-3">
                     <label class="form-label" asp-for="Gateway"></label>
-                    <select class="form-select" asp-for="Gateway" disabled="@(!canEditBilling)"
+                    <select class="form-select custom-select" asp-for="Gateway" disabled="@(!canEditBilling)"
                             asp-items="Html.GetEnumSelectList<Bit.Core.Enums.GatewayType>()">
                         <option value="">--</option>
                     </select>

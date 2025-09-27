@@ -185,7 +185,7 @@
             <div class="col-md">
                 <div class="mb-3">
                     <label asp-for="Gateway" class="form-label"></label>
-                    <select class="form-select" asp-for="Gateway" disabled='@(canEditBilling ? null : "disabled")'
+                    <select class="form-select custom-select" asp-for="Gateway" disabled='@(canEditBilling ? null : "disabled")'
                         asp-items="Html.GetEnumSelectList<Bit.Core.Enums.GatewayType>()">
                         <option value="">--</option>
                     </select>
