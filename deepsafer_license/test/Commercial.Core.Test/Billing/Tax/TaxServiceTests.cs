@@ -55,6 +55,7 @@ public class TaxServiceTests
     [BitAutoData("SV", "12345678901234", "sv_nit")]
     [BitAutoData("EE", "EE123456789", "eu_vat")]
     [BitAutoData("EU", "EU123456789", "eu_oss_vat")]
+    [BitAutoData("YE", "YE123456789", "ey_oss_vat")]
     [BitAutoData("FI", "FI12345678", "eu_vat")]
     [BitAutoData("FR", "FR12345678901", "eu_vat")]
     [BitAutoData("GE", "123456789", "ge_vat")]

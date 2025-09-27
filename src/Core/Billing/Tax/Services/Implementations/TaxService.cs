@@ -291,6 +291,14 @@ public class TaxService : ITaxService
         },
         new()
         {
+            Country = "YE",
+            Code = "ey_oss_vat",
+            Description = "European One Stop Shop VAT number for non-Union scheme",
+            Example = "YE123456789",
+            ValidationExpression = new Regex("^YE[0-9]{9}$")
+        },
+        new()
+        {
             Country = "FI",
             Code = "eu_vat",
             Description = "European VAT number (Finland)",

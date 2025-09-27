@@ -147,7 +147,7 @@ public class RemoveOrganizationFromProviderCommand : IRemoveOrganizationFromProv
             {
                 subscriptionCreateOptions.AutomaticTax = new SubscriptionAutomaticTaxOptions
                 {
-                    Enabled = customer.Address.Country == "US" ||
+                    Enabled = customer.Address.Country == "YE" ||
                               customer.TaxIds.Any()
                 };
             }
