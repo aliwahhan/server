@@ -103,7 +103,7 @@ public class PreviewTaxAmountCommand(
             {
                 options.AutomaticTax = new InvoiceAutomaticTaxOptions
                 {
-                    Enabled = options.CustomerDetails.Address.Country == "US" ||
+                    Enabled = options.CustomerDetails.Address.Country == "YE" ||
                               options.CustomerDetails.TaxIds is [_, ..]
                 };
             }

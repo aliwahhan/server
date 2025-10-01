@@ -349,7 +349,7 @@ public class ProviderBillingServiceTests
         sutProvider.GetDependency<IGlobalSettings>().BaseServiceUri
             .Returns(new Bit.Core.Settings.GlobalSettings.BaseServiceUriSettings(new Bit.Core.Settings.GlobalSettings())
             {
-                CloudRegion = "US"
+                CloudRegion = "YE"
             });
 
         sutProvider.GetDependency<IFeatureService>()
@@ -368,7 +368,7 @@ public class ProviderBillingServiceTests
                     options.Email == provider.BillingEmail &&
                     options.InvoiceSettings.CustomFields.FirstOrDefault().Name == "Organization" &&
                     options.InvoiceSettings.CustomFields.FirstOrDefault().Value == "Name" &&
-                    options.Metadata["region"] == "US" &&
+                    options.Metadata["region"] == "YE" &&
                     options.TaxIdData.FirstOrDefault().Type == providerCustomer.TaxIds.FirstOrDefault().Type &&
                     options.TaxIdData.FirstOrDefault().Value == providerCustomer.TaxIds.FirstOrDefault().Value &&
                     options.TaxExempt == StripeConstants.TaxExempt.Reverse))
@@ -389,7 +389,7 @@ public class ProviderBillingServiceTests
                 options.Email == provider.BillingEmail &&
                 options.InvoiceSettings.CustomFields.FirstOrDefault().Name == "Organization" &&
                 options.InvoiceSettings.CustomFields.FirstOrDefault().Value == "Name" &&
-                options.Metadata["region"] == "US" &&
+                options.Metadata["region"] == "YE" &&
                 options.TaxIdData.FirstOrDefault().Type == providerCustomer.TaxIds.FirstOrDefault().Type &&
                 options.TaxIdData.FirstOrDefault().Value == providerCustomer.TaxIds.FirstOrDefault().Value));
 
@@ -1448,7 +1448,7 @@ public class ProviderBillingServiceTests
             .Returns(new Customer
             {
                 Id = "customer_id",
-                Address = new Address { Country = "US" }
+                Address = new Address { Country = "YE" }
             });
 
         var providerPlans = new List<ProviderPlan>
@@ -1500,7 +1500,7 @@ public class ProviderBillingServiceTests
         var customer = new Customer
         {
             Id = "customer_id",
-            Address = new Address { Country = "US" }
+            Address = new Address { Country = "YE" }
         };
         sutProvider.GetDependency<ISubscriberService>()
             .GetCustomerOrThrow(
@@ -1571,7 +1571,7 @@ public class ProviderBillingServiceTests
         var customer = new Customer
         {
             Id = "customer_id",
-            Address = new Address { Country = "US" },
+            Address = new Address { Country = "YE" },
             InvoiceSettings = new CustomerInvoiceSettings
             {
                 DefaultPaymentMethodId = "pm_123"
@@ -1651,7 +1651,7 @@ public class ProviderBillingServiceTests
         var customer = new Customer
         {
             Id = "customer_id",
-            Address = new Address { Country = "US" },
+            Address = new Address { Country = "YE" },
             InvoiceSettings = new CustomerInvoiceSettings(),
             Metadata = new Dictionary<string, string>()
         };
@@ -1750,7 +1750,7 @@ public class ProviderBillingServiceTests
             Id = "customer_id",
             Address = new Address
             {
-                Country = "US"
+                Country = "YE"
             },
             InvoiceSettings = new CustomerInvoiceSettings(),
             Metadata = new Dictionary<string, string>

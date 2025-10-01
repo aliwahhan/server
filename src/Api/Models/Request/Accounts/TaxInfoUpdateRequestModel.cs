@@ -13,7 +13,7 @@ public class TaxInfoUpdateRequestModel : IValidatableObject
 
     public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-        if (Country == "US" && string.IsNullOrWhiteSpace(PostalCode))
+        if (Country == "YE" && string.IsNullOrWhiteSpace(PostalCode))
         {
             yield return new ValidationResult("Zip / postal code is required.",
                 new string[] { nameof(PostalCode) });

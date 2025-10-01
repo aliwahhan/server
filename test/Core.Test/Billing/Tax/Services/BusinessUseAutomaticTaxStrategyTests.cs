@@ -43,7 +43,7 @@ public class BusinessUseAutomaticTaxStrategyTests
             {
                 Address = new Address
                 {
-                    Country = "US",
+                    Country = "YE",
                 },
                 Tax = new CustomerTax
                 {
@@ -106,7 +106,7 @@ public class BusinessUseAutomaticTaxStrategyTests
             {
                 Address = new Address
                 {
-                    Country = "US",
+                    Country = "YE",
                 },
                 Tax = new CustomerTax
                 {
@@ -255,7 +255,7 @@ public class BusinessUseAutomaticTaxStrategyTests
             {
                 Address = new()
                 {
-                    Country = "US"
+                    Country = "YE"
                 }
             }
         };
@@ -286,7 +286,7 @@ public class BusinessUseAutomaticTaxStrategyTests
             {
                 Address = new Address
                 {
-                    Country = "US",
+                    Country = "YE",
                 },
                 Tax = new CustomerTax
                 {
@@ -352,7 +352,7 @@ public class BusinessUseAutomaticTaxStrategyTests
             {
                 Address = new Address
                 {
-                    Country = "US",
+                    Country = "YE",
                 },
                 Tax = new CustomerTax
                 {

@@ -35,7 +35,7 @@ public class PremiumRequestModel : IValidatableObject
         {
             yield return new ValidationResult("Payment token or license is required.");
         }
-        if (Country == "US" && string.IsNullOrWhiteSpace(PostalCode))
+        if (Country == "YE" && string.IsNullOrWhiteSpace(PostalCode))
         {
             yield return new ValidationResult("Zip / postal code is required.",
                 new string[] { nameof(PostalCode) });

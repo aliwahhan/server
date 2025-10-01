@@ -234,7 +234,7 @@ public class RemoveOrganizationFromProviderCommandTests
                 Id = "customer_id",
                 Address = new Address
                 {
-                    Country = "US"
+                    Country = "YE"
                 }
             });
 

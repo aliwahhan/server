@@ -529,7 +529,7 @@ public class ProviderBillingService(
 
         var setNonUSBusinessUseToReverseCharge = featureService.IsEnabled(FeatureFlagKeys.PM21092_SetNonUSBusinessUseToReverseCharge);
 
-        if (setNonUSBusinessUseToReverseCharge && taxInfo.BillingAddressCountry != "US")
+        if (setNonUSBusinessUseToReverseCharge && taxInfo.BillingAddressCountry != "YE")
         {
             options.TaxExempt = StripeConstants.TaxExempt.Reverse;
         }
@@ -753,7 +753,7 @@ public class ProviderBillingService(
         {
             subscriptionCreateOptions.AutomaticTax = new SubscriptionAutomaticTaxOptions
             {
-                Enabled = customer.Address.Country == "US" ||
+                Enabled = customer.Address.Country == "YE" ||
                           customer.TaxIds.Any()
             };
         }

@@ -37,7 +37,7 @@ public class PreviewTaxAmountCommandTests
             ProductType = ProductType.PasswordManager,
             TaxInformation = new TaxInformationDTO
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             }
         };
@@ -50,7 +50,7 @@ public class PreviewTaxAmountCommandTests
 
         _stripeAdapter.InvoiceCreatePreviewAsync(Arg.Is<InvoiceCreatePreviewOptions>(options =>
                 options.Currency == "usd" &&
-                options.CustomerDetails.Address.Country == "US" &&
+                options.CustomerDetails.Address.Country == "YE" &&
                 options.CustomerDetails.Address.PostalCode == "12345" &&
                 options.SubscriptionDetails.Items.Count == 1 &&
                 options.SubscriptionDetails.Items[0].Price == plan.PasswordManager.StripeSeatPlanId &&
@@ -78,7 +78,7 @@ public class PreviewTaxAmountCommandTests
             ProductType = ProductType.PasswordManager,
             TaxInformation = new TaxInformationDTO
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             }
         };
@@ -91,7 +91,7 @@ public class PreviewTaxAmountCommandTests
 
         _stripeAdapter.InvoiceCreatePreviewAsync(Arg.Is<InvoiceCreatePreviewOptions>(options =>
                 options.Currency == "usd" &&
-                options.CustomerDetails.Address.Country == "US" &&
+                options.CustomerDetails.Address.Country == "YE" &&
                 options.CustomerDetails.Address.PostalCode == "12345" &&
                 options.SubscriptionDetails.Items.Count == 1 &&
                 options.SubscriptionDetails.Items[0].Price == plan.PasswordManager.StripePlanId &&
@@ -119,7 +119,7 @@ public class PreviewTaxAmountCommandTests
             ProductType = ProductType.SecretsManager,
             TaxInformation = new TaxInformationDTO
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             }
         };
@@ -132,7 +132,7 @@ public class PreviewTaxAmountCommandTests
 
         _stripeAdapter.InvoiceCreatePreviewAsync(Arg.Is<InvoiceCreatePreviewOptions>(options =>
                 options.Currency == "usd" &&
-                options.CustomerDetails.Address.Country == "US" &&
+                options.CustomerDetails.Address.Country == "YE" &&
                 options.CustomerDetails.Address.PostalCode == "12345" &&
                 options.SubscriptionDetails.Items.Count == 2 &&
                 options.SubscriptionDetails.Items[0].Price == plan.PasswordManager.StripeSeatPlanId &&

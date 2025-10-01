@@ -43,7 +43,7 @@ public class PersonalUseAutomaticTaxStrategyTests
             {
                 Address = new Address
                 {
-                    Country = "US",
+                    Country = "YE",
                 },
                 Tax = new CustomerTax
                 {
@@ -94,7 +94,7 @@ public class PersonalUseAutomaticTaxStrategyTests
     [Theory]
     [BitAutoData("CA")]
     [BitAutoData("ES")]
-    [BitAutoData("US")]
+    [BitAutoData("YE")]
     public void GetUpdateOptions_SetsAutomaticTaxToTrue_ForAllCountries(
         string country, SutProvider<PersonalUseAutomaticTaxStrategy> sutProvider)
     {
@@ -130,7 +130,7 @@ public class PersonalUseAutomaticTaxStrategyTests
     [Theory]
     [BitAutoData("CA")]
     [BitAutoData("ES")]
-    [BitAutoData("US")]
+    [BitAutoData("YE")]
     public void GetUpdateOptions_SetsAutomaticTaxToTrue_ForGlobalCustomersWithTaxIds(
         string country, SutProvider<PersonalUseAutomaticTaxStrategy> sutProvider)
     {
@@ -178,7 +178,7 @@ public class PersonalUseAutomaticTaxStrategyTests
     [Theory]
     [BitAutoData("CA")]
     [BitAutoData("ES")]
-    [BitAutoData("US")]
+    [BitAutoData("YE")]
     public void GetUpdateOptions_SetsAutomaticTaxToTrue_ForGlobalCustomersWithoutTaxIds(
         string country, SutProvider<PersonalUseAutomaticTaxStrategy> sutProvider)
     {
