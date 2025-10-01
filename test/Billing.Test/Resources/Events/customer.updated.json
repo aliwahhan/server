@@ -10,7 +10,7 @@
       "object": "customer",
       "address": {
         "city": null,
-        "country": "US",
+        "country": "YE",
         "line1": "",
         "line2": null,
         "postal_code": "33701",
@@ -38,7 +38,7 @@
       },
       "livemode": false,
       "metadata": {
-        "region": "US"
+        "region": "YE"
       },
       "name": null,
       "next_invoice_sequence": 2,

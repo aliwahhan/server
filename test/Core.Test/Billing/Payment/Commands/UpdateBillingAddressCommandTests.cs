@@ -41,24 +41,24 @@ public class UpdateBillingAddressCommandTests
 
         var input = new BillingAddress
         {
-            Country = "US",
+            Country = "YE",
             PostalCode = "12345",
-            Line1 = "123 Main St.",
-            Line2 = "Suite 100",
-            City = "New York",
-            State = "NY"
+            Line1 = "Tahrir Street",
+            Line2 = "Al-Salam District",
+            City = "Sana'a",
+            State = "SA"
         };
 
         var customer = new Customer
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345",
-                Line1 = "123 Main St.",
-                Line2 = "Suite 100",
-                City = "New York",
-                State = "NY"
+                Line1 = "Tahrir Street",
+                Line2 = "Al-Salam District",
+                City = "Sana'a",
+                State = "SA"
             },
             Subscriptions = new StripeList<Subscription>
             {
@@ -99,24 +99,24 @@ public class UpdateBillingAddressCommandTests
 
         var input = new BillingAddress
         {
-            Country = "US",
+            Country = "YE",
             PostalCode = "12345",
-            Line1 = "123 Main St.",
-            Line2 = "Suite 100",
-            City = "New York",
-            State = "NY"
+            Line1 = "Tahrir Street",
+            Line2 = "Al-Salam District",
+            City = "Sana'a",
+            State = "SA"
         };
 
         var customer = new Customer
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345",
-                Line1 = "123 Main St.",
-                Line2 = "Suite 100",
-                City = "New York",
-                State = "NY"
+                Line1 = "Tahrir Street",
+                Line2 = "Al-Salam District",
+                City = "Sana'a",
+                State = "SA"
             },
             Subscriptions = new StripeList<Subscription>
             {
@@ -160,24 +160,24 @@ public class UpdateBillingAddressCommandTests
 
         var input = new BillingAddress
         {
-            Country = "US",
+            Country = "YE",
             PostalCode = "12345",
-            Line1 = "123 Main St.",
-            Line2 = "Suite 100",
-            City = "New York",
-            State = "NY"
+            Line1 = "Tahrir Street",
+            Line2 = "Al-Salam District",
+            City = "Sana'a",
+            State = "SA"
         };
 
         var customer = new Customer
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345",
-                Line1 = "123 Main St.",
-                Line2 = "Suite 100",
-                City = "New York",
-                State = "NY"
+                Line1 = "Tahrir Street",
+                Line2 = "Al-Salam District",
+                City = "Sana'a",
+                State = "SA"
             },
             Subscriptions = new StripeList<Subscription>
             {
@@ -220,24 +220,24 @@ public class UpdateBillingAddressCommandTests
 
         var input = new BillingAddress
         {
-            Country = "US",
+            Country = "YE",
             PostalCode = "12345",
-            Line1 = "123 Main St.",
-            Line2 = "Suite 100",
-            City = "New York",
-            State = "NY"
+            Line1 = "Tahrir Street",
+            Line2 = "Al-Salam District",
+            City = "Sana'a",
+            State = "SA"
         };
 
         var customer = new Customer
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345",
-                Line1 = "123 Main St.",
-                Line2 = "Suite 100",
-                City = "New York",
-                State = "NY"
+                Line1 = "Tahrir Street",
+                Line2 = "Al-Salam District",
+                City = "Sana'a",
+                State = "SA"
             },
             Id = organization.GatewayCustomerId,
             Subscriptions = new StripeList<Subscription>
@@ -255,7 +255,7 @@ public class UpdateBillingAddressCommandTests
             {
                 Data =
                 [
-                    new TaxId { Id = "tax_id_123", Type = "us_ein", Value = "123456789" }
+                    new TaxId { Id = "tax_id_123", Type = "ey_oss_vat", Value = "YE123456789" }
                 ]
             }
         };

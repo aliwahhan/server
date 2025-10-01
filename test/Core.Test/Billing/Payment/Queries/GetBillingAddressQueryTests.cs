@@ -192,13 +192,13 @@ public class GetBillingAddressQueryTests
 
     private static Address GetAddress() => new()
     {
-        Country = "US",
+        Country = "YE",
         PostalCode = "12345",
-        Line1 = "123 Main St.",
-        Line2 = "Suite 100",
-        City = "New York",
-        State = "NY"
+        Line1 = "Tahrir Street",
+        Line2 = "Al-Salam District",
+        City = "Sana'a",
+        State = "SA"
     };
 
-    private static TaxId GetTaxId() => new() { Type = "us_ein", Value = "123456789" };
+    private static TaxId GetTaxId() => new() { Type = "ey_oss_vat", Value = "YE123456789" };
 }

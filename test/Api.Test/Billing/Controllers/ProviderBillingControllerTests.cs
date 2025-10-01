@@ -277,12 +277,12 @@ public class ProviderBillingControllerTests
             {
                 Address = new Address
                 {
-                    Country = "US",
+                    Country = "YE",
                     PostalCode = "12345",
-                    Line1 = "123 Example St.",
-                    Line2 = "Unit 1",
-                    City = "Example Town",
-                    State = "NY"
+                    Line1 = "Tahrir Street",
+                    Line2 = "Al-Salam District",
+                    City = "Sana'a",
+                    State = "SA"
                 },
                 Balance = -100000,
                 Discount = new Discount { Coupon = new Coupon { PercentOff = 10 } },

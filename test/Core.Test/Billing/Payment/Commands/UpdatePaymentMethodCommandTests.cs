@@ -53,7 +53,7 @@ public class UpdatePaymentMethodCommandTests
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             },
             Metadata = new Dictionary<string, string>()
@@ -85,7 +85,7 @@ public class UpdatePaymentMethodCommandTests
         var result = await _command.Run(organization,
             new TokenizedPaymentMethod { Type = TokenizablePaymentMethodType.BankAccount, Token = token }, new BillingAddress
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             });
 
@@ -112,7 +112,7 @@ public class UpdatePaymentMethodCommandTests
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             },
             Metadata = new Dictionary<string, string>()
@@ -144,7 +144,7 @@ public class UpdatePaymentMethodCommandTests
         var result = await _command.Run(organization,
             new TokenizedPaymentMethod { Type = TokenizablePaymentMethodType.BankAccount, Token = token }, new BillingAddress
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             });
 
@@ -174,7 +174,7 @@ public class UpdatePaymentMethodCommandTests
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             },
             Id = "cus_123",
@@ -210,7 +210,7 @@ public class UpdatePaymentMethodCommandTests
         var result = await _command.Run(organization,
             new TokenizedPaymentMethod { Type = TokenizablePaymentMethodType.BankAccount, Token = token }, new BillingAddress
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             });
 
@@ -241,7 +241,7 @@ public class UpdatePaymentMethodCommandTests
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             },
             Id = "cus_123",
@@ -270,7 +270,7 @@ public class UpdatePaymentMethodCommandTests
         var result = await _command.Run(organization,
             new TokenizedPaymentMethod { Type = TokenizablePaymentMethodType.Card, Token = token }, new BillingAddress
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             });
 
@@ -323,7 +323,7 @@ public class UpdatePaymentMethodCommandTests
         var result = await _command.Run(organization,
             new TokenizedPaymentMethod { Type = TokenizablePaymentMethodType.Card, Token = token }, new BillingAddress
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             });
 
@@ -339,7 +339,7 @@ public class UpdatePaymentMethodCommandTests
             Arg.Is<CustomerUpdateOptions>(options => options.InvoiceSettings.DefaultPaymentMethod == token));
 
         await _stripeAdapter.Received(1).CustomerUpdateAsync(customer.Id,
-            Arg.Is<CustomerUpdateOptions>(options => options.Address.Country == "US" && options.Address.PostalCode == "12345"));
+            Arg.Is<CustomerUpdateOptions>(options => options.Address.Country == "YE" && options.Address.PostalCode == "12345"));
     }
 
     [Fact]
@@ -355,7 +355,7 @@ public class UpdatePaymentMethodCommandTests
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             },
             Id = "cus_123",
@@ -391,7 +391,7 @@ public class UpdatePaymentMethodCommandTests
 
         var result = await _command.Run(organization,
             new TokenizedPaymentMethod { Type = TokenizablePaymentMethodType.PayPal, Token = "TOKEN" },
-            new BillingAddress { Country = "US", PostalCode = "12345" });
+            new BillingAddress { Country = "YE", PostalCode = "12345" });
 
         Assert.True(result.IsT0);
         var maskedPaymentMethod = result.AsT0;
@@ -417,7 +417,7 @@ public class UpdatePaymentMethodCommandTests
         {
             Address = new Address
             {
-                Country = "US",
+                Country = "YE",
                 PostalCode = "12345"
             },
             Id = "cus_123",
@@ -428,7 +428,7 @@ public class UpdatePaymentMethodCommandTests
 
         _globalSettings.BaseServiceUri.Returns(new GlobalSettings.BaseServiceUriSettings(new GlobalSettings())
         {
-            CloudRegion = "US"
+            CloudRegion = "YE"
         });
 
         var customerGateway = Substitute.For<ICustomerGateway>();
@@ -444,14 +444,14 @@ public class UpdatePaymentMethodCommandTests
         customerGateway.CreateAsync(Arg.Is<CustomerRequest>(options =>
             options.Id.StartsWith(organization.BraintreeCustomerIdPrefix() + organization.Id.ToString("N").ToLower()) &&
             options.CustomFields[organization.BraintreeIdField()] == organization.Id.ToString() &&
-            options.CustomFields[organization.BraintreeCloudRegionField()] == "US" &&
+            options.CustomFields[organization.BraintreeCloudRegionField()] == "YE" &&
             options.Email == organization.BillingEmailAddress() &&
             options.PaymentMethodNonce == "TOKEN")).Returns(createResult);
         _braintreeGateway.Customer.Returns(customerGateway);
 
         var result = await _command.Run(organization,
             new TokenizedPaymentMethod { Type = TokenizablePaymentMethodType.PayPal, Token = "TOKEN" },
-            new BillingAddress { Country = "US", PostalCode = "12345" });
+            new BillingAddress { Country = "YE", PostalCode = "12345" });
 
         Assert.True(result.IsT0);
         var maskedPaymentMethod = result.AsT0;

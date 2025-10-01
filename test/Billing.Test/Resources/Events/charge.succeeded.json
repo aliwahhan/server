@@ -67,7 +67,7 @@
             "address_postal_code_check": null,
             "cvc_check": "pass"
           },
-          "country": "US",
+          "country": "YE",
           "exp_month": 6,
           "exp_year": 2033,
           "extended_authorization": {

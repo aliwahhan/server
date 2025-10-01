@@ -17,7 +17,7 @@ public class StripeEventServiceTests
     public StripeEventServiceTests()
     {
         var globalSettings = new GlobalSettings();
-        var baseServiceUriSettings = new GlobalSettings.BaseServiceUriSettings(globalSettings) { CloudRegion = "US" };
+        var baseServiceUriSettings = new GlobalSettings.BaseServiceUriSettings(globalSettings) { CloudRegion = "YE" };
         globalSettings.BaseServiceUri = baseServiceUriSettings;
 
         _stripeFacade = Substitute.For<IStripeFacade>();
@@ -632,7 +632,7 @@ public class StripeEventServiceTests
         var customer = await GetCustomerAsync();
         customer.Metadata = new Dictionary<string, string>
         {
-            { "Region", "US" }
+            { "Region", "YE" }
         };
 
         subscription.Customer = customer;

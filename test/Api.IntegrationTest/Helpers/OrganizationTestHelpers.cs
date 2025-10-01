@@ -41,7 +41,7 @@ public static class OrganizationTestHelpers
             PaymentToken = "TOKEN",
             TaxInfo = new TaxInfo
             {
-                BillingAddressCountry = "US",
+                BillingAddressCountry = "YE",
                 BillingAddressPostalCode = "12345"
             }
         });

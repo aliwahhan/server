@@ -7,7 +7,7 @@
     "object": {
       "id": "in_1NvKzdIGBnsLynRr8fE8cpbg",
       "object": "invoice",
-      "account_country": "US",
+      "account_country": "YE",
       "account_name": "Deepsafer Inc.",
       "account_tax_ids": null,
       "amount_due": 0,
@@ -37,7 +37,7 @@
       "customer": "cus_OimYrxnMTMMK1E",
       "customer_address": {
         "city": null,
-        "country": "US",
+        "country": "YE",
         "line1": "",
         "line2": null,
         "postal_code": "12345",
