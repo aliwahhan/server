@@ -1,15 +1,14 @@
-FROM --platform=$BUILDPLATFORM nginx:stable
+FROM --platform=$BUILDPLATFORM nginx:stable-alpine3.21
 
 ARG TARGETPLATFORM
 LABEL ye.vault.deepsafer.product="deepsafer"
 
 ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    gosu \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache curl \
+    shadow \
+    && apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community gosu 
 
 COPY util/Nginx/nginx.conf /etc/nginx
 COPY util/Nginx/proxy.conf /etc/nginx
