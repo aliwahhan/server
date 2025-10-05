@@ -89,8 +89,8 @@ services:
     ports:
       - "8090:8080"
     environment:
-      SIMPLESAMLPHP_SP_ENTITY_ID: ${IDP_SP_ENTITY_ID}
-      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: ${IDP_SP_ACS_URL}
+      SIMPLESAMLPHP_SP_ENTITY_ID: "https://localhost:51822/saml2"
+      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: "https://localhost:51822/saml2/1/Acs"
       SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: null
     volumes:
       - ./authsources.php:/var/www/simplesamlphp/config/authsources.php
@@ -108,10 +108,7 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-      - ./rabbitmq_delayed_message_exchange-4.1.0.ez:/opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange-4.1.0.ez
-
-
-
+      - ./rabbitmq_delayed_message_exchange-4.1.0.zip:/opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange-4.1.0.ez
     profiles:
       - rabbitmq
 
