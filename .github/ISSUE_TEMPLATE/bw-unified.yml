@@ -1,4 +1,3 @@
-name: Deepsafer Unified Bug Report
 name: Deepsafer Unified Deployment Bug Report
 description: File a bug report
 labels: [bug, bw-unified-deploy]
