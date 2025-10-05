@@ -299,7 +299,7 @@ public class DynamicAuthenticationSchemeProvider : AuthenticationSchemeProvider
             ClientSecret = config.ClientSecret,
             ResponseType = "code",
             ResponseMode = "form_post",
-            SignInScheme = AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme,
+            SignInScheme = AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme,
             SignOutScheme = IdentityServerConstants.SignoutScheme,
             SaveTokens = false, // reduce overall request size
             TokenValidationParameters = new TokenValidationParameters
@@ -414,7 +414,7 @@ public class DynamicAuthenticationSchemeProvider : AuthenticationSchemeProvider
         var options = new Saml2Options
         {
             SPOptions = spOptions,
-            SignInScheme = AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme,
+            SignInScheme = AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme,
             SignOutScheme = IdentityServerConstants.DefaultCookieAuthenticationScheme,
             CookieManager = new IdentityServer.DistributedCacheCookieManager(),
         };

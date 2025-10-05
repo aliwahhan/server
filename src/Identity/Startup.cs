@@ -94,7 +94,7 @@ public class Startup
         services
             .AddDistributedIdentityServices()
             .AddAuthentication()
-            .AddCookie(AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme)
+            .AddCookie(AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme)
             .AddOpenIdConnect("sso", "Single Sign On", options =>
             {
                 options.Authority = globalSettings.BaseServiceUri.InternalSso;
@@ -104,7 +104,7 @@ public class Startup
                 options.ClientSecret = globalSettings.OidcIdentityClientKey;
                 options.ResponseMode = "form_post";
 
-                options.SignInScheme = AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme;
+                options.SignInScheme = AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme;
                 options.ResponseType = "code";
                 options.SaveTokens = false;
                 options.GetClaimsFromUserInfoEndpoint = true;

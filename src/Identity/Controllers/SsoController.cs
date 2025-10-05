@@ -147,7 +147,7 @@ public class SsoController : Controller
     {
         // Read external identity from the temporary cookie
         var result = await HttpContext.AuthenticateAsync(
-            Core.AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme);
+            Core.AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme);
         if (result?.Succeeded != true)
         {
             throw new Exception("External authentication error");
@@ -188,7 +188,7 @@ public class SsoController : Controller
         }, localSignInProps);
 
         // Delete temporary cookie used during external authentication
-        await HttpContext.SignOutAsync(Core.AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme);
+        await HttpContext.SignOutAsync(Core.AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme);
 
         // Retrieve return URL
         var returnUrl = result.Properties.Items["return_url"] ?? "~/";

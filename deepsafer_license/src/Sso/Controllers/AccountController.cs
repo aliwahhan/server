@@ -244,7 +244,7 @@ public class AccountController : Controller
     {
         // Read external identity from the temporary cookie
         var result = await HttpContext.AuthenticateAsync(
-            AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme);
+            AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme);
         if (result?.Succeeded != true)
         {
             throw new Exception(_i18nService.T("ExternalAuthenticationError"));
@@ -292,7 +292,7 @@ public class AccountController : Controller
         }
 
         // Delete temporary cookie used during external authentication
-        await HttpContext.SignOutAsync(AuthenticationSchemes.DeepsaferExternalCookieAuthenticationScheme);
+        await HttpContext.SignOutAsync(AuthenticationSchemes.BitwardenExternalCookieAuthenticationScheme);
 
         // Retrieve return URL
         var returnUrl = result.Properties.Items["return_url"] ?? "~/";
