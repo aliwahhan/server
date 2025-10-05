@@ -1,9 +1,11 @@
 ﻿
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
-@import "webfonts.scss";
 @import "bootstrap/scss/bootstrap";
+@import "webfonts.scss";
+
 
 :root {
   --space-none: 0;
@@ -75,21 +77,18 @@ $secondary: #6c757d;
 $white:#ffffff;
 $text-color:#000000;
 
-$theme-colors: map-merge(
-  $theme-colors,
-  (
-    "primary-accent": $primary-accent,
-    "primary":$primary,
-    "secondary": $secondary,
-    "success":$success,
-    "info":$info,
-    "warning":$warning,
-    "danger":$danger,
-  )
+$custom-colors: (
+  "primary-accent": #4b06a4,
+  "primary": #6b09ea,
+  "success": #4ade80,
+  "info": #38bdf8,
+  "warning": #fb923c,
+  "danger": #f87171
 );
 
-// @import "./form-selector";
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 .btn-primary {
   --bs-btn-color: #ffffff;

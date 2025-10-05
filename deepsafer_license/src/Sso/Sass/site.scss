@@ -1,4 +1,8 @@
-﻿@import "webfonts.css";
+﻿@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/maps";
+
+@import "webfonts.css";
 
 $primary: #6b09ea;
 $primary-accent: #4b06a4;
@@ -7,18 +11,19 @@ $info: #38bdf8;
 $warning: #fb923c;
 $danger: #f87171;
 
-$theme-colors: map-merge(
-  $theme-colors,
-  (
-    "primary-accent": $primary-accent,
-    "primary":$primary,
-    "success":$success,
-    "info":$info,
-    "warning":$warning,
-    "danger":$warning
-
-  )
+$custom-colors: (
+  "primary-accent": #4b06a4,
+  "primary": #6b09ea,
+  "success": #4ade80,
+  "info": #38bdf8,
+  "warning": #fb923c,
+  "danger": #f87171
 );
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 $font-family-sans-serif: 'Red Hat Text','Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
 $h1-font-size: 2rem;
