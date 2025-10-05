@@ -37,7 +37,7 @@ then
     mkdir -p /etc/deepsafer/ca-certificates
     chown -R $USERNAME:$GROUPNAME /etc/deepsafer
 
-    if [[ -f "/etc/deepsafer/kerberos/deepsafer.keytab" && -f "/etc/deepsafer/kerberos/krb5.conf" ]]; then
+    if [ -f "/etc/deepsafer/kerberos/deepsafer.keytab" ] && [ -f "/etc/deepsafer/kerberos/krb5.conf" ]; then
       chown -R $USERNAME:$GROUPNAME /etc/deepsafer/kerberos
     fi
 
@@ -46,7 +46,7 @@ else
     gosu_cmd=""
 fi
 
-if [[ -f "/etc/deepsafer/kerberos/deepsafer.keytab" && -f "/etc/deepsafer/kerberos/krb5.conf" ]]; then
+if [ -f "/etc/deepsafer/kerberos/deepsafer.keytab" ] && [ -f "/etc/deepsafer/kerberos/krb5.conf" ]; then
     cp -f /etc/deepsafer/kerberos/krb5.conf /etc/krb5.conf
     $gosu_cmd kinit $globalSettings__kerberosUser -k -t /etc/deepsafer/kerberos/deepsafer.keytab
 fi
