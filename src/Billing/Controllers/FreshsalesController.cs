@@ -37,7 +37,7 @@ public class FreshsalesController : Controller
 
         _httpClient = new HttpClient
         {
-            BaseAddress = new Uri("https://bitwarden.freshsales.io/api/")
+            BaseAddress = new Uri("https://vault.deepsafer.freshsales.io/api/")
         };
 
         _freshsalesApiKey = billingSettings.Value.FreshsalesApiKey;

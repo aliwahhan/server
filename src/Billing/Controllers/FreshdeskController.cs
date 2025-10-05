@@ -125,7 +125,7 @@ public class FreshdeskController : Controller
                     updateBody.Add("custom_fields", customFields);
                 }
                 var updateRequest = new HttpRequestMessage(HttpMethod.Put,
-                    string.Format("https://bitwarden.freshdesk.com/api/v2/tickets/{0}", ticketId))
+                    string.Format("https://vault.deepsafer.freshdesk.com/api/v2/tickets/{0}", ticketId))
                 {
                     Content = JsonContent.Create(updateBody),
                 };
@@ -194,7 +194,7 @@ public class FreshdeskController : Controller
                     { "private", true }
                 };
         var noteRequest = new HttpRequestMessage(HttpMethod.Post,
-            string.Format("https://bitwarden.freshdesk.com/api/v2/tickets/{0}/notes", ticketId))
+            string.Format("https://vault.deepsafer.freshdesk.com/api/v2/tickets/{0}/notes", ticketId))
         {
             Content = JsonContent.Create(noteBody),
         };
@@ -216,7 +216,7 @@ public class FreshdeskController : Controller
                 };
 
         var noteRequest = new HttpRequestMessage(HttpMethod.Post,
-                    string.Format("https://bitwarden.freshdesk.com/api/v2/tickets/{0}/notes", ticketId))
+                    string.Format("https://vault.deepsafer.freshdesk.com/api/v2/tickets/{0}/notes", ticketId))
         {
             Content = JsonContent.Create(noteBody),
         };
