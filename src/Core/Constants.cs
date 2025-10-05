@@ -31,7 +31,7 @@ public static class Constants
     /// <summary>
     /// Used by IdentityServer to identify our own provider.
     /// </summary>
-    public const string IdentityProvider = "bitwarden";
+    public const string IdentityProvider = "deepsafer";
 
     /// <summary>
     /// Date identifier used in ProviderService to determine if a provider was created before Nov 6, 2023.

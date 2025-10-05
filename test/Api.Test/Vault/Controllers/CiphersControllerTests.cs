@@ -139,7 +139,7 @@ public class CiphersControllerTests
             {
                 ""Uris"": [
                     {
-                        ""Uri"": ""https://bitwarden.com""
+                        ""Uri"": ""https://vault.deepsafer.ye""
                     }
                 ],
                 ""Username"": ""testuser"",
