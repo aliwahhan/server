@@ -169,7 +169,7 @@ public class UpcomingInvoiceHandler(
     {
         var nonUSBusinessUse =
             organization.PlanType.GetProductTier() != ProductTierType.Families &&
-            subscription.Customer.Address.Country != "US";
+            subscription.Customer.Address.Country != "YE";
 
         bool setAutomaticTaxToEnabled;
 
@@ -198,7 +198,7 @@ public class UpcomingInvoiceHandler(
         {
             setAutomaticTaxToEnabled =
                 subscription.Customer.HasRecognizedTaxLocation() &&
-                (subscription.Customer.Address.Country == "US" ||
+                (subscription.Customer.Address.Country == "YE" ||
                  (nonUSBusinessUse && subscription.Customer.TaxIds.Any()));
         }
 
@@ -233,7 +233,7 @@ public class UpcomingInvoiceHandler(
 
         if (setNonUSBusinessUseToReverseCharge)
         {
-            if (subscription.Customer.Address.Country != "US" && subscription.Customer.TaxExempt != StripeConstants.TaxExempt.Reverse)
+            if (subscription.Customer.Address.Country != "YE" && subscription.Customer.TaxExempt != StripeConstants.TaxExempt.Reverse)
             {
                 try
                 {
@@ -256,7 +256,7 @@ public class UpcomingInvoiceHandler(
         {
             setAutomaticTaxToEnabled =
                 subscription.Customer.HasRecognizedTaxLocation() &&
-                (subscription.Customer.Address.Country == "US" ||
+                (subscription.Customer.Address.Country == "YE" ||
                  subscription.Customer.TaxIds.Any());
         }
 

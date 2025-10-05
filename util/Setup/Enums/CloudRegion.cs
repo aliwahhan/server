@@ -4,8 +4,8 @@ namespace Bit.Setup.Enums;
 
 public enum CloudRegion
 {
-    [Display(Name = "US")]
+    [Display(Name = "YE")]
     US = 0,
-    [Display(Name = "EU")]
-    EU = 1,
+    [Display(Name = "US")]
+    YE = 1,
 }

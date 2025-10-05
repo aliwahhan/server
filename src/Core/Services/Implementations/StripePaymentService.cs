@@ -143,7 +143,7 @@ public class StripePaymentService : IPaymentService
             {
                 if (sub.Customer is
                     {
-                        Address.Country: not "US",
+                        Address.Country: not "YE",
                         TaxExempt: not StripeConstants.TaxExempt.Reverse
                     })
                 {
@@ -164,7 +164,7 @@ public class StripePaymentService : IPaymentService
                         }
                     case Organization:
                         {
-                            if (sub.Customer.Address.Country == "US")
+                            if (sub.Customer.Address.Country == "YE")
                             {
                                 subUpdateOptions.AutomaticTax = new SubscriptionAutomaticTaxOptions { Enabled = true };
                             }
@@ -192,7 +192,7 @@ public class StripePaymentService : IPaymentService
                         {
                             subUpdateOptions.AutomaticTax = new SubscriptionAutomaticTaxOptions
                             {
-                                Enabled = sub.Customer.Address.Country == "US" ||
+                                Enabled = sub.Customer.Address.Country == "YE" ||
                                           sub.Customer.TaxIds.Any()
                             };
                             break;

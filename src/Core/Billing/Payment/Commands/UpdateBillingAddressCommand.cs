@@ -84,7 +84,7 @@ public class UpdateBillingAddressCommand(
                         State = billingAddress.State
                     },
                     Expand = ["subscriptions", "tax_ids"],
-                    TaxExempt = billingAddress.Country != "US"
+                    TaxExempt = billingAddress.Country != "YE"
                         ? StripeConstants.TaxExempt.Reverse
                         : StripeConstants.TaxExempt.None
                 });

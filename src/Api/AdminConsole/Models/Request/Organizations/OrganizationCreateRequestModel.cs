@@ -139,7 +139,7 @@ public class OrganizationCreateRequestModel : IValidatableObject
                 new string[] { nameof(BillingAddressCountry) });
         }
 
-        if (PlanType != PlanType.Free && BillingAddressCountry == "US" &&
+        if (PlanType != PlanType.Free && BillingAddressCountry == "YE" &&
             string.IsNullOrWhiteSpace(BillingAddressPostalCode))
         {
             yield return new ValidationResult("Zip / postal code is required.",

@@ -278,7 +278,7 @@ public class OrganizationBillingService(
 
             if (setNonUSBusinessUseToReverseCharge &&
                 planType.GetProductTier() is not ProductTierType.Free and not ProductTierType.Families &&
-                customerSetup.TaxInformation.Country != "US")
+                customerSetup.TaxInformation.Country != "YE")
             {
                 customerCreateOptions.TaxExempt = StripeConstants.TaxExempt.Reverse;
             }
@@ -504,7 +504,7 @@ public class OrganizationBillingService(
             {
                 Enabled =
                     subscriptionSetup.PlanType.GetProductTier() == ProductTierType.Families ||
-                    customer.Address.Country == "US" ||
+                    customer.Address.Country == "YE" ||
                     customer.TaxIds.Any()
             };
         }
@@ -533,14 +533,14 @@ public class OrganizationBillingService(
 
         customer = customer switch
         {
-            { Address.Country: not "US", TaxExempt: not StripeConstants.TaxExempt.Reverse } => await
+            { Address.Country: not "YE", TaxExempt: not StripeConstants.TaxExempt.Reverse } => await
                 stripeAdapter.CustomerUpdateAsync(customer.Id,
                     new CustomerUpdateOptions
                     {
                         Expand = expansions,
                         TaxExempt = StripeConstants.TaxExempt.Reverse
                     }),
-            { Address.Country: "US", TaxExempt: StripeConstants.TaxExempt.Reverse } => await
+            { Address.Country: "YE", TaxExempt: StripeConstants.TaxExempt.Reverse } => await
                 stripeAdapter.CustomerUpdateAsync(customer.Id,
                     new CustomerUpdateOptions
                     {

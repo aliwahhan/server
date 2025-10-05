@@ -811,7 +811,7 @@ public class SubscriberService(
             {
                 case
                 {
-                    Address.Country: not "US",
+                    Address.Country: not "YE",
                     TaxExempt: not StripeConstants.TaxExempt.Reverse
                 }:
                     await stripeAdapter.CustomerUpdateAsync(customer.Id,
@@ -819,7 +819,7 @@ public class SubscriberService(
                     break;
                 case
                 {
-                    Address.Country: "US",
+                    Address.Country: "YE",
                     TaxExempt: StripeConstants.TaxExempt.Reverse
                 }:
                     await stripeAdapter.CustomerUpdateAsync(customer.Id,
@@ -842,8 +842,8 @@ public class SubscriberService(
             {
                 User => true,
                 Organization organization => organization.PlanType.GetProductTier() == ProductTierType.Families ||
-                                             customer.Address.Country == "US" || (customer.TaxIds?.Any() ?? false),
-                Provider => customer.Address.Country == "US" || (customer.TaxIds?.Any() ?? false),
+                                             customer.Address.Country == "YE" || (customer.TaxIds?.Any() ?? false),
+                Provider => customer.Address.Country == "YE" || (customer.TaxIds?.Any() ?? false),
                 _ => false
             };
 

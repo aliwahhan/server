@@ -15,14 +15,14 @@ public class PremiumRequestModelTests
         // 4. expected
 
         yield return new object[] { true, null, null, false };
-        yield return new object[] { true, null, "US", false };
+        yield return new object[] { true, null, "YE", false };
         yield return new object[] { true, new NotImplementedFormFile(), null, false };
-        yield return new object[] { true, new NotImplementedFormFile(), "US", false };
+        yield return new object[] { true, new NotImplementedFormFile(), "YE", false };
 
         yield return new object[] { false, null, null, false };
-        yield return new object[] { false, null, "US", true }; // Only true, cloud with null license AND a Country
+        yield return new object[] { false, null, "YE", true }; // Only true, cloud with null license AND a Country
         yield return new object[] { false, new NotImplementedFormFile(), null, false };
-        yield return new object[] { false, new NotImplementedFormFile(), "US", false };
+        yield return new object[] { false, new NotImplementedFormFile(), "YE", false };
     }
 
     [Theory]

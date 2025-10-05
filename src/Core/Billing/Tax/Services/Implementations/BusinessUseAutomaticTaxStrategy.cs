@@ -65,7 +65,7 @@ public class BusinessUseAutomaticTaxStrategy(IFeatureService featureService) : I
     {
         options.AutomaticTax ??= new InvoiceAutomaticTaxOptions();
 
-        if (options.CustomerDetails.Address.Country == "US")
+        if (options.CustomerDetails.Address.Country == "YE")
         {
             options.AutomaticTax.Enabled = true;
             return;
@@ -81,7 +81,7 @@ public class BusinessUseAutomaticTaxStrategy(IFeatureService featureService) : I
             return false;
         }
 
-        if (customer.Address.Country == "US")
+        if (customer.Address.Country == "YE")
         {
             return true;
         }
