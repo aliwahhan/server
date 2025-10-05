@@ -23,8 +23,8 @@ public class EnvironmentFileBuilder
             ["ASPNETCORE_ENVIRONMENT"] = "Production",
             ["globalSettings__selfHosted"] = "true",
             ["globalSettings__baseServiceUri__vault"] = "http://localhost",
-            //update url push 
-            ["globalSettings__pushRelayBaseUri"] = "https://push.bitwarden.com",
+            //update url push
+            ["globalSettings__pushRelayBaseUri"] = "https://push.vault.deepsafer.ye",
         };
         _mssqlValues = new Dictionary<string, string>
         {
@@ -44,9 +44,9 @@ public class EnvironmentFileBuilder
     public void BuildForUpdater()
     {
         Init();
-        LoadExistingValues(_globalOverrideValues, "/bitwarden/env/global.override.env");
-        LoadExistingValues(_mssqlOverrideValues, "/bitwarden/env/mssql.override.env");
-        LoadExistingValues(_keyConnectorOverrideValues, "/bitwarden/env/key-connector.override.env");
+        LoadExistingValues(_globalOverrideValues, "/deepsafer/env/global.override.env");
+        LoadExistingValues(_mssqlOverrideValues, "/deepsafer/env/mssql.override.env");
+        LoadExistingValues(_keyConnectorOverrideValues, "/deepsafer/env/key-connector.override.env");
 
         if (_context.Config.PushNotifications &&
             _globalOverrideValues.ContainsKey("globalSettings__pushRelayBaseUri") &&
@@ -123,10 +123,10 @@ public class EnvironmentFileBuilder
             ["keyConnectorSettings__webVaultUri"] = _context.Config.Url,
             ["keyConnectorSettings__identityServerUri"] = "https://localhost:33656",
             ["keyConnectorSettings__database__provider"] = "json",
-            ["keyConnectorSettings__database__jsonFilePath"] = "/etc/bitwarden/key-connector/data.json",
+            ["keyConnectorSettings__database__jsonFilePath"] = "/etc/deepsafer/key-connector/data.json",
             ["keyConnectorSettings__rsaKey__provider"] = "certificate",
             ["keyConnectorSettings__certificate__provider"] = "filesystem",
-            ["keyConnectorSettings__certificate__filesystemPath"] = "/etc/bitwarden/key-connector/bwkc.pfx",
+            ["keyConnectorSettings__certificate__filesystemPath"] = "/etc/deepsafer/key-connector/bwkc.pfx",
             ["keyConnectorSettings__certificate__filesystemPassword"] = Helpers.SecureRandomString(32, alpha: true, numeric: true),
         };
     }

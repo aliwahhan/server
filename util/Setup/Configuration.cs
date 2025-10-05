@@ -17,13 +17,13 @@ public class Configuration
     [Description("Auto-generate the `./docker/docker-compose.yml` config file.\n" +
         "WARNING: Disabling generated config files can break future updates. You will be\n" +
         "responsible for maintaining this config file.\n" +
-        "Template: https://github.com/bitwarden/server/blob/master/util/Setup/Templates/DockerCompose.hbs")]
+        "Template: https://github.com/aliwahhan/server/blob/master/util/Setup/Templates/DockerCompose.hbs")]
     public bool GenerateComposeConfig { get; set; } = true;
 
     [Description("Auto-generate the `./nginx/default.conf` file.\n" +
         "WARNING: Disabling generated config files can break future updates. You will be\n" +
         "responsible for maintaining this config file.\n" +
-        "Template: https://github.com/bitwarden/server/blob/master/util/Setup/Templates/NginxConfig.hbs")]
+        "Template: https://github.com/aliwahhan/server/blob/master/util/Setup/Templates/NginxConfig.hbs")]
     public bool GenerateNginxConfig { get; set; } = true;
 
     [Description("Docker compose file port mapping for HTTP. Leave empty to remove the port mapping.\n" +
@@ -74,7 +74,7 @@ public class Configuration
         "you become responsible for maintaining this value.")]
     public string NginxHeaderContentSecurityPolicy { get; set; }
 
-    [Description("Communicate with the Bitwarden push relay service (push.bitwarden.com) for mobile\n" +
+    [Description("Communicate with the Deepsafer push relay service (push.vault.deepsafer.ye) for mobile\n" +
         "app live sync.")]
     public bool PushNotifications { get; set; } = true;
 
@@ -91,7 +91,7 @@ public class Configuration
         "real_ips: ['10.10.0.0/24', '172.16.0.0/16']")]
     public List<string> RealIps { get; set; }
 
-    [Description("Enable Key Connector (https://bitwarden.com/help/article/deploy-key-connector)")]
+    [Description("Enable Key Connector (https://vault.deepsafer.ye/help/article/deploy-key-connector)")]
     public bool EnableKeyConnector { get; set; } = false;
 
     [Description("Enable SCIM")]

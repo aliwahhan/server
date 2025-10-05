@@ -9,7 +9,7 @@ namespace Bit.Setup;
 
 public class Context
 {
-    private const string ConfigPath = "/bitwarden/config.yml";
+    private const string ConfigPath = "/deepsafer/config.yml";
 
     // These track of old CSP default values to correct.
     // Do not change these values.
@@ -36,13 +36,22 @@ public class Context
         "frame-src 'self' https://*.duosecurity.com https://*.duofederal.com; " +
         "connect-src 'self' wss://{0} https://api.pwnedpasswords.com " +
         "https://api.2fa.directory; object-src 'self' blob:;";
+    private const string Aug2025ContentSecurityPolicy = "default-src 'self'; style-src 'self' " +
+    "'unsafe-inline'; img-src 'self' data: https://haveibeenpwned.com https://www.gravatar.com https://example.com; " +
+    "child-src 'self' https://*.duosecurity.com https://*.duofederal.com; " +
+    "frame-src 'self' https://*.duosecurity.com https://*.duofederal.com; " +
+    "connect-src 'self' wss://{0} https://api.pwnedpasswords.com " +
+    "https://api.2fa.directory https://api.stripe.com; object-src 'self' blob:;";
+
+
 
     private string[] _oldCspDefaults =
     {
         Dec2020ContentSecurityPolicy,
         Jan2021ContentSecurityPolicy,
         Feb2021ContentSecurityPolicy,
-        Jan2023ContentSecurityPolicy
+        Jan2023ContentSecurityPolicy,
+        Aug2025ContentSecurityPolicy
     };
 
     public string[] Args { get; set; }

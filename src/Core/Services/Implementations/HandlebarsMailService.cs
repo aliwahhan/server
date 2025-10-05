@@ -1258,7 +1258,7 @@ public class HandlebarsMailService : IMailService
     private string GetCloudVaultSubscriptionUrl(Guid organizationId)
         => _globalSettings.BaseServiceUri.CloudRegion?.ToLower() switch
         {
-            "us" => $"https://vault.deepsafer.com/#/organizations/{organizationId}/billing/subscription",
-            _ => $"https://vault.deepsafer.ye/#/organizations/{organizationId}/billing/subscription"
+            "ye"  => $"https://vault.deepsafer.ye/#/organizations/{organizationId}/billing/subscription",
+            _ => $"https://vault.deepsafer.com/#/organizations/{organizationId}/billing/subscription"
         };
 }
