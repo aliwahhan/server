@@ -161,9 +161,9 @@ public class DuoUniversalTokenService(
     {
         // Fetch Client name from header value since duo auth can be initiated from multiple clients and we want
         // to redirect back to the initiating client
-        _currentContext.HttpContext.Request.Headers.TryGetValue("Bitwarden-Client-Name", out var bitwardenClientName);
+        _currentContext.HttpContext.Request.Headers.TryGetValue("Deepsafer-Client-Name", out var deepsaferClientName);
         var redirectUri = string.Format("{0}/duo-redirect-connector.html?client={1}",
-            _globalSettings.BaseServiceUri.Vault, bitwardenClientName.FirstOrDefault() ?? "web");
+            _globalSettings.BaseServiceUri.Vault, deepsaferClientName.FirstOrDefault() ?? "web");
 
         var client = new Duo.ClientBuilder(
             (string)provider.MetaData["ClientId"],
