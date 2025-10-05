@@ -30,6 +30,7 @@ DbSeeder.exe <command> [options]
 # Generate an organization called "seeded" with 10000 users using the @large.test email domain.
 # Login using "admin@large.test" with password "asdfasdfasdf"
 DbSeeder.exe organization -n seeded -u 10000 -d large.test
+dotnet run -- organization -n seeded -u 10000 -d large.test
 ```
 
 ## Dependencies
