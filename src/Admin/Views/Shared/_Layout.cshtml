@@ -29,20 +29,39 @@
     <meta name="robots" content="noindex,nofollow" />
     <title>@ViewData["Title"] - Deepsafer Admin Portal</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="~/assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/apple-touch-icon.png" />
+
+    <link rel="icon" href="~/assets/favicon.ico" />
     <link rel="stylesheet" href="~/assets/site.css" asp-append-version="true" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <nav class="navbar navbar-expand-md navbar-light bg-light  mb-4 ">
         <div class="container">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                <i class="fa fa-lg fa-fw fa-shield"></i> Admin
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 248.23 248.23" height="40px" width="40px">
+                <defs>
+                    <style>
+                        .cls-1 {
+                          fill: #6b09ea;
+                        }
+
+                        .cls-2 {
+                          fill: #6b09ea;
+                        }
+                    </style>
+                </defs>
+                <path class="cls-2 tw-fill-primary-600" d="m80.96,22.47v13.68c0,3.85,3.12,6.97,6.96,6.97h72.39c3.84,0,6.96-3.12,6.96-6.97v-13.68c10.89,8.53,14.12,23.52,26.45,55.93v26.08c0,46.87-1.97,59.3-26.5,83.85l-43.05,37.43-.05-.05-43.11-37.38c-24.53-24.56-26.5-36.98-26.5-83.85v-26.08c12.33-32.41,15.56-47.4,26.45-55.93h0Zm66.8,109.37h25.62l12.54-14.15-5.87-1.31-40.06,13.39,7.78,2.07h0Zm-72.9,0h25.62l7.78-2.07-40.06-13.39-5.87,1.31,12.54,14.15h-.01Z"></path>
+                </svg>
+                 Admin
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0 ms-md-3 ms-lg-5 gap-1 gap-md-2 gap-lg-4 ">
                     @if (SignInManager.IsSignedIn(User))
                     {
                         @if (canViewUsers)
@@ -148,13 +167,13 @@
         </div>
     </nav>
 
-    <main role="main" class="container">
+    <main role="main" class="container main-container">
         @RenderBody()
     </main>
 
     <footer class="container mb-4">
         <hr />
-        &copy; @DateTime.Now.Year, Bitwarden Inc.
+        &copy; @DateTime.Now.Year, Deepsafer Inc.
     </footer>
 
     <script src="~/assets/site.js" asp-append-version="true"></script>
