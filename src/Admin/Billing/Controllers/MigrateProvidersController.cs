@@ -75,8 +75,9 @@ public class MigrateProvidersController(
     private static List<Guid> GetProviderIdsFromInput(string text) => !string.IsNullOrEmpty(text)
         ? text.Split(
                 ["\r\n", "\r", "\n"],
-                StringSplitOptions.TrimEntries
+                StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries
             )
+            .Where(id => Guid.TryParse(id, out _))
             .Select(id => new Guid(id))
             .ToList()
         : [];
