@@ -16,13 +16,14 @@ public class AzureServiceBusEventListenerService<TConfiguration> : EventLoggingL
         TConfiguration configuration,
         IEventMessageHandler handler,
         IAzureServiceBusService serviceBusService,
-        ILogger<AzureServiceBusEventListenerService<TConfiguration>> logger) : base(handler, logger)
+        ILoggerFactory loggerFactory)
+        : base(handler, CreateLogger(loggerFactory, configuration))
     {
         _processor = serviceBusService.CreateProcessor(
             topicName: configuration.EventTopicName,
             subscriptionName: configuration.EventSubscriptionName,
             new ServiceBusProcessorOptions());
-            
+
     }
 
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
@@ -39,6 +40,13 @@ public class AzureServiceBusEventListenerService<TConfiguration> : EventLoggingL
         await _processor.DisposeAsync();
         await base.StopAsync(cancellationToken);
     }
+
+    private static ILogger CreateLogger(ILoggerFactory loggerFactory, TConfiguration configuration)
+    {
+        return loggerFactory.CreateLogger(
+            categoryName: $"Bit.Core.Services.AzureServiceBusEventListenerService.{configuration.EventSubscriptionName}");
+    }
+
 
     internal Task ProcessErrorAsync(ProcessErrorEventArgs args)
     {
