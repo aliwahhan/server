@@ -40,6 +40,7 @@ public class SecurityTaskController : Controller
         _markTaskAsCompleteCommand = markTaskAsCompleteCommand;
         _getTasksForOrganizationQuery = getTasksForOrganizationQuery;
         _createManyTasksCommand = createManyTasksCommand;
+        _createManyTaskNotificationsCommand = createManyTaskNotificationsCommand;
         _getTaskMetricsForOrganizationQuery = getTaskMetricsForOrganizationQuery;
     }
 
