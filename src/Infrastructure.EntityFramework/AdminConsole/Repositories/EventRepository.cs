@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Bit.Core.Models.Data;
 using Bit.Core.Repositories;
+using Bit.Core.SecretsManager.Entities;
 using Bit.Infrastructure.EntityFramework.Models;
 using Bit.Infrastructure.EntityFramework.Repositories.Queries;
 using LinqToDB.EntityFrameworkCore;
@@ -75,6 +76,56 @@ public class EventRepository : Repository<Core.Entities.Event, Event, Guid>, IEv
         }
         result.Data.AddRange(events);
         return result;
+    }
+
+    public async Task<PagedResult<IEvent>> GetManyBySecretAsync(Secret secret,
+        DateTime startDate, DateTime endDate, PageOptions pageOptions)
+    {
+        DateTime? beforeDate = null;
+        if (!string.IsNullOrWhiteSpace(pageOptions.ContinuationToken) &&
+            long.TryParse(pageOptions.ContinuationToken, out var binaryDate))
+        {
+            beforeDate = DateTime.SpecifyKind(DateTime.FromBinary(binaryDate), DateTimeKind.Utc);
+        }
+        using (var scope = ServiceScopeFactory.CreateScope())
+        {
+            var dbContext = GetDatabaseContext(scope);
+            var query = new EventReadPageBySecretQuery(secret, startDate, endDate, beforeDate, pageOptions);
+            var events = await query.Run(dbContext).ToListAsync();
+
+            var result = new PagedResult<IEvent>();
+            if (events.Any() && events.Count >= pageOptions.PageSize)
+            {
+                result.ContinuationToken = events.Last().Date.ToBinary().ToString();
+            }
+            result.Data.AddRange(events);
+            return result;
+        }
+    }
+
+    public async Task<PagedResult<IEvent>> GetManyByProjectAsync(Project project,
+    DateTime startDate, DateTime endDate, PageOptions pageOptions)
+    {
+        DateTime? beforeDate = null;
+        if (!string.IsNullOrWhiteSpace(pageOptions.ContinuationToken) &&
+            long.TryParse(pageOptions.ContinuationToken, out var binaryDate))
+        {
+            beforeDate = DateTime.SpecifyKind(DateTime.FromBinary(binaryDate), DateTimeKind.Utc);
+        }
+        using (var scope = ServiceScopeFactory.CreateScope())
+        {
+            var dbContext = GetDatabaseContext(scope);
+            var query = new EventReadPageByProjectQuery(project, startDate, endDate, beforeDate, pageOptions);
+            var events = await query.Run(dbContext).ToListAsync();
+
+            var result = new PagedResult<IEvent>();
+            if (events.Any() && events.Count >= pageOptions.PageSize)
+            {
+                result.ContinuationToken = events.Last().Date.ToBinary().ToString();
+            }
+            result.Data.AddRange(events);
+            return result;
+        }
     }
 
     public async Task<PagedResult<IEvent>> GetManyByCipherAsync(Cipher cipher, DateTime startDate, DateTime endDate, PageOptions pageOptions)

@@ -1,5 +1,6 @@
 ﻿using Azure.Data.Tables;
 using Bit.Core.Models.Data;
+using Bit.Core.SecretsManager.Entities;
 using Bit.Core.Settings;
 using Bit.Core.Utilities;
 using Bit.Core.Vault.Entities;
@@ -33,6 +34,21 @@ public class EventRepository : IEventRepository
     {
         return await GetManyAsync($"OrganizationId={organizationId}", "Date={0}", startDate, endDate, pageOptions);
     }
+
+    public async Task<PagedResult<IEvent>> GetManyBySecretAsync(Secret secret,
+        DateTime startDate, DateTime endDate, PageOptions pageOptions)
+    {
+        return await GetManyAsync($"OrganizationId={secret.OrganizationId}",
+            $"SecretId={secret.Id}__Date={{0}}", startDate, endDate, pageOptions); ;
+    }
+
+    public async Task<PagedResult<IEvent>> GetManyByProjectAsync(Project project,
+        DateTime startDate, DateTime endDate, PageOptions pageOptions)
+    {
+        return await GetManyAsync($"OrganizationId={project.OrganizationId}",
+            $"ProjectId={project.Id}__Date={{0}}", startDate, endDate, pageOptions);
+    }
+
 
     public async Task<PagedResult<IEvent>> GetManyByOrganizationActingUserAsync(Guid organizationId, Guid actingUserId,
         DateTime startDate, DateTime endDate, PageOptions pageOptions)
