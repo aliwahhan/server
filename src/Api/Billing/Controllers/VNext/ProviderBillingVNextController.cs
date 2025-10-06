@@ -5,6 +5,7 @@ using Bit.Core.AdminConsole.Enums.Provider;
 using Bit.Core.AdminConsole.Services;
 using Bit.Core.Billing.Payment.Commands;
 using Bit.Core.Billing.Payment.Queries;
+using Bit.Core.Billing.Providers.Queries;
 using Bit.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -18,6 +19,8 @@ public class ProviderBillingVNextController(
     ICreateBitPayInvoiceForCreditCommand createBitPayInvoiceForCreditCommand,
     IGetBillingAddressQuery getBillingAddressQuery,
     IGetCreditQuery getCreditQuery,
+    IGetPaymentMethodQuery getPaymentMethodQuery,
+    IGetProviderWarningsQuery getProviderWarningsQuery,
     IProviderService providerService,
     IUpdateBillingAddressCommand updateBillingAddressCommand,
     IUpdatePaymentMethodCommand updatePaymentMethodCommand,
@@ -102,5 +105,14 @@ public class ProviderBillingVNextController(
     {
         var result = await verifyBankAccountCommand.Run(provider, request.DescriptorCode);
         return Handle(result);
+    }
+
+    [HttpGet("warnings")]
+    [InjectProvider(ProviderUserType.ServiceUser)]
+    public async Task<IResult> GetWarningsAsync(
+        [BindNever] Provider provider)
+    {
+        var warnings = await getProviderWarningsQuery.Run(provider);
+        return TypedResults.Ok(warnings);
     }
 }
