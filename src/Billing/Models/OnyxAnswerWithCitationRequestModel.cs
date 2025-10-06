@@ -46,8 +46,6 @@ public class RetrievalOptions
     [JsonPropertyName("real_time")]
     public bool RealTime { get; set; } = true;
 
-    [JsonPropertyName("limit")]
-    public int? Limit { get; set; } = 3;
 }
 
 public class RetrievalOptionsRunSearch
