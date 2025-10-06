@@ -13,6 +13,7 @@ using Bit.Core.Repositories;
 using Bit.Core.Services;
 using Bit.Core.Settings;
 using Bit.Identity.IdentityServer.Enums;
+using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Validation;
 using Microsoft.Extensions.Caching.Distributed;
 
@@ -54,8 +55,10 @@ public class DeviceValidator(
             return false;
         }
 
-        // if not a new device request then check if the device is known
-        if (!NewDeviceOtpRequest(request))
+        // Check if the request has a NewDeviceOtp, if it does we can assume it is an unknown device
+        // that has already been prompted for new device verification so we don't
+        // have to hit the database to check if the device is known to avoid unnecessary database calls.
+        if (!RequestHasNewDeviceVerificationOtp(request))
         {
             var knownDevice = await GetKnownDeviceAsync(context.User, requestDevice);
             // if the device is know then we return the device fetched from the database
@@ -74,8 +77,18 @@ public class DeviceValidator(
         // is not required for auth requests
         var rawAuthRequestId = request.Raw["AuthRequest"]?.ToLowerInvariant();
         var isAuthRequest = !string.IsNullOrEmpty(rawAuthRequestId);
-        if (request.GrantType == PasswordGrantType &&
-            !isAuthRequest &&
+        // Device unknown, but if we are in an auth request flow, this is not valid
+        // as we only support auth request authN requests on known devices
+        // Note: we re-use the resource owner password flow for auth requests
+        if (request.GrantType == GrantType.ResourceOwnerPassword && isAuthRequest)
+        {
+            (context.ValidationErrorResult, context.CustomResponse) =
+                BuildDeviceErrorResult(DeviceValidationResultType.AuthRequestFlowUnknownDevice);
+            return false;
+        }
+
+        // Enforce new device verification for resource owner password flow (just normal password flow)
+        if (request.GrantType == GrantType.ResourceOwnerPassword &&
             context is { TwoFactorRequired: false, SsoRequired: false } &&
             _globalSettings.EnableNewDeviceVerification)
         {
@@ -92,14 +105,6 @@ public class DeviceValidator(
             }
         }
 
-        // Device still unknown, but if we are in an auth request flow, this is not valid
-        // as we only support auth request authN requests on known devices
-        if (request.GrantType == PasswordGrantType && isAuthRequest)
-        {
-            (context.ValidationErrorResult, context.CustomResponse) =
-                BuildDeviceErrorResult(DeviceValidationResultType.AuthRequestFlowUnknownDevice);
-            return false;
-        }
 
         // At this point we have established either new device verification is not required or the NewDeviceOtp is valid,
         // so we save the device to the database and proceed with authentication
@@ -246,7 +251,7 @@ public class DeviceValidator(
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public static bool NewDeviceOtpRequest(ValidatedRequest request)
+    public static bool RequestHasNewDeviceVerificationOtp(ValidatedRequest request)
     {
         return !string.IsNullOrEmpty(request.Raw["NewDeviceOtp"]?.ToString());
     }
