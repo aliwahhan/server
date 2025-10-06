@@ -8,5 +8,6 @@ public static class DeepsaferClient
         Desktop = "desktop",
         Mobile = "mobile",
         Cli = "cli",
-        DirectoryConnector = "connector";
+        DirectoryConnector = "connector",
+        Send = "send";
 }
