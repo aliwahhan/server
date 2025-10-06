@@ -226,3 +226,9 @@ src/Notifications/Notifications.zip
 deepsafer_license/src/Portal/Portal.zip
 deepsafer_license/src/Sso/Sso.zip
 **/src/**/flags.json
+
+
+# Generated swagger specs
+/identity.json
+/api.json
+/api.public.json
