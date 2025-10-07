@@ -8,8 +8,8 @@ using Bit.Core.Enums;
 using Bit.Core.Models;
 using Bit.Core.Models.Api;
 using Bit.Core.Models.Data;
-using Bit.Core.NotificationHub;
 using Bit.Core.Platform.Installations;
+using Bit.Core.Platform.Push.Internal;
 using Bit.Core.Repositories;
 using NSubstitute;
 using Xunit;
@@ -58,7 +58,7 @@ public class PushControllerTests
             },
         }, $"(template:payload_userId:%installation%_{_userId})");
 
-        // Organization cipher, an org cipher would not naturally be synced from our 
+        // Organization cipher, an org cipher would not naturally be synced from our
         // code but it is technically possible to be submitted to the endpoint.
         yield return Typed(new PushSendRequestModel<SyncCipherPushNotification>
         {
@@ -84,7 +84,7 @@ public class PushControllerTests
             },
         }, $"(template:payload_userId:%installation%_{_userId})");
 
-        // Organization cipher, an org cipher would not naturally be synced from our 
+        // Organization cipher, an org cipher would not naturally be synced from our
         // code but it is technically possible to be submitted to the endpoint.
         yield return Typed(new PushSendRequestModel<SyncCipherPushNotification>
         {
@@ -110,7 +110,7 @@ public class PushControllerTests
             },
         }, $"(template:payload_userId:%installation%_{_userId})");
 
-        // Organization cipher, an org cipher would not naturally be synced from our 
+        // Organization cipher, an org cipher would not naturally be synced from our
         // code but it is technically possible to be submitted to the endpoint.
         yield return Typed(new PushSendRequestModel<SyncCipherPushNotification>
         {
@@ -251,7 +251,7 @@ public class PushControllerTests
         // Act
         var pushSendResponse = await httpClient.PostAsJsonAsync("push/send", pushSendRequestModel);
 
-        // Assert 
+        // Assert
         pushSendResponse.EnsureSuccessStatusCode();
 
         // Relayed notifications, the ones coming to this endpoint should

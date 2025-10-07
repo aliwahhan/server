@@ -1,7 +1,6 @@
 ﻿using Bit.Core.Auth.Models.Api.Request;
 using Bit.Core.Entities;
-using Bit.Core.NotificationHub;
-
+using Bit.Core.Platform.PushRegistration;
 namespace Bit.Core.Services;
 
 public interface IDeviceService

@@ -92,6 +92,8 @@ src/Admin/Views/Tools @deepsafer/team-billing-dev
 **/.dockerignore @deepsafer/team-platform-dev
 **/Dockerfile @deepsafer/team-platform-dev
 **/entrypoint.sh @deepsafer/team-platform-dev
+# The PushType enum is expected to be editted by anyone without need for Platform review
+src/Core/Platform/Push/PushType.cs
 
 # Multiple owners - DO NOT REMOVE (BRE)
 **/packages.lock.json
