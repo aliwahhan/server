@@ -224,6 +224,8 @@ public class CollectionRepository : Repository<Collection, Guid>, ICollectionRep
     public async Task CreateAsync(Collection obj, IEnumerable<CollectionAccessSelection>? groups, IEnumerable<CollectionAccessSelection>? users)
     {
         obj.SetNewId();
+
+
         var objWithGroupsAndUsers = JsonSerializer.Deserialize<CollectionWithGroupsAndUsers>(JsonSerializer.Serialize(obj))!;
 
         objWithGroupsAndUsers.Groups = groups != null ? groups.ToArrayTVP() : Enumerable.Empty<CollectionAccessSelection>().ToArrayTVP();
@@ -311,7 +313,20 @@ public class CollectionRepository : Repository<Collection, Guid>, ICollectionRep
         }
     }
 
-    public async Task CreateDefaultCollectionsAsync(Guid organizationId, IEnumerable<Guid> affectedOrgUserIds, string defaultCollectionName)
+    public async Task<ICollection<CollectionAccessSelection>> GetManyUsersByIdAsync(Guid id)
+    {
+        using (var connection = new SqlConnection(ConnectionString))
+        {
+            var results = await connection.QueryAsync<CollectionAccessSelection>(
+                $"[{Schema}].[CollectionUser_ReadByCollectionId]",
+                new { CollectionId = id },
+                commandType: CommandType.StoredProcedure);
+
+            return results.ToList();
+        }
+    }
+
+    public async Task UpsertDefaultCollectionsAsync(Guid organizationId, IEnumerable<Guid> affectedOrgUserIds, string defaultCollectionName)
     {
         if (!affectedOrgUserIds.Any())
         {
@@ -403,19 +418,6 @@ public class CollectionRepository : Repository<Collection, Guid>, ICollectionRep
         }
 
         return (collectionUsers, collections);
-    }
-
-    public async Task<ICollection<CollectionAccessSelection>> GetManyUsersByIdAsync(Guid id)
-    {
-        using (var connection = new SqlConnection(ConnectionString))
-        {
-            var results = await connection.QueryAsync<CollectionAccessSelection>(
-                $"[{Schema}].[CollectionUser_ReadByCollectionId]",
-                new { CollectionId = id },
-                commandType: CommandType.StoredProcedure);
-
-            return results.ToList();
-        }
     }
 
     public class CollectionWithGroupsAndUsers : Collection
