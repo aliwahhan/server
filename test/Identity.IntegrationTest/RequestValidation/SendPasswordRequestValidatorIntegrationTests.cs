@@ -193,7 +193,7 @@ public class SendPasswordRequestValidatorIntegrationTests : IClassFixture<Identi
         var parameters = new List<KeyValuePair<string, string>>
         {
             new(OidcConstants.TokenRequest.GrantType, CustomGrantTypes.SendAccess),
-            new(OidcConstants.TokenRequest.ClientId, BitwardenClient.Send),
+            new(OidcConstants.TokenRequest.ClientId, DeepsaferClient.Send),
             new(SendAccessConstants.TokenRequest.SendId, sendIdBase64),
             new(OidcConstants.TokenRequest.Scope, ApiScopes.ApiSendAccess),
             new("deviceType", "10")

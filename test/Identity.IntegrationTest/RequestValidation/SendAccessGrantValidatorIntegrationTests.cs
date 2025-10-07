@@ -98,7 +98,7 @@ public class SendAccessGrantValidatorIntegrationTests(IdentityApplicationFactory
 
         var requestBody = new FormUrlEncodedContent([
             new KeyValuePair<string, string>(OidcConstants.TokenRequest.GrantType, CustomGrantTypes.SendAccess),
-            new KeyValuePair<string, string>(OidcConstants.TokenRequest.ClientId, BitwardenClient.Send)
+            new KeyValuePair<string, string>(OidcConstants.TokenRequest.ClientId, DeepsaferClient.Send)
         ]);
 
         // Act
@@ -213,8 +213,8 @@ public class SendAccessGrantValidatorIntegrationTests(IdentityApplicationFactory
                 services.AddSingleton(sendAuthQuery);
 
                 // Mock password validator to return success
-                var passwordValidator = Substitute.For<ISendPasswordRequestValidator>();
-                passwordValidator.ValidateSendPassword(
+                var passwordValidator = Substitute.For<ISendAuthenticationMethodValidator<ResourcePassword>>();
+                passwordValidator.ValidateRequestAsync(
                     Arg.Any<ExtensionGrantValidationContext>(),
                     Arg.Any<ResourcePassword>(),
                     Arg.Any<Guid>())
@@ -247,7 +247,7 @@ public class SendAccessGrantValidatorIntegrationTests(IdentityApplicationFactory
         var parameters = new List<KeyValuePair<string, string>>
         {
             new(OidcConstants.TokenRequest.GrantType, CustomGrantTypes.SendAccess),
-            new(OidcConstants.TokenRequest.ClientId, BitwardenClient.Send ),
+            new(OidcConstants.TokenRequest.ClientId, DeepsaferClient.Send ),
             new(OidcConstants.TokenRequest.Scope, ApiScopes.ApiSendAccess),
             new("deviceType", ((int)DeviceType.FirefoxBrowser).ToString()),
             new(SendAccessConstants.TokenRequest.SendId, sendIdBase64)
