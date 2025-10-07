@@ -433,7 +433,7 @@ public static class ServiceCollectionExtensions
     public static void AddCustomDataProtectionServices(
         this IServiceCollection services, IWebHostEnvironment env, GlobalSettings globalSettings)
     {
-        var builder = services.AddDataProtection().SetApplicationName("Bitwarden");
+        var builder = services.AddDataProtection().SetApplicationName("VaultDeepsafer");
         if (env.IsDevelopment())
         {
             return;
@@ -688,7 +688,7 @@ public static class ServiceCollectionExtensions
         services.AddFido2(options =>
         {
             options.ServerDomain = new Uri(globalSettings.BaseServiceUri.Vault).Host;
-            options.ServerName = "Bitwarden";
+            options.ServerName = "VaultDeepsafer";
             options.Origins = new HashSet<string> { globalSettings.BaseServiceUri.Vault, };
             options.TimestampDriftTolerance = 300000;
         });

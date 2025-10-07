@@ -101,6 +101,6 @@ public static class SendAccessConstants
 
     public static class OtpEmail
     {
-        public const string Subject = "Your Bitwarden Send verification code is {0}";
+        public const string Subject = "Your Deepsafer Send verification code is {0}";
     }
 }

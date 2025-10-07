@@ -28,7 +28,7 @@ public class SyncControllerTests : IClassFixture<ApiApplicationFactory>, IAsyncL
 
     public async Task InitializeAsync()
     {
-        _ownerEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        _ownerEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(_ownerEmail);
     }
 
@@ -42,7 +42,7 @@ public class SyncControllerTests : IClassFixture<ApiApplicationFactory>, IAsyncL
     // [BitAutoData]
     public async Task Get_HaveNoMasterPassword_UserDecryptionMasterPasswordUnlockIsNull()
     {
-        var tempEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var tempEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(tempEmail);
         await _loginHelper.LoginAsync(tempEmail);
 
@@ -68,7 +68,7 @@ public class SyncControllerTests : IClassFixture<ApiApplicationFactory>, IAsyncL
     public async Task Get_HaveMasterPassword_UserDecryptionMasterPasswordUnlockNotNull(
         KdfType kdfType, int kdfIterations, int? kdfMemory, int? kdfParallelism)
     {
-        var tempEmail = $"integration-test{Guid.NewGuid()}@bitwarden.com";
+        var tempEmail = $"integration-test{Guid.NewGuid()}@vault.deepsafer.ye";
         await _factory.LoginWithNewAccount(tempEmail);
         await _loginHelper.LoginAsync(tempEmail);
 
