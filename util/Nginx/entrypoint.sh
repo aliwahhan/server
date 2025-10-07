@@ -30,7 +30,7 @@ mkhomedir_helper $USERNAME
 # The rest...
 
 chown -R $USERNAME:$GROUPNAME /etc/deepsafer
-cp /etc/deepsafer/nginx/*.conf /etc/nginx/conf.d/
+cp -p /etc/deepsafer/nginx/*.conf /etc/nginx/conf.d/
 mkdir -p /etc/letsencrypt
 chown -R $USERNAME:$GROUPNAME /etc/letsencrypt
 mkdir -p /etc/ssl
