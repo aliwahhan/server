@@ -8,6 +8,7 @@ using Bit.Core.AdminConsole.Repositories;
 using Bit.Core.Billing.Constants;
 using Bit.Core.Billing.Enums;
 using Bit.Core.Billing.Extensions;
+using Bit.Core.Billing.Payment.Queries;
 using Bit.Core.Billing.Pricing;
 using Bit.Core.OrganizationFeatures.OrganizationSponsorships.FamiliesForEnterprise.Interfaces;
 using Bit.Core.Repositories;
@@ -18,6 +19,7 @@ using Event = Stripe.Event;
 namespace Bit.Billing.Services.Implementations;
 
 public class UpcomingInvoiceHandler(
+    IGetPaymentMethodQuery getPaymentMethodQuery,
     ILogger<StripeEventProcessor> logger,
     IMailService mailService,
     IOrganizationRepository organizationRepository,
@@ -82,7 +84,7 @@ public class UpcomingInvoiceHandler(
             await SendUpcomingInvoiceEmailsAsync(new List<string> { organization.BillingEmail }, invoice);
 
             /*
-             * TODO: https://vault.deepsafer.atlassian.net/browse/PM-4862
+             * TODO: https://vault,deepsafer.atlassian.net/browse/PM-4862
              * Disabling this as part of a hot fix. It needs to check whether the organization
              * belongs to a Reseller provider and only send an email to the organization owners if it does.
              * It also requires a new email template as the current one contains too much billing information.
@@ -137,7 +139,7 @@ public class UpcomingInvoiceHandler(
 
             await AlignProviderTaxConcernsAsync(provider, subscription, parsedEvent.Id);
 
-            await SendUpcomingInvoiceEmailsAsync(new List<string> { provider.BillingEmail }, invoice);
+            await SendProviderUpcomingInvoiceEmailsAsync(new List<string> { provider.BillingEmail }, invoice, subscription, providerId.Value);
         }
     }
 
@@ -155,6 +157,42 @@ public class UpcomingInvoiceHandler(
                 invoice.NextPaymentAttempt.Value,
                 items,
                 true);
+        }
+    }
+
+    private async Task SendProviderUpcomingInvoiceEmailsAsync(IEnumerable<string> emails, Invoice invoice, Subscription subscription, Guid providerId)
+    {
+        var validEmails = emails.Where(e => !string.IsNullOrEmpty(e));
+
+        var items = invoice.FormatForProvider(subscription);
+
+        if (invoice.NextPaymentAttempt.HasValue && invoice.AmountDue > 0)
+        {
+            var provider = await providerRepository.GetByIdAsync(providerId);
+            if (provider == null)
+            {
+                logger.LogWarning("Provider {ProviderId} not found for invoice upcoming email", providerId);
+                return;
+            }
+
+            var collectionMethod = subscription.CollectionMethod;
+            var paymentMethod = await getPaymentMethodQuery.Run(provider);
+
+            var hasPaymentMethod = paymentMethod != null;
+            var paymentMethodDescription = paymentMethod?.Match(
+                bankAccount => $"Bank account ending in {bankAccount.Last4}",
+                card => $"{card.Brand} ending in {card.Last4}",
+                payPal => $"PayPal account {payPal.Email}"
+            );
+
+            await mailService.SendProviderInvoiceUpcoming(
+                validEmails,
+                invoice.AmountDue / 100M,
+                invoice.NextPaymentAttempt.Value,
+                items,
+                collectionMethod,
+                hasPaymentMethod,
+                paymentMethodDescription);
         }
     }
 

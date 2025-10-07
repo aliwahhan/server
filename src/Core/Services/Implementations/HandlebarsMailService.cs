@@ -10,12 +10,12 @@ using Bit.Core.AdminConsole.Models.Mail;
 using Bit.Core.Auth.Entities;
 using Bit.Core.Auth.Enums;
 using Bit.Core.Auth.Models.Mail;
-using Bit.Core.Models.Mail.Auth;
 using Bit.Core.Billing.Enums;
 using Bit.Core.Billing.Models.Mail;
 using Bit.Core.Entities;
 using Bit.Core.Models.Data.Organizations;
 using Bit.Core.Models.Mail;
+using Bit.Core.Models.Mail.Auth;
 using Bit.Core.Models.Mail.Billing;
 using Bit.Core.Models.Mail.FamiliesForEnterprise;
 using Bit.Core.Models.Mail.Provider;
@@ -220,7 +220,6 @@ public class HandlebarsMailService : IMailService
         await _mailDeliveryService.SendEmailAsync(message);
     }
 
-
     public async Task SendFailedTwoFactorAttemptEmailAsync(string email, TwoFactorProviderType failedType, DateTime utcNow, string ip)
     {
         // Check if we've sent this email within the last hour
@@ -232,6 +231,7 @@ public class HandlebarsMailService : IMailService
             // Email was already sent within the last hour, skip sending
             return;
         }
+
         var message = CreateDefaultMessage("Failed two-step login attempt detected", email);
         var model = new FailedAuthAttemptModel()
         {
@@ -478,6 +478,33 @@ public class HandlebarsMailService : IMailService
         await _mailDeliveryService.SendEmailAsync(message);
     }
 
+    public async Task SendProviderInvoiceUpcoming(
+        IEnumerable<string> emails,
+        decimal amount,
+        DateTime dueDate,
+        List<string> items,
+        string? collectionMethod = null,
+        bool hasPaymentMethod = true,
+        string? paymentMethodDescription = null)
+    {
+        var message = CreateDefaultMessage("Your upcoming Deepsafer invoice", emails);
+        var model = new InvoiceUpcomingViewModel
+        {
+            WebVaultUrl = _globalSettings.BaseServiceUri.VaultWithHash,
+            SiteName = _globalSettings.SiteName,
+            AmountDue = amount,
+            DueDate = dueDate,
+            Items = items,
+            MentionInvoices = false,
+            CollectionMethod = collectionMethod,
+            HasPaymentMethod = hasPaymentMethod,
+            PaymentMethodDescription = paymentMethodDescription
+        };
+        await AddMessageContentAsync(message, "ProviderInvoiceUpcoming", model);
+        message.Category = "ProviderInvoiceUpcoming";
+        await _mailDeliveryService.SendEmailAsync(message);
+    }
+
     public async Task SendPaymentFailedAsync(string email, decimal amount, bool mentionInvoices)
     {
         var message = CreateDefaultMessage("Payment Failed", email);
@@ -708,6 +735,8 @@ public class HandlebarsMailService : IMailService
         Handlebars.RegisterTemplate("SecurityTasksHtmlLayout", securityTasksHtmlLayoutSource);
         var securityTasksTextLayoutSource = await ReadSourceAsync("Layouts.SecurityTasks.text");
         Handlebars.RegisterTemplate("SecurityTasksTextLayout", securityTasksTextLayoutSource);
+        var providerFullHtmlLayoutSource = await ReadSourceAsync("Layouts.ProviderFull.html");
+        Handlebars.RegisterTemplate("ProviderFull", providerFullHtmlLayoutSource);
 
         Handlebars.RegisterHelper("date", (writer, context, parameters) =>
         {
@@ -862,6 +891,19 @@ public class HandlebarsMailService : IMailService
             {
                 writer.WriteSafeString(string.Empty);
             }
+        });
+
+        // Equality comparison helper for conditional templates.
+        Handlebars.RegisterHelper("eq", (context, arguments) =>
+        {
+            if (arguments.Length != 2)
+            {
+                return false;
+            }
+
+            var value1 = arguments[0]?.ToString();
+            var value2 = arguments[1]?.ToString();
+            return string.Equals(value1, value2, StringComparison.OrdinalIgnoreCase);
         });
     }
 
