@@ -1,6 +1,5 @@
 ﻿using Bit.Commercial.Core.AdminConsole.Services;
 using Bit.Commercial.Core.Test.AdminConsole.AutoFixture;
-using Bit.Core;
 using Bit.Core.AdminConsole.Entities;
 using Bit.Core.AdminConsole.Entities.Provider;
 using Bit.Core.AdminConsole.Enums.Provider;
@@ -119,9 +118,6 @@ public class ProviderServiceTests
         sutProvider.Create();
 
         var token = protector.Protect($"ProviderSetupInvite {provider.Id} {user.Email} {CoreHelpers.ToEpocMilliseconds(DateTime.UtcNow)}");
-
-        sutProvider.GetDependency<IFeatureService>()
-            .IsEnabled(FeatureFlagKeys.PM19956_RequireProviderPaymentMethodDuringSetup).Returns(true);
 
         tokenizedPaymentSource = tokenizedPaymentSource with { Type = PaymentMethodType.BitPay };
 
@@ -1194,7 +1190,7 @@ public class ProviderServiceTests
     private static SubscriptionUpdateOptions SubscriptionUpdateRequest(string expectedPlanId, Subscription subscriptionItem) =>
         new()
         {
-            Items = new List<Stripe.SubscriptionItemOptions>
+            Items = new List<SubscriptionItemOptions>
             {
                 new() { Id = subscriptionItem.Id, Price = expectedPlanId },
             }
