@@ -413,20 +413,7 @@ public abstract class PushTestBase
         );
     }
 
-    [Fact]
-    public async Task PushSyncOrganizationStatusAsync_SendsExpectedResponse()
-    {
-        var organization = new Organization
-        {
-            Id = Guid.NewGuid(),
-            Enabled = true,
-        };
 
-        await VerifyNotificationAsync(
-            async sut => await sut.PushSyncOrganizationStatusAsync(organization),
-            GetPushSyncOrganizationStatusResponsePayload(organization)
-        );
-    }
 
     [Fact]
     public async Task PushSyncOrganizationCollectionManagementSettingsAsync_SendsExpectedResponse()

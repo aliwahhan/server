@@ -2,9 +2,9 @@
 
 public interface ISetupIntentCache
 {
-    Task<string> Get(Guid subscriberId);
-
-    Task Remove(Guid subscriberId);
+    Task<string?> GetSetupIntentIdForSubscriber(Guid subscriberId);
+    Task<Guid?> GetSubscriberIdForSetupIntent(string setupIntentId);
+    Task RemoveSetupIntentForSubscriber(Guid subscriberId);
 
     Task Set(Guid subscriberId, string setupIntentId);
 }

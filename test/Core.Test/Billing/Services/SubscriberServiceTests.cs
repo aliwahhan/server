@@ -670,7 +670,7 @@ public class SubscriberServiceTests
             }
         };
 
-        sutProvider.GetDependency<ISetupIntentCache>().Get(provider.Id).Returns(setupIntent.Id);
+        sutProvider.GetDependency<ISetupIntentCache>().GetSetupIntentIdForSubscriber(provider.Id).Returns(setupIntent.Id);
 
         sutProvider.GetDependency<IStripeAdapter>().SetupIntentGet(setupIntent.Id,
             Arg.Is<SetupIntentGetOptions>(options => options.Expand.Contains("payment_method"))).Returns(setupIntent);
@@ -916,12 +916,12 @@ public class SubscriberServiceTests
     {
         var address = new Address
         {
-            Country = "US",
+            Country = "YE",
             PostalCode = "12345",
-            Line1 = "123 Example St.",
-            Line2 = "Unit 1",
-            City = "Example Town",
-            State = "NY"
+            Line1 = "Tahrir Street",
+            Line2 = "Al-Salam District",
+            City = "Sana'a",
+            State = "SA"
         };
 
         sutProvider.GetDependency<IStripeAdapter>().CustomerGetAsync(organization.GatewayCustomerId, Arg.Any<CustomerGetOptions>())
@@ -1594,7 +1594,7 @@ public class SubscriberServiceTests
         sutProvider.GetDependency<IGlobalSettings>().BaseServiceUri
             .Returns(new GlobalSettings.BaseServiceUriSettings(new GlobalSettings())
             {
-                CloudRegion = "US"
+                CloudRegion = "YE"
             });
 
         var (_, customerGateway, _) = SetupBraintree(sutProvider.GetDependency<IBraintreeGateway>());
@@ -1607,7 +1607,7 @@ public class SubscriberServiceTests
                 options =>
                     options.Id == braintreeCustomerId &&
                     options.CustomFields[provider.BraintreeIdField()] == provider.Id.ToString() &&
-                    options.CustomFields[provider.BraintreeCloudRegionField()] == "US" &&
+                    options.CustomFields[provider.BraintreeCloudRegionField()] == "YE" &&
                     options.Email == provider.BillingEmailAddress() &&
                     options.PaymentMethodNonce == "TOKEN"))
             .Returns(createCustomerResult);
@@ -1638,7 +1638,7 @@ public class SubscriberServiceTests
         sutProvider.GetDependency<IGlobalSettings>().BaseServiceUri
             .Returns(new GlobalSettings.BaseServiceUriSettings(new GlobalSettings())
             {
-                CloudRegion = "US"
+                CloudRegion = "YE"
             });
 
         var (_, customerGateway, _) = SetupBraintree(sutProvider.GetDependency<IBraintreeGateway>());
@@ -1656,7 +1656,7 @@ public class SubscriberServiceTests
         customerGateway.CreateAsync(Arg.Is<CustomerRequest>(
                 options =>
                     options.CustomFields[provider.BraintreeIdField()] == provider.Id.ToString() &&
-                    options.CustomFields[provider.BraintreeCloudRegionField()] == "US" &&
+                    options.CustomFields[provider.BraintreeCloudRegionField()] == "YE" &&
                     options.Email == provider.BillingEmailAddress() &&
                     options.PaymentMethodNonce == "TOKEN"))
             .Returns(createCustomerResult);
@@ -1693,44 +1693,45 @@ public class SubscriberServiceTests
     {
         var stripeAdapter = sutProvider.GetDependency<IStripeAdapter>();
 
-        var customer = new Customer { Id = provider.GatewayCustomerId, TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "us_ein" }] } };
+        var customer = new Customer { Id = provider.GatewayCustomerId, TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "ey_oss_vat" }] } };
 
         stripeAdapter.CustomerGetAsync(provider.GatewayCustomerId, Arg.Is<CustomerGetOptions>(
             options => options.Expand.Contains("tax_ids"))).Returns(customer);
 
         var taxInformation = new TaxInformation(
-            "US",
+            "YE",
             "12345",
             "123456789",
-            "us_ein",
-            "123 Example St.",
+            "ey_oss_vat",
+            "Tahrir Street",
             null,
             "Example Town",
-            "NY");
+            "SA");
 
         sutProvider.GetDependency<IStripeAdapter>()
             .CustomerUpdateAsync(
                 Arg.Is<string>(p => p == provider.GatewayCustomerId),
                 Arg.Is<CustomerUpdateOptions>(options =>
-                    options.Address.Country == "US" &&
+                    options.Address.Country == "YE" &&
                     options.Address.PostalCode == "12345" &&
-                    options.Address.Line1 == "123 Example St." &&
+                    options.Address.Line1 == "Tahrir Street" &&
                     options.Address.Line2 == null &&
-                    options.Address.City == "Example Town" &&
-                    options.Address.State == "NY"))
+                    options.Address.City == "Sana'a" &&
+                    options.Address.State == "SA"))
             .Returns(new Customer
             {
                 Id = provider.GatewayCustomerId,
                 Address = new Address
                 {
-                    Country = "US",
-                    PostalCode = "12345",
-                    Line1 = "123 Example St.",
-                    Line2 = null,
-                    City = "Example Town",
-                    State = "NY"
+
+                     Country = "YE",
+                     PostalCode = "12345",
+                     Line1 = "Tahrir Street",
+                     Line2 = "Al-Salam District",
+                     City = "Sana'a",
+                     State = "SA"
                 },
-                TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "us_ein" }] },
+                TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "ey_oss_vat" }] },
                 Subscriptions = new StripeList<Subscription>
                 {
                     Data = [
@@ -1761,7 +1762,7 @@ public class SubscriberServiceTests
         await stripeAdapter.Received(1).TaxIdDeleteAsync(provider.GatewayCustomerId, "tax_id_1");
 
         await stripeAdapter.Received(1).TaxIdCreateAsync(provider.GatewayCustomerId, Arg.Is<TaxIdCreateOptions>(
-            options => options.Type == "us_ein" &&
+            options => options.Type == "ey_oss_vat" &&
                        options.Value == taxInformation.TaxId));
 
         await stripeAdapter.Received(1).SubscriptionUpdateAsync(provider.GatewaySubscriptionId,
@@ -1775,44 +1776,44 @@ public class SubscriberServiceTests
     {
         var stripeAdapter = sutProvider.GetDependency<IStripeAdapter>();
 
-        var customer = new Customer { Id = provider.GatewayCustomerId, TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "us_ein" }] } };
+        var customer = new Customer { Id = provider.GatewayCustomerId, TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "ey_oss_vat" }] } };
 
         stripeAdapter.CustomerGetAsync(provider.GatewayCustomerId, Arg.Is<CustomerGetOptions>(
             options => options.Expand.Contains("tax_ids"))).Returns(customer);
 
         var taxInformation = new TaxInformation(
-            "CA",
+            "YE",
             "12345",
             "123456789",
-            "us_ein",
-            "123 Example St.",
+            "ey_oss_vat",
+            "Al-Salam District",
             null,
-            "Example Town",
-            "NY");
+            "Example Sana'a",
+            "SA");
 
         sutProvider.GetDependency<IStripeAdapter>()
             .CustomerUpdateAsync(
                 Arg.Is<string>(p => p == provider.GatewayCustomerId),
                 Arg.Is<CustomerUpdateOptions>(options =>
-                    options.Address.Country == "CA" &&
+                    options.Address.Country == "YE" &&
                     options.Address.PostalCode == "12345" &&
-                    options.Address.Line1 == "123 Example St." &&
+                    options.Address.Line1 == "Tahrir Street" &&
                     options.Address.Line2 == null &&
-                    options.Address.City == "Example Town" &&
-                    options.Address.State == "NY"))
+                    options.Address.City == "Example Sana'a" &&
+                    options.Address.State == "SA"))
             .Returns(new Customer
             {
                 Id = provider.GatewayCustomerId,
                 Address = new Address
                 {
-                    Country = "CA",
+                    Country = "YE",
                     PostalCode = "12345",
-                    Line1 = "123 Example St.",
+                    Line1 = "Tahrir Street",
                     Line2 = null,
-                    City = "Example Town",
-                    State = "NY"
+                    City = "Example Sana'a",
+                    State = "SA"
                 },
-                TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "us_ein" }] },
+                TaxIds = new StripeList<TaxId> { Data = [new TaxId { Id = "tax_id_1", Type = "ey_oss_vat" }] },
                 Subscriptions = new StripeList<Subscription>
                 {
                     Data = [
@@ -1844,7 +1845,7 @@ public class SubscriberServiceTests
         await stripeAdapter.Received(1).TaxIdDeleteAsync(provider.GatewayCustomerId, "tax_id_1");
 
         await stripeAdapter.Received(1).TaxIdCreateAsync(provider.GatewayCustomerId, Arg.Is<TaxIdCreateOptions>(
-            options => options.Type == "us_ein" &&
+            options => options.Type == "ey_oss_vat" &&
                        options.Value == taxInformation.TaxId));
 
         await stripeAdapter.Received(1).CustomerUpdateAsync(provider.GatewayCustomerId,
@@ -1876,7 +1877,7 @@ public class SubscriberServiceTests
             PaymentMethodId = "payment_method_id"
         };
 
-        sutProvider.GetDependency<ISetupIntentCache>().Get(provider.Id).Returns(setupIntent.Id);
+        sutProvider.GetDependency<ISetupIntentCache>().GetSetupIntentIdForSubscriber(provider.Id).Returns(setupIntent.Id);
 
         var stripeAdapter = sutProvider.GetDependency<IStripeAdapter>();
 

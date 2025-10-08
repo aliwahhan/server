@@ -90,4 +90,10 @@ public enum PushType : byte
 
     [NotificationInfo("@deepsafer/team-vault-dev", typeof(Models.UserPushNotification))]
     RefreshSecurityTasks = 22,
+
+    [NotificationInfo("@deepsafer/team-billing-dev", typeof(Models.ProviderBankAccountVerifiedPushNotification))]
+    OrganizationBankAccountVerified = 23,
+
+    [NotificationInfo("@deepsafer/team-billing-dev", typeof(Models.ProviderBankAccountVerifiedPushNotification))]
+    ProviderBankAccountVerified = 24
 }
