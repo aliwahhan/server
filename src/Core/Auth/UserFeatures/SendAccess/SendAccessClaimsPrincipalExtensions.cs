@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using Bit.Core.Identity;
+using Bit.Core.Auth.Identity;
 
 namespace Bit.Core.Auth.UserFeatures.SendAccess;
 
