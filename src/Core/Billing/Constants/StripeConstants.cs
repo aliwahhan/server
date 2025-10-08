@@ -78,7 +78,7 @@ public static class StripeConstants
 
     public static class Prices
     {
-        public const string StoragePlanPersonal = "personal-storage-gb-annually";
+        public const string PremiumAnnually = "premium-annually";
     }
 
     public static class ProrationBehavior
