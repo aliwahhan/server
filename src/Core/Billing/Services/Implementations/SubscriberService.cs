@@ -807,7 +807,7 @@ public class SubscriberService(
             {
                 case
                 {
-                    Address.Country: not "YE",
+                    Address.Country: not Core.Constants.CountryAbbreviations.UnitedStates,
                     TaxExempt: not TaxExempt.Reverse
                 }:
                     await stripeAdapter.CustomerUpdateAsync(customer.Id,
@@ -815,7 +815,7 @@ public class SubscriberService(
                     break;
                 case
                 {
-                    Address.Country: "YE",
+                    Address.Country: Core.Constants.CountryAbbreviations.UnitedStates,
                     TaxExempt: TaxExempt.Reverse
                 }:
                     await stripeAdapter.CustomerUpdateAsync(customer.Id,
@@ -838,8 +838,8 @@ public class SubscriberService(
             {
                 User => true,
                 Organization organization => organization.PlanType.GetProductTier() == ProductTierType.Families ||
-                                             customer.Address.Country == "YE" || (customer.TaxIds?.Any() ?? false),
-                Provider => customer.Address.Country == "YE" || (customer.TaxIds?.Any() ?? false),
+                                             customer.Address.Country == Core.Constants.CountryAbbreviations.UnitedStates || (customer.TaxIds?.Any() ?? false),
+                Provider => customer.Address.Country == Core.Constants.CountryAbbreviations.UnitedStates || (customer.TaxIds?.Any() ?? false),
                 _ => false
             };
 
@@ -942,7 +942,6 @@ public class SubscriberService(
             return false;
         }
     }
-
 
     #region Shared Utilities
 

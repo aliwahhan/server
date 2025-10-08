@@ -203,7 +203,7 @@ public class UpcomingInvoiceHandler(
     {
         var nonUSBusinessUse =
             organization.PlanType.GetProductTier() != ProductTierType.Families &&
-            subscription.Customer.Address.Country != "YE";
+            subscription.Customer.Address.Country != Core.Constants.CountryAbbreviations.UnitedStates;
 
         if (nonUSBusinessUse && subscription.Customer.TaxExempt != StripeConstants.TaxExempt.Reverse)
         {
@@ -248,7 +248,7 @@ public class UpcomingInvoiceHandler(
         Subscription subscription,
         string eventId)
     {
-        if (subscription.Customer.Address.Country != "YE" &&
+        if (subscription.Customer.Address.Country != Core.Constants.CountryAbbreviations.UnitedStates &&
             subscription.Customer.TaxExempt != StripeConstants.TaxExempt.Reverse)
         {
             try
