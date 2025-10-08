@@ -408,6 +408,7 @@ listener configuration will be used to type the listener and provide the means t
 configurations for the integration.
 
 ## ServiceCollectionExtensions
+
 In our `ServiceCollectionExtensions`, we pull all the above pieces together to start listeners on each message
 tier with handlers to process the integration.
 
@@ -417,15 +418,22 @@ dependencies and integrations. For instance, `SlackIntegrationHandler` needs a `
 `AddEventIntegrationServices` has a call to `AddSlackService`. Same thing for webhooks when it
 comes to defining a custom HttpClient by name.
 
-1. In `AddEventIntegrationServices` create the listener configuration:
+In `AddEventIntegrationServices`:
+
+1.  Create the singleton for the handler:
+
+``` csharp
+        services.TryAddSingleton<IIntegrationHandler<ExampleIntegrationConfigurationDetails>, ExampleIntegrationHandler>();
+```
+
+2. Create the listener configuration:
 
 ``` csharp
         var exampleConfiguration = new ExampleListenerConfiguration(globalSettings);
 ```
 
-2. Add the integration to both the RabbitMQ and ASB specific declarations:
+3. Add the integration to both the RabbitMQ and ASB specific declarations:
 
-1. In `AddRabbitMqListeners` add the integration:
 ``` csharp
         services.AddRabbitMqIntegration<ExampleIntegrationConfigurationDetails, ExampleListenerConfiguration>(exampleConfiguration);
 ```
@@ -433,8 +441,9 @@ comes to defining a custom HttpClient by name.
 and
 
 ``` csharp
- services.AddAzureServiceBusIntegration<ExampleIntegrationConfigurationDetails, ExampleListenerConfiguration>(exampleConfiguration);
+        services.AddAzureServiceBusIntegration<ExampleIntegrationConfigurationDetails, ExampleListenerConfiguration>(exampleConfiguration);
 ```
+
 
 # Deploying a new integration
 
