@@ -34,6 +34,8 @@ public class CipherDetailsQuery : IQuery<CipherDetails>
                         FolderId = (_ignoreFolders || !_userId.HasValue || c.Folders == null || !c.Folders.ToLowerInvariant().Contains(_userId.Value.ToString())) ?
                             null :
                             CoreHelpers.LoadClassFromJsonData<Dictionary<Guid, Guid>>(c.Folders)[_userId.Value],
+                        ArchivedDate = c.ArchivedDate,
+
                     };
         return query;
     }
