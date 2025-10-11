@@ -15,7 +15,8 @@ public class OrganizationInvitesInfo
         bool orgSsoLoginRequiredPolicyEnabled,
         IEnumerable<(OrganizationUser orgUser, ExpiringToken token)> orgUserTokenPairs,
         Dictionary<Guid, bool> orgUserHasExistingUserDict,
-        bool initOrganization = false
+        bool initOrganization = false,
+        bool isSubjectFeatureEnabled = false
         )
     {
         OrganizationName = org.DisplayName();
@@ -29,6 +30,7 @@ public class OrganizationInvitesInfo
 
         OrgUserTokenPairs = orgUserTokenPairs;
         OrgUserHasExistingUserDict = orgUserHasExistingUserDict;
+        IsSubjectFeatureEnabled = isSubjectFeatureEnabled;
     }
 
     public string OrganizationName { get; }
@@ -37,6 +39,7 @@ public class OrganizationInvitesInfo
     public bool OrgSsoEnabled { get; }
     public string OrgSsoIdentifier { get; }
     public bool OrgSsoLoginRequiredPolicyEnabled { get; }
+    public bool IsSubjectFeatureEnabled { get; }
 
     public IEnumerable<(OrganizationUser OrgUser, ExpiringToken Token)> OrgUserTokenPairs { get; }
     public Dictionary<Guid, bool> OrgUserHasExistingUserDict { get; }
