@@ -9,12 +9,6 @@ const AUTH_USERNAME = __ENV.AUTH_USER_EMAIL;
 const AUTH_PASSWORD = __ENV.AUTH_USER_PASSWORD_HASH;
 
 export const options = {
-  ext: {
-    loadimpact: {
-      projectID: 3639465,
-      name: "Sync",
-    },
-  },
   scenarios: {
     constant_load: {
       executor: "constant-arrival-rate",
@@ -63,7 +57,7 @@ export default function (data) {
   };
 
   const excludeDomains = Math.random() > 0.5;
-  
+
   const syncRes = http.get(`${API_URL}/sync?excludeDomains=${excludeDomains}`, params);
   if (
     !check(syncRes, {
