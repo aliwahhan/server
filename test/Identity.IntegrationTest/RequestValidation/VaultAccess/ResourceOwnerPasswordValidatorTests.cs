@@ -12,7 +12,7 @@ using Bit.Test.Common.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Xunit;
 
-namespace Bit.Identity.IntegrationTest.RequestValidation;
+namespace Bit.Identity.IntegrationTest.RequestValidation.VaultAccess;
 
 public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplicationFactory>
 {
@@ -205,6 +205,7 @@ public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplica
         var errorMessage = AssertHelper.AssertJsonProperty(errorModel, "Message", JsonValueKind.String).GetString();
         Assert.Equal("auth request flow unsupported on unknown device", errorMessage);
     }
+
     [Fact]
     public async Task ValidateAsync_ValidateContextAsync_Expired_AuthRequest_Failure()
     {
@@ -245,11 +246,11 @@ public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplica
                 { "scope", "api offline_access" },
                 { "client_id", "web" },
                 { "deviceType", DeviceTypeAsString(DeviceType.FirefoxBrowser) },
-                { "deviceIdentifier", _defaultDeviceIdentifier  },
+                { "deviceIdentifier", _defaultDeviceIdentifier },
                 { "deviceName", "firefox" },
                 { "grant_type", "password" },
-                { "username", _defaultUsername  },
-                { "password", _defaultPassword  },
+                { "username", _defaultUsername },
+                { "password", _defaultPassword },
                 { "AuthRequest", authRequest.Id.ToString().ToLowerInvariant() }
             }));
 
@@ -257,6 +258,7 @@ public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplica
 
         await AssertStandardError(context);
     }
+
     [Fact]
     public async Task ValidateAsync_ValidateContextAsync_Unapproved_AuthRequest_Failure()
     {
@@ -408,6 +410,7 @@ public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplica
         });
         var authRequestRepository = localFactory.GetService<IAuthRequestRepository>();
         await authRequestRepository.CreateAsync(authRequest);
+
         var expectedAuthRequest = await authRequestRepository.GetManyByUserIdAsync(user2.Id);
         Assert.NotEmpty(expectedAuthRequest);
 
@@ -427,7 +430,6 @@ public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplica
             }));
 
         // Assert
-
         var body = await AssertHelper.AssertResponseTypeIs<JsonDocument>(context);
         var root = body.RootElement;
 
@@ -629,8 +631,8 @@ public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplica
             { "deviceIdentifier", deviceId ?? _defaultDeviceIdentifier },
             { "deviceName", "firefox" },
             { "grant_type", "password" },
-            { "username", username ?? _defaultUsername  },
-            { "password", password ?? _defaultPassword  },
+            { "username", username ?? _defaultUsername },
+            { "password", password ?? _defaultPassword },
         });
     }
 
@@ -650,6 +652,7 @@ public class ResourceOwnerPasswordValidatorTests : IClassFixture<IdentityApplica
     {
         return ((int)deviceType).ToString();
     }
+
 
     private AuthRequest CreateAuthRequest(Action<AuthRequest>? customize = null)
     {
