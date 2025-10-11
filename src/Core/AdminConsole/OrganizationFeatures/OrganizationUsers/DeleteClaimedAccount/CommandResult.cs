@@ -1,7 +1,7 @@
 using OneOf;
 using OneOf.Types;
 
-namespace Bit.Core.AdminConsole.OrganizationFeatures.OrganizationUsers.DeleteClaimedAccountvNext;
+namespace Bit.Core.AdminConsole.OrganizationFeatures.OrganizationUsers.DeleteClaimedAccount;
 
 /// <summary>
 /// Represents the result of a command.
