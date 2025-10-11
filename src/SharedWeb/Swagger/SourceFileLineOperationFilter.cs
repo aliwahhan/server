@@ -17,7 +17,6 @@ namespace Bit.SharedWeb.Swagger;
 /// </summary>
 public class SourceFileLineOperationFilter : IOperationFilter
 {
-    private static readonly string _gitCommit = GitCommitDocumentFilter.GitCommit ?? "main";
 
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
@@ -27,7 +26,7 @@ public class SourceFileLineOperationFilter : IOperationFilter
         {
             // Add the information with a link to the source file at the end of the operation description
             operation.Description +=
-                $"\nThis operation is defined on: [`https://github.com/deepsafer/server/blob/{_gitCommit}/{fileName}#L{lineNumber}`]";
+                $"\nThis operation is defined on: [`https://github.com/deepsafer/server/blob/main/{fileName}#L{lineNumber}`]";
 
             // Also add the information as extensions, so other tools can use it in the future
             operation.Extensions.Add("x-source-file", new OpenApiString(fileName));
