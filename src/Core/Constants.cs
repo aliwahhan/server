@@ -231,6 +231,8 @@ public static class FeatureFlagKeys
     public const string PM22136_SdkCipherEncryption = "pm-22136-sdk-cipher-encryption";
     /* Innovation Team */
     public const string ArchiveVaultItems = "pm-19148-innovation-archive";
+    /* DIRT Team */
+    public const string PM22887_RiskInsightsActivityTab = "pm-22887-risk-insights-activity-tab";
 
     public static List<string> GetAllKeys()
     {
