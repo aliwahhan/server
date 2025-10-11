@@ -18,6 +18,7 @@ public class AzureServiceBusIntegrationListenerService<TConfiguration> : Backgro
         TConfiguration configuration,
         IIntegrationHandler handler,
         IAzureServiceBusService serviceBusService,
+        ServiceBusProcessorOptions serviceBusOptions,
         ILoggerFactory loggerFactory)
     {
         _handler = handler;
@@ -26,10 +27,10 @@ public class AzureServiceBusIntegrationListenerService<TConfiguration> : Backgro
         _maxRetries = configuration.MaxRetries;
         _serviceBusService = serviceBusService;
 
-         _processor = _serviceBusService.CreateProcessor(
+        _processor = _serviceBusService.CreateProcessor(
             topicName: configuration.IntegrationTopicName,
             subscriptionName: configuration.IntegrationSubscriptionName,
-            options: new ServiceBusProcessorOptions());
+            options: serviceBusOptions);
     }
 
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
