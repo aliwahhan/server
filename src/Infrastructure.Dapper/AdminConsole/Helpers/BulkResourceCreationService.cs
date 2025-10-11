@@ -1,6 +1,7 @@
 using System.Data;
 using Bit.Core.Entities;
 using Bit.Core.Vault.Entities;
+using Bit.Infrastructure.Dapper.Utilities;
 using Microsoft.Data.SqlClient;
 
 namespace Bit.Infrastructure.Dapper.AdminConsole.Helpers;
@@ -8,11 +9,25 @@ namespace Bit.Infrastructure.Dapper.AdminConsole.Helpers;
 public static class BulkResourceCreationService
 {
     private const string _defaultErrorMessage = "Must have at least one record for bulk creation.";
-    public static async Task CreateCollectionsUsersAsync(SqlConnection connection, SqlTransaction transaction, IEnumerable<CollectionUser> collectionUsers, string errorMessage = _defaultErrorMessage)
+    public static async Task CreateCollectionsUsersAsync(SqlConnection connection, SqlTransaction transaction,
+        IEnumerable<CollectionUser> collectionUsers, string errorMessage = _defaultErrorMessage)
     {
+        // Offload some work from SQL Server by pre-sorting before insert.
+        // This lets us use the SqlBulkCopy.ColumnOrderHints to improve performance and reduce deadlocks.
+        var sortedCollectionUsers = collectionUsers
+            .OrderBySqlGuid(cu => cu.CollectionId)
+            .ThenBySqlGuid(cu => cu.OrganizationUserId)
+            .ToList();
+
         using var bulkCopy = new SqlBulkCopy(connection, SqlBulkCopyOptions.KeepIdentity, transaction);
         bulkCopy.DestinationTableName = "[dbo].[CollectionUser]";
-        var dataTable = BuildCollectionsUsersTable(bulkCopy, collectionUsers, errorMessage);
+        bulkCopy.BatchSize = 500;
+        bulkCopy.BulkCopyTimeout = 120;
+        bulkCopy.EnableStreaming = true;
+        bulkCopy.ColumnOrderHints.Add("CollectionId", SortOrder.Ascending);
+        bulkCopy.ColumnOrderHints.Add("OrganizationUserId", SortOrder.Ascending);
+
+        var dataTable = BuildCollectionsUsersTable(bulkCopy, sortedCollectionUsers, errorMessage);
         await bulkCopy.WriteToServerAsync(dataTable);
     }
 
@@ -47,6 +62,7 @@ public static class BulkResourceCreationService
         var dataTable = BuildCiphersTable(bulkCopy, ciphers, errorMessage);
         await bulkCopy.WriteToServerAsync(dataTable);
     }
+
     private static DataTable BuildCollectionsUsersTable(SqlBulkCopy bulkCopy, IEnumerable<CollectionUser> collectionUsers, string errorMessage)
     {
         var collectionUser = collectionUsers.FirstOrDefault();
@@ -95,11 +111,21 @@ public static class BulkResourceCreationService
         return table;
     }
 
-    public static async Task CreateCollectionsAsync(SqlConnection connection, SqlTransaction transaction, IEnumerable<Collection> collections, string errorMessage = _defaultErrorMessage)
+    public static async Task CreateCollectionsAsync(SqlConnection connection, SqlTransaction transaction,
+        IEnumerable<Collection> collections, string errorMessage = _defaultErrorMessage)
     {
+        // Offload some work from SQL Server by pre-sorting before insert.
+        // This lets us use the SqlBulkCopy.ColumnOrderHints to improve performance and reduce deadlocks.
+        var sortedCollections = collections.OrderBySqlGuid(c => c.Id).ToList();
+
         using var bulkCopy = new SqlBulkCopy(connection, SqlBulkCopyOptions.KeepIdentity, transaction);
         bulkCopy.DestinationTableName = "[dbo].[Collection]";
-        var dataTable = BuildCollectionsTable(bulkCopy, collections, errorMessage);
+        bulkCopy.BatchSize = 500;
+        bulkCopy.BulkCopyTimeout = 120;
+        bulkCopy.EnableStreaming = true;
+        bulkCopy.ColumnOrderHints.Add("Id", SortOrder.Ascending);
+
+        var dataTable = BuildCollectionsTable(bulkCopy, sortedCollections, errorMessage);
         await bulkCopy.WriteToServerAsync(dataTable);
     }
 
@@ -158,7 +184,8 @@ public static class BulkResourceCreationService
 
         return collectionsTable;
     }
-     private static DataTable BuildCiphersTable(SqlBulkCopy bulkCopy, IEnumerable<Cipher> ciphers, string errorMessage)
+
+    private static DataTable BuildCiphersTable(SqlBulkCopy bulkCopy, IEnumerable<Cipher> ciphers, string errorMessage)
     {
         var c = ciphers.FirstOrDefault();
 

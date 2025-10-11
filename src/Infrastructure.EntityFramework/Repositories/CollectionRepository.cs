@@ -2,6 +2,7 @@
 using Bit.Core.Enums;
 using Bit.Core.Models.Data;
 using Bit.Core.Repositories;
+using Bit.Core.Utilities;
 using Bit.Infrastructure.EntityFramework.Models;
 using Bit.Infrastructure.EntityFramework.Repositories.Queries;
 using LinqToDB.EntityFrameworkCore;
@@ -325,7 +326,7 @@ public class CollectionRepository : Repository<Core.Entities.Collection, Collect
                         c.CreationDate,
                         c.RevisionDate,
                         c.ExternalId,
-                         c.Unmanaged,
+                        c.Unmanaged,
                         c.DefaultUserCollectionEmail
                     }).Select(collectionGroup => new CollectionAdminDetails
                     {
@@ -720,6 +721,7 @@ public class CollectionRepository : Repository<Core.Entities.Collection, Collect
         }
     }
 
+
     private static async Task ReplaceCollectionGroupsAsync(DatabaseContext dbContext, Core.Entities.Collection collection, IEnumerable<CollectionAccessSelection> groups)
     {
         var existingCollectionGroups = await dbContext.CollectionGroups
@@ -792,9 +794,10 @@ public class CollectionRepository : Repository<Core.Entities.Collection, Collect
         // SaveChangesAsync is expected to be called outside this method
     }
 
-    public async Task UpsertDefaultCollectionsAsync(Guid organizationId, IEnumerable<Guid> affectedOrgUserIds, string defaultCollectionName)
+    public async Task UpsertDefaultCollectionsAsync(Guid organizationId, IEnumerable<Guid> organizationUserIds, string defaultCollectionName)
     {
-        if (!affectedOrgUserIds.Any())
+        organizationUserIds = organizationUserIds.ToList();
+        if (!organizationUserIds.Any())
         {
             return;
         }
@@ -803,8 +806,7 @@ public class CollectionRepository : Repository<Core.Entities.Collection, Collect
         var dbContext = GetDatabaseContext(scope);
 
         var orgUserIdWithDefaultCollection = await GetOrgUserIdsWithDefaultCollectionAsync(dbContext, organizationId);
-
-        var missingDefaultCollectionUserIds = affectedOrgUserIds.Except(orgUserIdWithDefaultCollection);
+        var missingDefaultCollectionUserIds = organizationUserIds.Except(orgUserIdWithDefaultCollection);
 
         var (collectionUsers, collections) = BuildDefaultCollectionForUsers(organizationId, missingDefaultCollectionUserIds, defaultCollectionName);
 
@@ -849,7 +851,7 @@ public class CollectionRepository : Repository<Core.Entities.Collection, Collect
 
         foreach (var orgUserId in missingDefaultCollectionUserIds)
         {
-            var collectionId = Guid.NewGuid();
+            var collectionId = CoreHelpers.GenerateComb();
 
             collections.Add(new Collection
             {
