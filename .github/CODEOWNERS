@@ -4,11 +4,12 @@
 #
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
-## Docker files have shared ownership ##
-**/Dockerfile
-**/*.Dockerfile
-**/.dockerignore
-**/entrypoint.sh
+## Docker-related files
+**/Dockerfile @deepsafer/team-appsec @deepsafer/dept-bre
+**/*.Dockerfile @deepsafer/team-appsec @deepsafer/dept-bre
+**/*.dockerignore @deepsafer/team-appsec @deepsafer/dept-bre
+**/docker-compose.yml @deepsafer/team-appsec @deepsafer/dept-bre
+**/entrypoint.sh @deepsafer/team-appsec @deepsafer/dept-bre
 
 ## BRE team owns these workflows ##
 .github/workflows/publish.yml @deepsafer/dept-bre
