@@ -1,4 +1,3 @@
-#nullable enable
 using System.ComponentModel.DataAnnotations;
 using Bit.Api.Billing.Models.Requests.Payment;
 using Bit.Core.Billing.Payment.Models;
