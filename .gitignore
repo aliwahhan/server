@@ -215,6 +215,7 @@ deepsafer_license/src/Sso/wwwroot/assets
 **/**.swp
 .mono
 src/Core/MailTemplates/Mjml/out
+src/Core/MailTemplates/Mjml/out-hbs
 
 src/Admin/Admin.zip
 src/Api/Api.zip
