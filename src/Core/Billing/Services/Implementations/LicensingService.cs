@@ -58,7 +58,7 @@ public class LicensingService : ILicensingService
         _userLicenseClaimsFactory = userLicenseClaimsFactory;
 
         var certThumbprint = environment.IsDevelopment() ?
-            "C96848B456D4A7B14C734B33675B414D6E85D719" :
+            "4F825E46A2F0DF74F09EB83CE9CAB46DDC099C82" :
             "207E64A231E8AA32AAF68A61037C075EBEBD553F";//207E64A231E8AA32AAF68A61037C075EBEBD553F
         if (_globalSettings.SelfHosted)
         {
