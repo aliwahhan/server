@@ -1,3 +1,4 @@
+version: "3.9"
 
 services:
   mssql:
@@ -52,6 +53,7 @@ services:
       - ./.data/postgres/log:/var/log/postgresql
     profiles:
       - postgres
+      - ef
 
   mysql:
     image: mysql:8.0
@@ -68,6 +70,7 @@ services:
       - mysql_dev_data:/var/lib/mysql
     profiles:
       - mysql
+      - ef
 
   mariadb:
     image: mariadb:10
@@ -75,13 +78,13 @@ services:
       - 4306:3306
     environment:
       MARIADB_USER: maria
-      MARIADB_PASSWORD: ${MARIADB_ROOT_PASSWORD}
       MARIADB_DATABASE: vault_dev
       MARIADB_RANDOM_ROOT_PASSWORD: "true"
     volumes:
       - mariadb_dev_data:/var/lib/mysql
     profiles:
       - mariadb
+      - ef
 
   idp:
     image: kenchan0130/simplesamlphp:1.19.8
@@ -89,8 +92,8 @@ services:
     ports:
       - "8090:8080"
     environment:
-      SIMPLESAMLPHP_SP_ENTITY_ID: "https://localhost:51822/saml2"
-      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: "https://localhost:51822/saml2/1/Acs"
+      SIMPLESAMLPHP_SP_ENTITY_ID: ${IDP_SP_ENTITY_ID}
+      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: ${IDP_SP_ACS_URL}
       SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: null
     volumes:
       - ./authsources.php:/var/www/simplesamlphp/config/authsources.php
@@ -108,7 +111,6 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-      - ./rabbitmq_delayed_message_exchange-4.1.0.zip:/opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange-4.1.0.ez
     profiles:
       - rabbitmq
 
@@ -130,7 +132,7 @@ services:
     volumes:
       - "./servicebusemulator_config.json:/ServiceBus_Emulator/ConfigFiles/Config.json"
     ports:
-      - "5673:5672"
+      - "5672:5672"
     environment:
       SQL_SERVER: mssql
       MSSQL_SA_PASSWORD: "${MSSQL_PASSWORD}"
@@ -153,6 +155,6 @@ volumes:
   mssql_dev_data:
   postgres_dev_data:
   mysql_dev_data:
+  mariadb_dev_data:
   rabbitmq_data:
   redis_data:
-  mariadb_dev_data:
