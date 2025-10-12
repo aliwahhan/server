@@ -47,7 +47,7 @@
         O.[UsePasswordManager],
         O.[SmSeats],
         O.[SmServiceAccounts],
-        O.[LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        O.[LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         O.[LimitCollectionCreation],
         O.[LimitCollectionDeletion],
         O.[AllowAdminAccessToAllCollectionItems],
@@ -103,7 +103,7 @@
         PU.[Id] ProviderUserId,
         P.[Name] ProviderName,
         O.[PlanType],
-        O.[LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        O.[LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         O.[LimitCollectionCreation],
         O.[LimitCollectionDeletion],
         O.[AllowAdminAccessToAllCollectionItems],
@@ -139,4 +139,3 @@
             EXECUTE sp_refreshsqlmodule N'[dbo].[OrganizationView]';
         END
     GO
-    

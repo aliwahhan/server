@@ -3,7 +3,7 @@ CREATE PROCEDURE [dbo].[OrganizationUser_ReadOccupiedSeatCountByOrganizationId]
 AS
 BEGIN
     SET NOCOUNT ON
-    
+
     SELECT
         (
             -- Count organization users
@@ -11,17 +11,17 @@ BEGIN
             FROM [dbo].[OrganizationUserView]
             WHERE OrganizationId = @OrganizationId
             AND Status >= 0 --Invited
-        ) + 
+        ) +
         (
             -- Count admin-initiated sponsorships towards the seat count
-            -- Introduced in https://bitwarden.atlassian.net/browse/PM-17772
+            -- Introduced in https://deepsafer.atlassian.net/browse/PM-17772
             SELECT COUNT(1)
             FROM [dbo].[OrganizationSponsorship]
             WHERE SponsoringOrganizationId = @OrganizationId
             AND IsAdminInitiated = 1
             AND (
                 -- Not marked for deletion - always count
-                (ToDelete = 0) 
+                (ToDelete = 0)
                 OR
                 -- Marked for deletion but has a valid until date in the future (RevokeWhenExpired status)
                 (ToDelete = 1 AND ValidUntil IS NOT NULL AND ValidUntil > GETUTCDATE())

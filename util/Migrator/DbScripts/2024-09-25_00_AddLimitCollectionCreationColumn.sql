@@ -52,7 +52,7 @@ SELECT
     PU.[Id] ProviderUserId,
     P.[Name] ProviderName,
     O.[PlanType],
-    O.[LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+    O.[LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
     O.[LimitCollectionCreation],
     O.[LimitCollectionDeletion],
     O.[AllowAdminAccessToAllCollectionItems]
@@ -114,7 +114,7 @@ SELECT
     O.[UsePasswordManager],
     O.[SmSeats],
     O.[SmServiceAccounts],
-    O.[LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+    O.[LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
     O.[LimitCollectionCreation],
     O.[LimitCollectionDeletion],
     O.[AllowAdminAccessToAllCollectionItems]
@@ -194,7 +194,7 @@ CREATE OR ALTER PROCEDURE [dbo].[Organization_Create]
     @MaxAutoscaleSmSeats INT= null,
     @MaxAutoscaleSmServiceAccounts INT = null,
     @SecretsManagerBeta BIT = 0,
-    @LimitCollectionCreationDeletion BIT = NULL, -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+    @LimitCollectionCreationDeletion BIT = NULL, -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
     @LimitCollectionCreation BIT = NULL,
     @LimitCollectionDeletion BIT = NULL,
     @AllowAdminAccessToAllCollectionItems BIT = 0
@@ -259,7 +259,7 @@ BEGIN
         [MaxAutoscaleSmSeats],
         [MaxAutoscaleSmServiceAccounts],
         [SecretsManagerBeta],
-        [LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        [LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         [LimitCollectionCreation],
         [LimitCollectionDeletion],
         [AllowAdminAccessToAllCollectionItems]
@@ -318,7 +318,7 @@ BEGIN
         @MaxAutoscaleSmSeats,
         @MaxAutoscaleSmServiceAccounts,
         @SecretsManagerBeta,
-        COALESCE(@LimitCollectionCreation, @LimitCollectionDeletion, 0), -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        COALESCE(@LimitCollectionCreation, @LimitCollectionDeletion, 0), -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         @LimitCollectionCreation,
         @LimitCollectionDeletion,
         @AllowAdminAccessToAllCollectionItems
@@ -349,7 +349,7 @@ BEGIN
         [UseResetPassword],
         [UsePolicies],
         [Enabled],
-        [LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        [LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         [LimitCollectionCreation],
         [LimitCollectionDeletion],
         [AllowAdminAccessToAllCollectionItems]
@@ -411,7 +411,7 @@ CREATE OR ALTER PROCEDURE [dbo].[Organization_Update]
     @MaxAutoscaleSmSeats INT = null,
     @MaxAutoscaleSmServiceAccounts INT = null,
     @SecretsManagerBeta BIT = 0,
-    @LimitCollectionCreationDeletion BIT = null, -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+    @LimitCollectionCreationDeletion BIT = null, -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
     @LimitCollectionCreation BIT = null,
     @LimitCollectionDeletion BIT = null,
     @AllowAdminAccessToAllCollectionItems BIT = 0
@@ -476,7 +476,7 @@ BEGIN
         [MaxAutoscaleSmSeats] = @MaxAutoscaleSmSeats,
         [MaxAutoscaleSmServiceAccounts] = @MaxAutoscaleSmServiceAccounts,
         [SecretsManagerBeta] = @SecretsManagerBeta,
-        [LimitCollectionCreationDeletion] = COALESCE(@LimitCollectionCreation, @LimitCollectionDeletion, 0), -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        [LimitCollectionCreationDeletion] = COALESCE(@LimitCollectionCreation, @LimitCollectionDeletion, 0), -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         [LimitCollectionCreation] = @LimitCollectionCreation,
         [LimitCollectionDeletion] = @LimitCollectionDeletion,
         [AllowAdminAccessToAllCollectionItems] = @AllowAdminAccessToAllCollectionItems

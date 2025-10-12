@@ -94,7 +94,7 @@ public class SendAccessGrantValidatorIntegrationTests(IdentityApplicationFactory
 
         var requestBody = new FormUrlEncodedContent([
             new KeyValuePair<string, string>(OidcConstants.TokenRequest.GrantType, CustomGrantTypes.SendAccess),
-            new KeyValuePair<string, string>(OidcConstants.TokenRequest.ClientId, BitwardenClient.Send)
+            new KeyValuePair<string, string>(OidcConstants.TokenRequest.ClientId, DeepsaferClient.Send)
         ]);
 
         // Act
