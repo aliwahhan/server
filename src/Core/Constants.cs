@@ -70,6 +70,17 @@ public static class Constants
         /// </summary>
         public const string UnitedStates = "US";
     }
+
+
+    /// <summary>
+    /// Constants for our browser extensions IDs
+    /// </summary>
+    public static class BrowserExtensions
+    {
+        public const string ChromeId = "chrome-extension://nngceckbapebfimnlniiiahkandclblb/";
+        public const string EdgeId = "chrome-extension://jbkfoedolllekgbhcbcoahefnbanhhlh/";
+        public const string OperaId = "chrome-extension://ccnckbpmaceehanjmeomladnmlffdjgn/";
+    }
 }
 
 public static class AuthConstants
@@ -124,7 +135,6 @@ public static class AuthenticationSchemes
 public static class FeatureFlagKeys
 {
     /* Admin Console Team */
-    public const string VerifiedSsoDomainEndpoint = "pm-12337-refactor-sso-details-endpoint";
     public const string LimitItemDeletion = "pm-15493-restrict-item-deletion-to-can-manage-permission";
     public const string PolicyRequirements = "pm-14439-policy-requirements";
     public const string ScimInviteUserOptimization = "pm-16811-optimize-invite-user-flow-to-fail-fast";
@@ -173,6 +183,9 @@ public static class FeatureFlagKeys
     public const string PM22415_TaxIDWarnings = "pm-22415-tax-id-warnings";
     public const string PM23385_UseNewPremiumFlow = "pm-23385-use-new-premium-flow";
     public const string PM24996ImplementUpgradeFromFreeDialog = "pm-24996-implement-upgrade-from-free-dialog";
+    public const string PM24032_NewNavigationPremiumUpgradeButton = "pm-24032-new-navigation-premium-upgrade-button";
+    public const string PM23713_PremiumBadgeOpensNewPremiumUpgradeDialog = "pm-23713-premium-badge-opens-new-premium-upgrade-dialog";
+    public const string PremiumUpgradeNewDesign = "pm-24033-updat-premium-subscription-page";
 
     /* Key Management Team */
     public const string ReturnErrorOnExistingKeypair = "return-error-on-existing-keypair";
@@ -232,8 +245,10 @@ public static class FeatureFlagKeys
     public const string PM22134SdkCipherListView = "pm-22134-sdk-cipher-list-view";
     public const string PM19315EndUserActivationMvp = "pm-19315-end-user-activation-mvp";
     public const string PM22136_SdkCipherEncryption = "pm-22136-sdk-cipher-encryption";
+
     /* Innovation Team */
     public const string ArchiveVaultItems = "pm-19148-innovation-archive";
+
     /* DIRT Team */
     public const string PM22887_RiskInsightsActivityTab = "pm-22887-risk-insights-activity-tab";
 
