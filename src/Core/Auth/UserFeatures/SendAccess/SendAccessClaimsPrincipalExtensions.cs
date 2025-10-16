@@ -1,4 +1,4 @@
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Bit.Core.Auth.Identity;
 
 namespace Bit.Core.Auth.UserFeatures.SendAccess;

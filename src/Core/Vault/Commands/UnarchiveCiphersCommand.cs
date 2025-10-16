@@ -1,4 +1,4 @@
-using Bit.Core.Exceptions;
+﻿using Bit.Core.Exceptions;
 using Bit.Core.Platform.Push;
 using Bit.Core.Vault.Commands.Interfaces;
 using Bit.Core.Vault.Models.Data;

@@ -1,4 +1,4 @@
-namespace Bit.Core.Billing.Providers.Models;
+﻿namespace Bit.Core.Billing.Providers.Models;
 
 public class ProviderWarnings
 {

@@ -1,4 +1,4 @@
-using Azure.Storage.Queues;
+﻿using Azure.Storage.Queues;
 using Bit.Core.Platform.Push;
 using Bit.Core.Platform.Push.Internal;
 using Bit.Core.Settings;
@@ -14,7 +14,7 @@ public static class PushServiceCollectionExtensions
 {
     /// <summary>
     /// Adds a <see cref="IPushNotificationService"/> to the services that can be used to send push notifications to
-    /// end user devices. This method is safe to be ran multiple time provided <see cref="GlobalSettings"/> does not
+    /// end user devices. This method is safe to be ran multiple time provided <see cref="GlobalSettings"/> does not 
     /// change between calls.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to add services to.</param>

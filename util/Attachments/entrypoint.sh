@@ -33,6 +33,7 @@ then
     chown -R $USERNAME:$GROUPNAME /deepsafer_server
     mkdir -p /etc/deepsafer/core/attachments
     chown -R $USERNAME:$GROUPNAME /etc/deepsafer
+    
     gosu_cmd="gosu $USERNAME:$GROUPNAME"
 else
     gosu_cmd=""

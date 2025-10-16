@@ -56,7 +56,7 @@
         @MaxAutoscaleSmSeats INT= null,
         @MaxAutoscaleSmServiceAccounts INT = null,
         @SecretsManagerBeta BIT = 0,
-        @LimitCollectionCreationDeletion BIT = NULL, -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        @LimitCollectionCreationDeletion BIT = NULL, -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         @LimitCollectionCreation BIT = NULL,
         @LimitCollectionDeletion BIT = NULL,
         @AllowAdminAccessToAllCollectionItems BIT = 0,
@@ -122,7 +122,7 @@
             [MaxAutoscaleSmSeats],
             [MaxAutoscaleSmServiceAccounts],
             [SecretsManagerBeta],
-            [LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+            [LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
             [LimitCollectionCreation],
             [LimitCollectionDeletion],
             [AllowAdminAccessToAllCollectionItems],
@@ -182,7 +182,7 @@
             @MaxAutoscaleSmSeats,
             @MaxAutoscaleSmServiceAccounts,
             @SecretsManagerBeta,
-            COALESCE(@LimitCollectionCreation, @LimitCollectionDeletion, 0), -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863)
+            COALESCE(@LimitCollectionCreation, @LimitCollectionDeletion, 0), -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863)
             @LimitCollectionCreation,
             @LimitCollectionDeletion,
             @AllowAdminAccessToAllCollectionItems,
@@ -215,7 +215,7 @@
             [UseResetPassword],
             [UsePolicies],
             [Enabled],
-            [LimitCollectionCreationDeletion], -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+            [LimitCollectionCreationDeletion], -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
             [LimitCollectionCreation],
             [LimitCollectionDeletion],
             [AllowAdminAccessToAllCollectionItems],
@@ -279,7 +279,7 @@
         @MaxAutoscaleSmSeats INT = null,
         @MaxAutoscaleSmServiceAccounts INT = null,
         @SecretsManagerBeta BIT = 0,
-        @LimitCollectionCreationDeletion BIT = null, -- Deprecated https://bitwarden.atlassian.net/browse/PM-10863
+        @LimitCollectionCreationDeletion BIT = null, -- Deprecated https://deepsafer.atlassian.net/browse/PM-10863
         @LimitCollectionCreation BIT = null,
         @LimitCollectionDeletion BIT = null,
         @AllowAdminAccessToAllCollectionItems BIT = 0,

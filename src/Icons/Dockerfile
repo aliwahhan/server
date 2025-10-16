@@ -2,6 +2,7 @@
 #                 Build stage                 #
 ###############################################
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine3.21 AS build
+
 # Docker buildx supplies the value for this arg
 ARG TARGETPLATFORM
 
@@ -35,7 +36,7 @@ RUN . /tmp/rid.txt && dotnet publish \
 ###############################################
 #                  App stage                  #
 ###############################################
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine3.21
 
 ARG TARGETPLATFORM
 LABEL ye.vault.deepsafer.product="deepsafer"
@@ -49,13 +50,13 @@ RUN apk add --no-cache curl \
     krb5 \
     icu-libs \
     shadow \
-    && apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community gosu
+    && apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community gosu 
 
 # Copy app from the build stage
 WORKDIR /app
 COPY --from=build /source/src/Icons/out /app
 COPY ./src/Icons/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-HEALTHCHECK CMD curl -f https://localhost:5000/google.com/icon.png || exit 1
+HEALTHCHECK CMD curl -f https://192.168.168.40:5000/google.com/icon.png || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

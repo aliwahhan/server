@@ -1,9 +1,8 @@
-using Bit.Core.Auth.IdentityServer;
+﻿using Bit.Core.Auth.IdentityServer;
 using Bit.Core.Enums;
 using Bit.Core.Utilities;
 using Bit.Identity.IdentityServer.Enums;
 using Bit.Identity.IdentityServer.RequestValidators.SendAccess;
-using Duende.IdentityModel;
 
 namespace Bit.Identity.IntegrationTest.RequestValidation.SendAccess;
 
@@ -19,7 +18,7 @@ public static class SendAccessTestUtilities
         var parameters = new List<KeyValuePair<string, string>>
         {
             new(OidcConstants.TokenRequest.GrantType, CustomGrantTypes.SendAccess),
-            new(OidcConstants.TokenRequest.ClientId, DeepsaferClient.Send),
+            new(OidcConstants.TokenRequest.ClientId, BitwardenClient.Send),
             new(SendAccessConstants.TokenRequest.SendId, sendIdBase64),
             new(OidcConstants.TokenRequest.Scope, ApiScopes.ApiSendAccess),
             new("device_type", "10")

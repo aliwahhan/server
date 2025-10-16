@@ -39,7 +39,7 @@ public class HibpController : Controller
         _userService = userService;
         _currentContext = currentContext;
         _globalSettings = globalSettings;
-        _userAgent = _globalSettings.SelfHosted ? "Deepsafer Self-Hosted" : "Deepsafer";
+        _userAgent = _globalSettings.SelfHosted ? "Bitwarden Self-Hosted" : "Bitwarden";
     }
 
     [HttpGet("breach")]

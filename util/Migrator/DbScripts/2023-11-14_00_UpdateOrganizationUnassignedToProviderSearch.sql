@@ -1,5 +1,5 @@
 /*
-    This procedure is used by the Bitwarden Admin Panel to retrieve the
+    This procedure is used by the Deepsafer Admin Panel to retrieve the
     Organizations a Reseller Provider is capable of adding as a client.
 
     Currently, the procedure is only surfacing Organizations with the most

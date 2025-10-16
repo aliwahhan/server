@@ -20,7 +20,7 @@ public enum NotificationTarget
     /// </summary>
     Organization,
     /// <summary>
-    /// The target for the notification are all the organizations,
+    /// The target for the notification are all the organizations, 
     /// and all the users in that organization for a installation.
     /// </summary>
     Installation,
@@ -37,7 +37,7 @@ public record PushNotification<T>
     /// <summary>
     /// The <see cref="PushType"/> to be associated with the notification. This is used to route
     /// the notification to the correct handler on the client side. Be sure to use the correct payload
-    /// type for the associated <see cref="PushType"/>.
+    /// type for the associated <see cref="PushType"/>. 
     /// </summary>
     public required PushType Type { get; init; }
 
@@ -45,9 +45,9 @@ public record PushNotification<T>
     /// The target entity type for the notification.
     /// </summary>
     /// <remarks>
-    /// When the target type is <see cref="NotificationTarget.User"/> the <see cref="TargetId"/>
+    /// When the target type is <see cref="NotificationTarget.User"/> the <see cref="TargetId"/> 
     /// property is expected to be a users ID. When it is <see cref="NotificationTarget.Organization"/>
-    /// it should be an organizations id. When it is a <see cref="NotificationTarget.Installation"/>
+    /// it should be an organizations id. When it is a <see cref="NotificationTarget.Installation"/> 
     /// it should be an installation id.
     /// </remarks>
     public required NotificationTarget Target { get; init; }
@@ -69,7 +69,7 @@ public record PushNotification<T>
     public required bool ExcludeCurrentContext { get; init; }
 
     /// <summary>
-    /// The type of clients the notification should be sent to, if <see langword="null"/> then
+    /// The type of clients the notification should be sent to, if <see langword="null"/> then 
     /// <see cref="ClientType.All"/> is inferred.
     /// </summary>
     public ClientType? ClientType { get; init; }

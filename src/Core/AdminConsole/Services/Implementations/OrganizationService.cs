@@ -325,7 +325,6 @@ public class OrganizationService : IOrganizationService
         return paymentIntentClientSecret;
     }
 
-
     public async Task UpdateExpirationDateAsync(Guid organizationId, DateTime? expirationDate)
     {
         var org = await GetOrgById(organizationId);

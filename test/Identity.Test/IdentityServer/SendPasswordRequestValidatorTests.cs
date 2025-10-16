@@ -1,4 +1,4 @@
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using Bit.Core.Auth.Identity;
 using Bit.Core.Auth.IdentityServer;
 using Bit.Core.Auth.UserFeatures.SendAccess;
@@ -10,7 +10,6 @@ using Bit.Identity.IdentityServer.Enums;
 using Bit.Identity.IdentityServer.RequestValidators.SendAccess;
 using Bit.Test.Common.AutoFixture;
 using Bit.Test.Common.AutoFixture.Attributes;
-using Duende.IdentityModel;
 using Duende.IdentityServer.Validation;
 using NSubstitute;
 using Xunit;
@@ -278,7 +277,7 @@ public class SendPasswordRequestValidatorTests
         var rawRequestParameters = new NameValueCollection
         {
             { OidcConstants.TokenRequest.GrantType, CustomGrantTypes.SendAccess },
-            { OidcConstants.TokenRequest.ClientId, DeepsaferClient.Send },
+            { OidcConstants.TokenRequest.ClientId, BitwardenClient.Send },
             { OidcConstants.TokenRequest.Scope, ApiScopes.ApiSendAccess },
             { "device_type", ((int)DeviceType.FirefoxBrowser).ToString() },
             { SendAccessConstants.TokenRequest.SendId, sendIdBase64 }

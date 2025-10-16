@@ -9,3 +9,4 @@ BEGIN
     FROM [dbo].[OrganizationReportView]
     WHERE [Id] = @Id
 END
+

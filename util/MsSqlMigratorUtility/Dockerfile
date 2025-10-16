@@ -49,6 +49,7 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 # Copy app from the build stage
 WORKDIR /app
 COPY --from=build /source/util/MsSqlMigratorUtility/out /app
-RUN apk add --no-cache icu-libs
+
+RUN apk add --no-cache icu-libs 
 
 ENTRYPOINT ["sh", "-c", "/app/MsSqlMigratorUtility \"${MSSQL_CONN_STRING}\" ${@}", "--" ]

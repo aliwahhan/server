@@ -1,4 +1,4 @@
-using Bit.Core.AdminConsole.OrganizationFeatures.OrganizationUsers.Interfaces;
+﻿using Bit.Core.AdminConsole.OrganizationFeatures.OrganizationUsers.Interfaces;
 using Bit.Core.Entities;
 using Bit.Core.Enums;
 using Bit.Core.Exceptions;
@@ -134,3 +134,4 @@ public class DeleteClaimedOrganizationUserAccountCommand(
         }
     }
 }
+

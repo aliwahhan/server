@@ -1,4 +1,4 @@
-using OneOf;
+﻿using OneOf;
 using OneOf.Types;
 
 namespace Bit.Core.AdminConsole.OrganizationFeatures.OrganizationUsers.DeleteClaimedAccount;
@@ -39,3 +39,4 @@ public record BulkCommandResult<T>(Guid Id, CommandResult<T> Result);
 /// A wrapper for <see cref="CommandResult"/> with an ID, to identify the result in bulk operations.
 /// </summary>
 public record BulkCommandResult(Guid Id, CommandResult Result);
+

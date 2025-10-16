@@ -18,14 +18,18 @@ public class ApiClient : Client
     {
         ClientId = id;
         AllowedGrantTypes = new[] { GrantType.ResourceOwnerPassword, GrantType.AuthorizationCode, WebAuthnGrantValidator.GrantType };
+
         // Use global setting: false = Sliding (default), true = Absolute
         RefreshTokenExpiration = globalSettings.IdentityServer.ApplyAbsoluteExpirationOnRefreshToken
             ? TokenExpiration.Absolute
             : TokenExpiration.Sliding;
+
         RefreshTokenUsage = TokenUsage.ReUse;
+
         // Use global setting if provided, otherwise use constructor parameter
         SlidingRefreshTokenLifetime = globalSettings.IdentityServer.SlidingRefreshTokenLifetimeSeconds ?? (86400 * refreshTokenSlidingDays);
         AbsoluteRefreshTokenLifetime = globalSettings.IdentityServer.AbsoluteRefreshTokenLifetimeSeconds ?? 0; // forever
+
         UpdateAccessTokenClaimsOnRefresh = true;
         AccessTokenLifetime = 3600 * accessTokenLifetimeHours;
         AllowOfflineAccess = true;
@@ -45,7 +49,7 @@ public class ApiClient : Client
             desktopUris.Add("deepsafer://sso-callback");
             for (var port = 8065; port <= 8070; port++)
             {
-                desktopUris.Add(string.Format("https://localhost:{0}", port));
+                desktopUris.Add(string.Format("https://192.168.168.40:{0}", port));
             }
             RedirectUris = desktopUris;
             PostLogoutRedirectUris = new[] { "deepsafer://logged-out" };
@@ -55,7 +59,7 @@ public class ApiClient : Client
             var connectorUris = new List<string>();
             for (var port = 8065; port <= 8070; port++)
             {
-                connectorUris.Add(string.Format("https://localhost:{0}", port));
+                connectorUris.Add(string.Format("https://192.168.168.40:{0}", port));
             }
             RedirectUris = connectorUris.Append("bwdc://sso-callback").ToList();
             PostLogoutRedirectUris = connectorUris.Append("bwdc://logged-out").ToList();
@@ -71,7 +75,7 @@ public class ApiClient : Client
             var cliUris = new List<string>();
             for (var port = 8065; port <= 8070; port++)
             {
-                cliUris.Add(string.Format("https://localhost:{0}", port));
+                cliUris.Add(string.Format("https://192.168.168.40:{0}", port));
             }
             RedirectUris = cliUris;
             PostLogoutRedirectUris = cliUris;

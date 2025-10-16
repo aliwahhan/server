@@ -1,4 +1,4 @@
-#nullable enable
+﻿#nullable enable
 using System.ComponentModel.DataAnnotations;
 
 namespace Bit.Api.Billing.Models.Requests.Premium;

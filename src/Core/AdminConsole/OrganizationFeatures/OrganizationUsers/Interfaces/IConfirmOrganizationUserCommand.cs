@@ -32,5 +32,5 @@ public interface IConfirmOrganizationUserCommand
     /// <param name="defaultUserCollectionName">Optional encrypted collection name for creating default collections.</param>
     /// <returns>A list of tuples containing the organization user and an error message (if any).</returns>
     Task<List<Tuple<OrganizationUser, string>>> ConfirmUsersAsync(Guid organizationId, Dictionary<Guid, string> keys,
-        Guid confirmingUserId, string defaultUserCollectionName =  null);
+        Guid confirmingUserId, string defaultUserCollectionName = null);
 }

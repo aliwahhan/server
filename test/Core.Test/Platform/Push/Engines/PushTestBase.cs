@@ -462,7 +462,7 @@ public abstract class PushTestBase
             .Returns(httpContext);
 
         var connectTokenRequest = MockIdentityClient
-            .Expect(HttpMethod.Post, "https://localhost:8888/connect/token")
+            .Expect(HttpMethod.Post, "https://192.168.168.40:8888/connect/token")
             .Respond(HttpStatusCode.OK, JsonContent.Create(new
             {
                 access_token = CreateAccessToken(DateTime.UtcNow.AddDays(1)),

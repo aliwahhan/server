@@ -1,5 +1,5 @@
 -- Update OrganizationUser_ReadOccupiedSeatCountByOrganizationId to include admin-initiated sponsorships
--- Based on https://bitwarden.atlassian.net/browse/PM-17772
+-- Based on https://deepsafer.atlassian.net/browse/PM-17772
 IF OBJECT_ID('[dbo].[OrganizationUser_ReadOccupiedSeatCountByOrganizationId]') IS NOT NULL
 BEGIN
     DROP PROCEDURE [dbo].[OrganizationUser_ReadOccupiedSeatCountByOrganizationId]
@@ -22,7 +22,7 @@ BEGIN
         ) + 
         (
             -- Count admin-initiated sponsorships towards the seat count
-            -- Introduced in https://bitwarden.atlassian.net/browse/PM-17772
+            -- Introduced in https://deepsafer.atlassian.net/browse/PM-17772
             SELECT COUNT(1)
             FROM [dbo].[OrganizationSponsorship]
             WHERE SponsoringOrganizationId = @OrganizationId

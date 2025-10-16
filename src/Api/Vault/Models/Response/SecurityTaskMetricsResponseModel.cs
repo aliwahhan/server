@@ -1,4 +1,4 @@
-namespace Bit.Api.Vault.Models.Response;
+﻿namespace Bit.Api.Vault.Models.Response;
 
 public class SecurityTaskMetricsResponseModel
 {

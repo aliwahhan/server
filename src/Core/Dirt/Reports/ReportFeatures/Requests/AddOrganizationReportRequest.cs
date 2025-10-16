@@ -7,6 +7,7 @@ public class AddOrganizationReportRequest
 {
     public Guid OrganizationId { get; set; }
     public string ReportData { get; set; }
+
     public string ContentEncryptionKey { get; set; }
 
     public string SummaryData { get; set; }

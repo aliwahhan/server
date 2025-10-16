@@ -1,4 +1,4 @@
-namespace Bit.Icons.Services;
+﻿namespace Bit.Icons.Services;
 
 public interface IChangePasswordUriService
 {

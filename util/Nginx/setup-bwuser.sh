@@ -32,7 +32,6 @@ fi
 
 # Create user and group
 
-
 addgroup -g "$LGID" -S "$GROUPNAME" 2>/dev/null || true
 adduser -u "$LUID" -G "$GROUPNAME" -S -D -H "$USERNAME" 2>/dev/null || true
 mkdir -p /home/$USERNAME

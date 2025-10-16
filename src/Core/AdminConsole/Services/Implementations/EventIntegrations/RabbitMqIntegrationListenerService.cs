@@ -18,7 +18,7 @@ public class RabbitMqIntegrationListenerService<TConfiguration> : BackgroundServ
     private readonly IIntegrationHandler _handler;
     private readonly Lazy<Task<IChannel>> _lazyChannel;
     private readonly IRabbitMqService _rabbitMqService;
-     private readonly ILogger _logger;
+    private readonly ILogger _logger;
     private readonly TimeProvider _timeProvider;
 
     public RabbitMqIntegrationListenerService(

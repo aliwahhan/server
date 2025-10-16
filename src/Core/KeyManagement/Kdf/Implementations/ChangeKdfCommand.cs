@@ -1,4 +1,4 @@
-using Bit.Core.Entities;
+﻿using Bit.Core.Entities;
 using Bit.Core.Exceptions;
 using Bit.Core.KeyManagement.Models.Data;
 using Bit.Core.Platform.Push;
@@ -37,8 +37,8 @@ public class ChangeKdfCommand : IChangeKdfCommand
         }
 
         // Validate to prevent user account from becoming un-decryptable from invalid parameters
-        //
-        // Prevent a de-synced salt value from creating an un-decryptable unlock method
+        // 
+        // Prevent a de-synced salt value from creating an un-decryptable unlock method 
         authenticationData.ValidateSaltUnchangedForUser(user);
         unlockData.ValidateSaltUnchangedForUser(user);
 

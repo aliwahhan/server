@@ -4,7 +4,6 @@ ARG TARGETPLATFORM
 LABEL ye.vault.deepsafer.product="deepsafer"
 
 ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
-ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 RUN apk add --no-cache curl \
     shadow \
@@ -24,6 +23,6 @@ EXPOSE 8443
 RUN chmod +x /entrypoint.sh \
     && chmod +x /logrotate.sh
 
-HEALTHCHECK CMD curl --insecure -Lfs https://localhost:8443/alive || curl -Lfs https://localhost:8080/alive || exit 1
+HEALTHCHECK CMD curl --insecure -Lfs https://192.168.168.40:8443/alive || curl -Lfs https://192.168.168.40:8080/alive || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

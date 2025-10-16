@@ -31,9 +31,9 @@ public class RelayPushNotificationServiceTests : PushTestBase
                 Id = _deviceId,
             });
 
-        GlobalSettings.PushRelayBaseUri = "https://localhost:7777";
+        GlobalSettings.PushRelayBaseUri = "https://192.168.168.40:7777";
         GlobalSettings.Installation.Id = Guid.Parse("478c608a-99fd-452a-94f0-af271654e6ee");
-        GlobalSettings.Installation.IdentityUri = "https://localhost:8888";
+        GlobalSettings.Installation.IdentityUri = "https://192.168.168.40:8888";
     }
 
     protected override IPushEngine CreateService()
@@ -47,7 +47,7 @@ public class RelayPushNotificationServiceTests : PushTestBase
         );
     }
 
-    protected override string ExpectedClientUrl() => "https://localhost:7777/push/send";
+    protected override string ExpectedClientUrl() => "https://192.168.168.40:7777/push/send";
 
     protected override JsonNode GetPushSyncCipherCreatePayload(Cipher cipher, Guid collectionIds)
     {

@@ -117,7 +117,7 @@ public class Startup
                 policy.RequireAuthenticatedUser();
                 policy.RequireClaim(JwtClaimTypes.AuthenticationMethod, "Application", "external");
                 policy.RequireClaim(JwtClaimTypes.Scope, ApiScopes.Api);
-                policy.RequireClaim(JwtClaimTypes.ClientId, DeepsaferClient.Web);
+                policy.RequireClaim(JwtClaimTypes.ClientId, BitwardenClient.Web);
             });
             config.AddPolicy(Policies.Push, policy =>
             {
@@ -229,8 +229,9 @@ public class Startup
             services.AddHostedService<Core.HostedServices.ApplicationCacheHostedService>();
         }
 
-        // Add SlackService for OAuth API requests - if configured
+        // Add Slack / Teams Services for OAuth API requests - if configured
         services.AddSlackService(globalSettings);
+        services.AddTeamsService(globalSettings);
     }
 
     public void Configure(

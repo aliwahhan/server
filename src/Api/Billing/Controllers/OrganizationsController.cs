@@ -211,7 +211,6 @@ public class OrganizationsController(
         return new PaymentResponseModel { Success = true, PaymentIntentClientSecret = result };
     }
 
-
     [HttpPost("{id}/cancel")]
     public async Task PostCancel(Guid id, [FromBody] SubscriptionCancellationRequestModel request)
     {

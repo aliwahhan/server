@@ -206,7 +206,7 @@ public class HandlebarsMailServiceTests
             {
                 Smtp = new GlobalSettings.MailSettings.SmtpSettings
                 {
-                    Host = "localhost",
+                    Host = "192.168.168.40",
                     TrustServer = true,
                     Port = 10250,
                 },

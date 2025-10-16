@@ -17,7 +17,6 @@ using Bit.Core.Utilities;
 using Bit.IntegrationTestCommon.Factories;
 using Bit.Test.Common.AutoFixture.Attributes;
 using Bit.Test.Common.Helpers;
-using Duende.IdentityModel;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Stores;
 using LinqToDB;
@@ -262,7 +261,7 @@ public class IdentityServerTwoFactorTests : IClassFixture<IdentityApplicationFac
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
         // Assert
@@ -306,7 +305,7 @@ public class IdentityServerTwoFactorTests : IClassFixture<IdentityApplicationFac
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
         Assert.Equal(StatusCodes.Status400BadRequest, failedTokenContext.Response.StatusCode);
@@ -325,7 +324,7 @@ public class IdentityServerTwoFactorTests : IClassFixture<IdentityApplicationFac
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
 
@@ -362,7 +361,7 @@ public class IdentityServerTwoFactorTests : IClassFixture<IdentityApplicationFac
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
         // Assert
@@ -419,7 +418,7 @@ public class IdentityServerTwoFactorTests : IClassFixture<IdentityApplicationFac
             ClientId = "web",
             CreationTime = DateTime.UtcNow,
             Lifetime = (int)TimeSpan.FromMinutes(5).TotalSeconds,
-            RedirectUri = "https://localhost:8080/sso-connector.html",
+            RedirectUri = "https://192.168.168.40:8080/sso-connector.html",
             RequestedScopes = ["api", "offline_access"],
             CodeChallenge = challenge.Sha256(),
             CodeChallengeMethod = "plain",

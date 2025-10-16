@@ -2,6 +2,7 @@
 #                 Build stage                 #
 ###############################################
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine3.21 AS build
+
 # Docker buildx supplies the value for this arg
 ARG TARGETPLATFORM
 
@@ -57,6 +58,6 @@ WORKDIR /app
 COPY --from=build /source/src/Billing/out /app
 COPY ./src/Billing/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-HEALTHCHECK CMD curl -f https://localhost:5000/alive || exit 1
+HEALTHCHECK CMD curl -f https://192.168.168.40:5000/alive || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

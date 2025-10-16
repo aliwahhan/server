@@ -7,7 +7,7 @@
     "Bit.Scim.IntegrationTest": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:14696",
+      "applicationUrl": "http://192.168.168.40:14696",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -1,4 +1,4 @@
-﻿﻿CREATE TABLE [dbo].[OrganizationUser] (
+﻿CREATE TABLE [dbo].[OrganizationUser] (
     [Id]                            UNIQUEIDENTIFIER    NOT NULL,
     [OrganizationId]                UNIQUEIDENTIFIER    NOT NULL,
     [UserId]                        UNIQUEIDENTIFIER    NULL,

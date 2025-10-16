@@ -1,4 +1,4 @@
-using Bit.Core.Settings;
+﻿using Bit.Core.Settings;
 
 namespace Bit.Core.AdminConsole.Models.Data.EventIntegrations;
 

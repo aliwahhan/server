@@ -51,6 +51,7 @@ public class SecretsManagerSubscriptionUpdate
     public bool MaxAutoscaleSmServiceAccountsChanged =>
         MaxAutoscaleSmServiceAccounts != Organization.MaxAutoscaleSmServiceAccounts;
 
+
     public SecretsManagerSubscriptionUpdate(Organization organization, Plan plan, bool autoscaling)
     {
         Organization = organization ?? throw new NotFoundException("Organization is not found.");

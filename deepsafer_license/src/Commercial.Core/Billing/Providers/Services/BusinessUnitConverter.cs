@@ -346,7 +346,7 @@ public class BusinessUnitConverter(
 
         if (user == null)
         {
-            Fail("Provider admin must be a deepsafer user.");
+            Fail("Provider admin must be a Deepsafer user.");
         }
 
         if (!CoreHelpers.TokenIsValid(
@@ -439,7 +439,7 @@ public class BusinessUnitConverter(
 
         if (user == null)
         {
-            problems.Add("Provider admin must be a deepsafer user.");
+            problems.Add("Provider admin must be a Deepsafer user.");
         }
         else
         {

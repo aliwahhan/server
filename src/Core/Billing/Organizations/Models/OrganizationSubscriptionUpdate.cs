@@ -1,4 +1,4 @@
-namespace Bit.Core.Billing.Organizations.Models;
+﻿namespace Bit.Core.Billing.Organizations.Models;
 
 public record OrganizationSubscriptionUpdate
 {

@@ -21,7 +21,7 @@ function Get-IsEFDatabase {
 }
 
 if (!$all -and !$(Get-IsEFDatabase)) {
-  $mssql = $true;
+  $postgres = $true;
 }
 
 if ($all -or $(Get-IsEFDatabase)) {
@@ -41,10 +41,10 @@ function Get-UserSecrets {
 if ($all -or $mssql) {
   if ($all -or !$test) {
     if ($selfhost) {
-      $msSqlConnectionString = $(Get-UserSecrets).'dev:selfHostOverride:globalSettings:sqlServer:connectionString'
+      $msSqlConnectionString = $(Get-UserSecrets).'dev:selfHostOverride:globalSettings:postgreSql:connectionString'
       $envName = "self-host"
     } else {
-      $msSqlConnectionString = $(Get-UserSecrets).'globalSettings:sqlServer:connectionString'
+      $msSqlConnectionString = $(Get-UserSecrets).'globalSettings:postgreSql:connectionString'
       $envName = "cloud"
     }
 

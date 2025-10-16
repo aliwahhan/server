@@ -13,11 +13,11 @@ public class NotificationsApiPushEngineTests : PushTestBase
 {
     public NotificationsApiPushEngineTests()
     {
-        GlobalSettings.BaseServiceUri.InternalNotifications = "https://localhost:7777";
-        GlobalSettings.BaseServiceUri.InternalIdentity = "https://localhost:8888";
+        GlobalSettings.BaseServiceUri.InternalNotifications = "https://192.168.168.40:7777";
+        GlobalSettings.BaseServiceUri.InternalIdentity = "https://192.168.168.40:8888";
     }
 
-    protected override string ExpectedClientUrl() => "https://localhost:7777/send";
+    protected override string ExpectedClientUrl() => "https://192.168.168.40:7777/send";
 
     protected override IPushEngine CreateService()
     {

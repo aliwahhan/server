@@ -1,4 +1,4 @@
-#nullable enable
+﻿#nullable enable
 using Bit.Api.Billing.Attributes;
 using Bit.Api.Billing.Models.Requests.Premium;
 using Bit.Api.Utilities;
@@ -21,7 +21,7 @@ public class SelfHostedAccountBillingController(
     ICreatePremiumSelfHostedSubscriptionCommand createPremiumSelfHostedSubscriptionCommand) : BaseBillingController
 {
     [HttpPost("license")]
-    [RequireFeature(FeatureFlagKeys.PM23385_UseNewPremiumFlow)]
+    [RequireFeature(FeatureFlagKeys.PM24996ImplementUpgradeFromFreeDialog)]
     [InjectUser]
     public async Task<IResult> UploadLicenseAsync(
         [BindNever] User user,

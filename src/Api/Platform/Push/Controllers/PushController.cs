@@ -18,7 +18,7 @@ namespace Bit.Api.Platform.Push;
 
 /// <summary>
 /// Routes for push relay: functionality that facilitates communication
-/// between self hosted organizations and Deepsafer cloud.
+/// between self hosted organizations and Bitwarden cloud.
 /// </summary>
 [Route("push")]
 [Authorize("Push")]

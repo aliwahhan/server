@@ -1,4 +1,4 @@
-using Bit.Core.Tools.Models.Data;
+﻿using Bit.Core.Tools.Models.Data;
 using Duende.IdentityServer.Validation;
 
 namespace Bit.Identity.IdentityServer.RequestValidators.SendAccess;

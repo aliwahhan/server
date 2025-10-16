@@ -4,33 +4,53 @@
 IDENTITY_SERVER_KEY=identity_server_dev.key
 IDENTITY_SERVER_CERT=identity_server_dev.crt
 IDENTITY_SERVER_CN="Deepsafer Identity Server Dev"
+CONFIG_FILE=identity_server_dev.cnf
 
-# Detect management command to trust generated certificates.
+cat > $CONFIG_FILE <<EOL
+[req]
+default_bits       = 4096
+prompt             = no
+default_md         = sha256
+req_extensions     = req_ext
+x509_extensions    = v3_req
+distinguished_name = dn
+
+[dn]
+CN = $IDENTITY_SERVER_CN
+
+[req_ext]
+subjectAltName = @alt_names
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+IP.1 = 127.0.0.1
+IP.2 = 192.168.168.40
+EOL
+
+openssl req -x509 -newkey rsa:4096 -sha256 -nodes -days 3650 \
+    -keyout $IDENTITY_SERVER_KEY \
+    -out $IDENTITY_SERVER_CERT \
+    -config $CONFIG_FILE
+
+# 
 if [ -x "$(command -v update-ca-certificates)" ]; then
-  # Debian based
-  CA_CERT_DIR=/usr/local/share/ca-certificates/
-  UPDATE_CA_CMD=update-ca-certificates
+  sudo cp $IDENTITY_SERVER_CERT /usr/local/share/ca-certificates/
+  sudo update-ca-certificates
 elif [ -x "$(command -v update-ca-trust)" ]; then
-  # Redhat based
-  CA_CERT_DIR=/etc/pki/ca-trust/source/anchors/
-  UPDATE_CA_CMD=update-ca-trust
+  sudo cp $IDENTITY_SERVER_CERT /etc/pki/ca-trust/source/anchors/
+  sudo update-ca-trust
 else
   echo 'Error: Update manager for CA certificates not found!'
   exit 1
 fi
 
+openssl x509 -in $IDENTITY_SERVER_CERT -noout -fingerprint -sha1
+echo "Certificate created and trusted successfully!"
+echo "   - Key:  $IDENTITY_SERVER_KEY"
+echo "   - Cert: $IDENTITY_SERVER_CERT"
 
-openssl req -x509 -newkey rsa:4096 -sha256 -nodes -days 3650 \
-    -keyout $IDENTITY_SERVER_KEY \
-    -out $IDENTITY_SERVER_CERT \
-    -subj "/CN=$IDENTITY_SERVER_CN"
-
-sudo cp $IDENTITY_SERVER_CERT $CA_CERT_DIR
-
-sudo $UPDATE_CA_CMD
-
-identity=($(openssl x509 -in $IDENTITY_SERVER_CERT -outform der | sha1sum | tr a-z A-Z))
-
-echo "Certificate fingerprints:"
-
-echo "Identity Server Dev: ${identity}"
+# 
+rm -f $CONFIG_FILE

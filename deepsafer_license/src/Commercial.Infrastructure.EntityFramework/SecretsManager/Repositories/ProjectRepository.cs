@@ -28,7 +28,7 @@ public class ProjectRepository : Repository<Core.SecretsManager.Entities.Project
         }
     }
 
-     public async Task<IEnumerable<ProjectPermissionDetails>> GetManyByOrganizationIdAsync(
+    public async Task<IEnumerable<ProjectPermissionDetails>> GetManyByOrganizationIdAsync(
         Guid organizationId,
         Guid userId,
         AccessClientType accessType)

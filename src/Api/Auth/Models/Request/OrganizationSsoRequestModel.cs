@@ -139,7 +139,7 @@ public class SsoConfigurationDataRequest : IValidatableObject
                     new[] { nameof(IdpSingleLogoutServiceUrl) });
             }
 
-            // TODO: On server, make public certificate required for SAML2 SSO: https://vault.deepsafer.atlassian.net/browse/PM-26028
+            // TODO: On server, make public certificate required for SAML2 SSO: https://deepsafer.atlassian.net/browse/PM-26028
             if (!string.IsNullOrWhiteSpace(IdpX509PublicCert))
             {
                 // Validate the certificate is in a valid format

@@ -58,8 +58,7 @@ public class LicensingService : ILicensingService
         _userLicenseClaimsFactory = userLicenseClaimsFactory;
 
         var certThumbprint = environment.IsDevelopment() ?
-            "4F825E46A2F0DF74F09EB83CE9CAB46DDC099C82" :
-            "207E64A231E8AA32AAF68A61037C075EBEBD553F";//207E64A231E8AA32AAF68A61037C075EBEBD553F
+            "1487E2777DB054171B69AE21C85378F9ACF7BB71" : "1487E2777DB054171B69AE21C85378F9ACF7BB71";
         if (_globalSettings.SelfHosted)
         {
             _certificate = CoreHelpers.GetEmbeddedCertificateAsync(environment.IsDevelopment() ? "licensing_dev.cer" : "licensing.cer", null)
@@ -324,7 +323,7 @@ public class LicensingService : ILicensingService
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new X509SecurityKey(_certificate),
             ValidateIssuer = true,
-            ValidIssuer = "Deepsafer",
+            ValidIssuer = "deepsafer",
             ValidateAudience = true,
             ValidAudience = audience,
             ValidateLifetime = true,
@@ -378,7 +377,7 @@ public class LicensingService : ILicensingService
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Issuer = "Deepsafer",
+            Issuer = "deepsafer",
             Audience = audience,
             NotBefore = DateTime.UtcNow,
             Expires = DateTime.UtcNow.AddYears(1), // Org expiration is a claim

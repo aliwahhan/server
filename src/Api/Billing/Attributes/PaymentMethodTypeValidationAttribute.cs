@@ -1,4 +1,4 @@
-using Bit.Api.Utilities;
+﻿using Bit.Api.Utilities;
 
 namespace Bit.Api.Billing.Attributes;
 

@@ -272,6 +272,11 @@
         },
     ],
     "configurations": [
+        
+
+
+
+
         // Configurations represent run-only scenarios so that they can be used in multiple compounds
         {
             "name": "run-Identity",
@@ -460,7 +465,7 @@
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:33657",
+                "ASPNETCORE_URLS": "http://192.168.168.40:33657",
                 "developSelfHosted": "true",
             },
             "sourceFileMap": {
@@ -481,7 +486,7 @@
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:4001",
+                "ASPNETCORE_URLS": "http://192.168.168.40:4001",
                 "developSelfHosted": "true",
             },
             "sourceFileMap": {
@@ -504,7 +509,7 @@
             "OS-COMMENT5": "Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser",
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:62912",
+                "ASPNETCORE_URLS": "http://192.168.168.40:62912",
                 "developSelfHosted": "true",
             },
             "sourceFileMap": {
@@ -525,7 +530,7 @@
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:51822",
+                "ASPNETCORE_URLS": "http://192.168.168.40:51822",
                 "developSelfHosted": "true",
             },
             "sourceFileMap": {
@@ -546,7 +551,7 @@
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:61841",
+                "ASPNETCORE_URLS": "http://192.168.168.40:61841",
                 "developSelfHosted": "true",
             },
             "sourceFileMap": {
@@ -567,7 +572,7 @@
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:46274",
+                "ASPNETCORE_URLS": "http://192.168.168.40:46274",
                 "developSelfHosted": "true",
             },
             "sourceFileMap": {
@@ -588,7 +593,7 @@
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:54103",
+                "ASPNETCORE_URLS": "http://192.168.168.40:54103",
                 "developSelfHosted": "true",
             },
             "sourceFileMap": {

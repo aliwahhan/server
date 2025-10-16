@@ -23,28 +23,28 @@ public static class ServiceCollectionExtensions
         {
             config.SwaggerDoc("public", new OpenApiInfo
             {
-                Title = "Deepsafer Public API",
+                Title = "Bitwarden Public API",
                 Version = "latest",
                 Contact = new OpenApiContact
                 {
-                    Name = "Deepsafer Support",
-                    Url = new Uri("https://vault.deepsafer.ye"),
-                    Email = "support@vault.deepsafer.ye"
+                    Name = "Bitwarden Support",
+                    Url = new Uri("https://bitwarden.com"),
+                    Email = "support@bitwarden.com"
                 },
                 Description = """
                               This schema documents the endpoints available to the Public API, which provides
                               organizations tools for managing members, collections, groups, event logs, and policies.
                               If you are looking for the Vault Management API, refer instead to
-                              [this document](https://vault.deepsafer.ye/help/vault-management-api/).
+                              [this document](https://bitwarden.com/help/vault-management-api/).
                               """,
                 License = new OpenApiLicense
                 {
                     Name = "GNU Affero General Public License v3.0",
-                    Url = new Uri("https://github.com/deepsafer/server/blob/master/LICENSE.txt")
+                    Url = new Uri("https://github.com/bitwarden/server/blob/master/LICENSE.txt")
                 }
             });
 
-            config.SwaggerDoc("internal", new OpenApiInfo { Title = "Deepsafer Internal API", Version = "latest" });
+            config.SwaggerDoc("internal", new OpenApiInfo { Title = "Bitwarden Internal API", Version = "latest" });
 
             config.AddSecurityDefinition("oauth2-client-credentials", new OpenApiSecurityScheme
             {
@@ -119,7 +119,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddHttpClient("PhishingDomains", client =>
         {
-            client.DefaultRequestHeaders.Add("User-Agent", globalSettings.SelfHosted ? "Deepsafer Self-Hosted" : "Deepsafer");
+            client.DefaultRequestHeaders.Add("User-Agent", globalSettings.SelfHosted ? "Bitwarden Self-Hosted" : "Bitwarden");
             client.Timeout = TimeSpan.FromSeconds(1000); // the source list is very slow
         });
 

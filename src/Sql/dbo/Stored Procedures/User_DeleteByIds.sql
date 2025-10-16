@@ -56,7 +56,7 @@ BEGIN
     DELETE
     FROM
         [dbo].[AuthRequest]
-    WHERE
+    WHERE 
         [UserId] IN (SELECT * FROM @ParsedIds)
 
     -- Delete devices
@@ -70,7 +70,7 @@ BEGIN
     DECLARE @OrgUserIds [dbo].[GuidIdArray]
     INSERT INTO @OrgUserIds (Id)
     SELECT [Id] FROM [dbo].[OrganizationUser] WHERE [UserId] IN (SELECT * FROM @ParsedIds)
-
+    
     IF EXISTS (SELECT 1 FROM @OrgUserIds)
     BEGIN
         EXEC [dbo].[OrganizationUser_MigrateDefaultCollection] @OrgUserIds
@@ -140,7 +140,7 @@ BEGIN
     DELETE
     FROM
         [dbo].[Send]
-    WHERE
+    WHERE 
         [UserId] IN (SELECT * FROM @ParsedIds)
 
     -- Delete Notification Status
@@ -156,7 +156,7 @@ BEGIN
         [dbo].[Notification]
     WHERE
         [UserId] IN (SELECT * FROM @ParsedIds)
-
+    
     -- Finally, delete the user
     DELETE
     FROM

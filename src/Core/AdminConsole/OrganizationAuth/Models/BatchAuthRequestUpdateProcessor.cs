@@ -59,7 +59,7 @@ public class BatchAuthRequestUpdateProcessor
     // through to the repository.
     //
     // Adding bulk notification and email methods is being tracked as tech
-    // debt on https://vault.deepsafer.atlassian.net/browse/AC-2629
+    // debt on https://deepsafer.atlassian.net/browse/AC-2629
     public async Task SendPushNotifications(Func<OrganizationAdminAuthRequest, Task> callback)
     {
         foreach (var processor in _processed)

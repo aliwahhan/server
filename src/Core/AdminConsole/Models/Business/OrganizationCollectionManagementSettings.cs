@@ -1,4 +1,4 @@
-namespace Bit.Core.AdminConsole.Models.Business;
+﻿namespace Bit.Core.AdminConsole.Models.Business;
 
 public record OrganizationCollectionManagementSettings
 {

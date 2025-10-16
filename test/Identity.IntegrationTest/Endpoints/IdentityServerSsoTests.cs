@@ -17,7 +17,6 @@ using Bit.Core.Repositories;
 using Bit.Core.Utilities;
 using Bit.IntegrationTestCommon.Factories;
 using Bit.Test.Common.Helpers;
-using Duende.IdentityModel;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Stores;
 using Microsoft.EntityFrameworkCore;
@@ -339,7 +338,7 @@ public class IdentityServerSsoTests
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
         // Assert
@@ -408,7 +407,7 @@ public class IdentityServerSsoTests
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
         // Assert
@@ -481,7 +480,7 @@ public class IdentityServerSsoTests
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
         Assert.Equal(StatusCodes.Status200OK, context.Response.StatusCode);
@@ -558,7 +557,7 @@ public class IdentityServerSsoTests
             { "grant_type", "authorization_code" },
             { "code", "test_code" },
             { "code_verifier", challenge },
-            { "redirect_uri", "https://localhost:8080/sso-connector.html" }
+            { "redirect_uri", "https://192.168.168.40:8080/sso-connector.html" }
         }));
 
         // Only calls that result in a 200 OK should call this helper
@@ -580,7 +579,7 @@ public class IdentityServerSsoTests
             ClientId = "web",
             CreationTime = DateTime.UtcNow,
             Lifetime = (int)TimeSpan.FromMinutes(5).TotalSeconds,
-            RedirectUri = "https://localhost:8080/sso-connector.html",
+            RedirectUri = "https://192.168.168.40:8080/sso-connector.html",
             RequestedScopes = ["api", "offline_access"],
             CodeChallenge = challenge.Sha256(),
             CodeChallengeMethod = "plain",

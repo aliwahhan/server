@@ -44,6 +44,13 @@ docker compose `
   --profile redis `
   up -d
 
+sudo docker compose --profile "*" up -d
+docker compose --profile "*" down
+
+sudo docker rm -f deepsaferserver-postgres-1
+sudo docker volume rm deepsaferserver_postgres_dev_data
+sudo docker compose up -d deepsaferserver-postgres-1
+
   # ---------------------------------------- setup_azurite
 npm install -g azurite
 3- pwsh .\setup_azurite.ps1
@@ -154,7 +161,7 @@ dotnet nuget add source `
 dotnet tool uninstall --global dotnet-ef
 dotnet tool install --global dotnet-ef
 dotnet tool restore
-pwsh migrate.ps1 -all
+bash migrate.ps1 -all
 # ------------ 1  mssql migration
 
 pwsh setup_secrets.ps1 -clear
@@ -214,8 +221,8 @@ npm run build
 dotnet run
 
 # ---------------------------------  Run Projects
-cd bitwarden_license/src/sso && dotnet run 
-cd bitwarden_license/src/scim && dotnet run 
+cd deepsafer_license/src/Sso && dotnet build  && dotnet run 
+cd deepsafer_license/src/Scim && dotnet run 
 cd src/admin && dotnet build && dotnet run
 cd src/api && dotnet build && dotnet run
 cd src/Billing && dotnet build && dotnet run
@@ -226,3 +233,20 @@ cd src/Identity && dotnet build && dotnet run
 cd src/Notifications && dotnet build && dotnet run
 
 # ----------------------------- pass A@limansour1234Ali1234Ali!
+
+dotnet dev-certs https --trust
+
+# --------------------------- commend postgres
+\l => display all db
+\c database_name  =>connection database
+
+# -------------------------- certificate ubuntu
+Desktop/server/src/Core$ sudo cp licensing.cer /usr/local/share/ca-certificates/licensing.crt
+sudo update-ca-certificates
+sudo trust list | grep licensing
+
+-------------- dev
+cd ~/Desktop/server/dev
+
+sudo cp identity_server_dev.crt /usr/local/share/ca-certificates/identity_server_dev.crt
+sudo update-ca-certificates

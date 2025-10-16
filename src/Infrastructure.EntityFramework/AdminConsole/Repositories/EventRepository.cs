@@ -128,6 +128,7 @@ public class EventRepository : Repository<Core.Entities.Event, Event, Guid>, IEv
         }
     }
 
+
     public async Task<PagedResult<IEvent>> GetManyByCipherAsync(Cipher cipher, DateTime startDate, DateTime endDate, PageOptions pageOptions)
     {
         DateTime? beforeDate = null;

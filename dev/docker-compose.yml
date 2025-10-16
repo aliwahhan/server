@@ -39,9 +39,9 @@ services:
       - mail
 
   postgres:
-    image: postgres:14
+    image: postgres:18
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_DB: vault_dev
       POSTGRES_USER: postgres
@@ -89,8 +89,8 @@ services:
     ports:
       - "8090:8080"
     environment:
-      SIMPLESAMLPHP_SP_ENTITY_ID: "https://localhost:51822/saml2"
-      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: "https://localhost:51822/saml2/1/Acs"
+      SIMPLESAMLPHP_SP_ENTITY_ID: "https://192.168.168.40:51822/saml2"
+      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: "https://192.168.168.40:51822/saml2/1/Acs"
       SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: null
     volumes:
       - ./authsources.php:/var/www/simplesamlphp/config/authsources.php

@@ -247,7 +247,7 @@
         },
         {
             "label": "Install Dev Cert",
-            "detail": "A task to install the Bitwarden developer cert to run your local install as an admin.",
+            "detail": "A task to install the Deepsafer developer cert to run your local install as an admin.",
             "type": "shell",
             "command": "dotnet tool install -g dotnet-certificate-tool -g && certificate-tool add --file ${workspaceFolder}/dev/dev.pfx --password '${input:certPassword}'",
             "problemMatcher": []

@@ -646,6 +646,7 @@ public class OrganizationUserRepository : Repository<OrganizationUser, Guid>, IO
     public async Task CreateManyAsync(IEnumerable<CreateOrganizationUser> organizationUserCollection)
     {
         await using var connection = new SqlConnection(_marsConnectionString);
+
         var organizationUsersList = organizationUserCollection.ToList();
 
         await connection.ExecuteAsync(

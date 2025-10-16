@@ -20,6 +20,7 @@ public class InMemoryServiceBusApplicationCacheService : InMemoryApplicationCach
         : base(organizationRepository, providerRepository)
     {
         _subName = CoreHelpers.GetApplicationCacheServiceBusSubscriptionName(globalSettings);
+
         _topicMessageSender = new ServiceBusClient(globalSettings.ServiceBus.ConnectionString).CreateSender(globalSettings.ServiceBus.ApplicationCacheTopicName);
     }
 

@@ -3,20 +3,22 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44558/",
-      "sslPort": 1
+      "applicationUrl": "https://192.168.168.40:44558/",
+      "sslPort": 0
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-        "environmentVariables": {
+      "launchUrl": "https://192.168.168.40:44558",
+      "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Scim": {
       "commandName": "Project",
-      "applicationUrl": "https://localhost:44559",
+      "launchUrl": "https://192.168.168.40:44558",
+      "applicationUrl": "https://192.168.168.40:44559",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

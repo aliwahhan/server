@@ -125,7 +125,6 @@ public class OrganizationDomainController : Controller
         await RemoveDomain(orgId, id);
     }
 
-
     [AllowAnonymous]
     [HttpPost("domain/sso/details")] // must be post to accept email cleanly
     public async Task<OrganizationDomainSsoDetailsResponseModel> GetOrgDomainSsoDetails(

@@ -42,7 +42,7 @@ public class ProfileService : IProfileService
         var existingClaims = context.Subject.Claims;
 
         // If the client is a Send client, we do not add any additional claims
-        if (context.Client.ClientId == DeepsaferClient.Send)
+        if (context.Client.ClientId == BitwardenClient.Send)
         {
             // preserve all claims that were already on context.Subject
             // which includes the ones added by the SendAccessGrantValidator
@@ -93,7 +93,7 @@ public class ProfileService : IProfileService
     public async Task IsActiveAsync(IsActiveContext context)
     {
         // Send Tokens are not refreshed so when the token has expired the user must request a new one via the authentication method assigned to the send.
-        if (context.Client.ClientId == DeepsaferClient.Send)
+        if (context.Client.ClientId == BitwardenClient.Send)
         {
             context.IsActive = true;
             return;

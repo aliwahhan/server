@@ -1,4 +1,4 @@
-namespace Bit.Core.Auth.Identity;
+﻿namespace Bit.Core.Auth.Identity;
 
 public static class Policies
 {

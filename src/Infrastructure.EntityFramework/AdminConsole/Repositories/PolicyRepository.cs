@@ -183,7 +183,8 @@ public class PolicyRepository : Repository<AdminConsoleEntities.Policy, Policy, 
 
         return await policyWithAffectedUsers.ToListAsync();
     }
-     public async Task<IEnumerable<OrganizationPolicyDetails>> GetPolicyDetailsByUserIdsAndPolicyType(
+
+    public async Task<IEnumerable<OrganizationPolicyDetails>> GetPolicyDetailsByUserIdsAndPolicyType(
         IEnumerable<Guid> userIds, PolicyType policyType)
     {
         ArgumentNullException.ThrowIfNull(userIds);

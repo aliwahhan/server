@@ -37,7 +37,7 @@ then
     mkdir -p /etc/deepsafer/ca-certificates
     chown -R $USERNAME:$GROUPNAME /etc/deepsafer
 
-    if [ -f "/etc/deepsafer/kerberos/deepsafer.keytab"] && [ -f "/etc/deepsafer/kerberos/krb5.conf" ]; then
+    if [ -f "/etc/deepsafer/kerberos/deepsafer.keytab" ] && [ -f "/etc/deepsafer/kerberos/krb5.conf" ]; then
       chown -R $USERNAME:$GROUPNAME /etc/deepsafer/kerberos
     fi
 

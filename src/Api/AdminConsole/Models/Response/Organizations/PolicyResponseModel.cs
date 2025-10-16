@@ -13,6 +13,7 @@ public class PolicyResponseModel : ResponseModel
     public PolicyResponseModel() : base("policy")
     {
     }
+
     public PolicyResponseModel(Policy policy, string obj = "policy")
         : base(obj)
     {

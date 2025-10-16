@@ -2,7 +2,6 @@
 using Bit.Core.KeyManagement.Models.Response;
 using Bit.Core.Models.Api;
 
-
 namespace Bit.Core.Auth.Models.Api.Response;
 
 public class UserDecryptionOptions : ResponseModel

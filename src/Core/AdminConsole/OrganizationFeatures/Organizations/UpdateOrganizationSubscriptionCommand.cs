@@ -1,4 +1,4 @@
-using Bit.Core.AdminConsole.Models.Data.Organizations;
+﻿using Bit.Core.AdminConsole.Models.Data.Organizations;
 using Bit.Core.AdminConsole.OrganizationFeatures.Organizations.Interfaces;
 using Bit.Core.Repositories;
 using Bit.Core.Services;

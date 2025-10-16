@@ -22,7 +22,7 @@ public class EnvironmentFileBuilder
         {
             ["ASPNETCORE_ENVIRONMENT"] = "Production",
             ["globalSettings__selfHosted"] = "true",
-            ["globalSettings__baseServiceUri__vault"] = "http://localhost",
+            ["globalSettings__baseServiceUri__vault"] = "http://192.168.168.40",
             //update url push
             ["globalSettings__pushRelayBaseUri"] = "https://push.vault.deepsafer.ye",
         };
@@ -121,7 +121,7 @@ public class EnvironmentFileBuilder
         _keyConnectorOverrideValues = new Dictionary<string, string>
         {
             ["keyConnectorSettings__webVaultUri"] = _context.Config.Url,
-            ["keyConnectorSettings__identityServerUri"] = "https://localhost:33656",
+            ["keyConnectorSettings__identityServerUri"] = "https://192.168.168.40:5000",
             ["keyConnectorSettings__database__provider"] = "json",
             ["keyConnectorSettings__database__jsonFilePath"] = "/etc/deepsafer/key-connector/data.json",
             ["keyConnectorSettings__rsaKey__provider"] = "certificate",

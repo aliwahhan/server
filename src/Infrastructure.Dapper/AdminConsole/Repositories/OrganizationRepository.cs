@@ -220,6 +220,7 @@ public class OrganizationRepository : Repository<Organization, Guid>, IOrganizat
             return result.SingleOrDefault() ?? new OrganizationSeatCounts();
         }
     }
+
     public async Task<IEnumerable<Organization>> GetOrganizationsForSubscriptionSyncAsync()
     {
         await using var connection = new SqlConnection(ConnectionString);

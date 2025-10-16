@@ -1,4 +1,4 @@
-using Bit.Core.Models.Data;
+﻿using Bit.Core.Models.Data;
 using Bit.Core.SecretsManager.Entities;
 using Event = Bit.Infrastructure.EntityFramework.Models.Event;
 

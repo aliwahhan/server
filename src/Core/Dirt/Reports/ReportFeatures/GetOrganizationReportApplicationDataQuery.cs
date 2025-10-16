@@ -1,4 +1,4 @@
-using Bit.Core.Dirt.Models.Data;
+﻿using Bit.Core.Dirt.Models.Data;
 using Bit.Core.Dirt.Reports.ReportFeatures.Interfaces;
 using Bit.Core.Dirt.Repositories;
 using Bit.Core.Exceptions;

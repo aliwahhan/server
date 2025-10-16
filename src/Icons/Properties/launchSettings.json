@@ -3,22 +3,22 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:50024/",
-      "sslPort": 1
+      "applicationUrl": "https://192.168.168.40:50024",
+      "sslPort": 0
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "https://localhost:50024/icon.png",
+      "launchUrl": "https://192.168.168.40:50024/icon.png",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Icons": {
       "commandName": "Project",
-      "launchUrl": "http://localhost:50024/icon.png",
-      "applicationUrl": "http://localhost:50024/",
+      "launchUrl": "https://deepsafer.ye/favicon.ico",
+      "applicationUrl": "http://192.168.168.40:50024",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

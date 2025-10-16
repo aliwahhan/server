@@ -86,7 +86,7 @@ public class SecretRepository : Repository<Core.SecretsManager.Entities.Secret, 
     {
         using var scope = ServiceScopeFactory.CreateScope();
         var dbContext = GetDatabaseContext(scope);
-        
+
         var query = dbContext.Secret
             .Include(c => c.Projects)
             .Where(c => c.OrganizationId == organizationId && c.DeletedDate == null)

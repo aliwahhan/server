@@ -1,4 +1,4 @@
-using Bit.Core.Dirt.Entities;
+﻿using Bit.Core.Dirt.Entities;
 using Bit.Core.Dirt.Reports.ReportFeatures.Interfaces;
 using Bit.Core.Dirt.Reports.ReportFeatures.Requests;
 using Bit.Core.Dirt.Repositories;

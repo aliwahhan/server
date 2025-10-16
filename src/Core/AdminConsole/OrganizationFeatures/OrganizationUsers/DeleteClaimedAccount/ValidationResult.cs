@@ -1,4 +1,4 @@
-using OneOf;
+﻿using OneOf;
 using OneOf.Types;
 
 namespace Bit.Core.AdminConsole.OrganizationFeatures.OrganizationUsers.DeleteClaimedAccount;

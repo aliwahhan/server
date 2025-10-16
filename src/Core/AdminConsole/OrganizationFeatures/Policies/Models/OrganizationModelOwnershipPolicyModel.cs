@@ -1,4 +1,4 @@
-
+﻿
 namespace Bit.Core.AdminConsole.OrganizationFeatures.Policies.Models;
 
 public class OrganizationModelOwnershipPolicyModel : IPolicyMetadataModel

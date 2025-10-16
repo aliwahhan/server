@@ -1,10 +1,9 @@
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using Bit.Core.Auth.IdentityServer;
 using Bit.Core.Enums;
 using Bit.Core.Utilities;
 using Bit.Identity.IdentityServer.Enums;
 using Bit.Identity.IdentityServer.RequestValidators.SendAccess;
-using Duende.IdentityModel;
 
 namespace Bit.Identity.Test.IdentityServer.SendAccess;
 
@@ -21,7 +20,7 @@ public static class SendAccessTestUtilities
         var rawRequestParameters = new NameValueCollection
         {
             { OidcConstants.TokenRequest.GrantType, CustomGrantTypes.SendAccess },
-            { OidcConstants.TokenRequest.ClientId, DeepsaferClient.Send },
+            { OidcConstants.TokenRequest.ClientId, BitwardenClient.Send },
             { OidcConstants.TokenRequest.Scope, ApiScopes.ApiSendAccess },
             { "device_type", ((int)DeviceType.FirefoxBrowser).ToString() },
             { SendAccessConstants.TokenRequest.SendId, sendIdBase64 }

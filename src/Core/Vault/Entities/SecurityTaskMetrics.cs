@@ -1,4 +1,4 @@
-namespace Bit.Core.Vault.Entities;
+﻿namespace Bit.Core.Vault.Entities;
 
 public class SecurityTaskMetrics
 {

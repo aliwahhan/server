@@ -27,7 +27,6 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
     fi \
     && echo "RID=$RID" > /tmp/rid.txt
 
-
 # Copy required project files
 WORKDIR /source
 COPY . ./
@@ -58,7 +57,6 @@ ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 EXPOSE 5000
 
-
 RUN apk add --no-cache curl \
     icu-libs \
     tzdata \
@@ -72,6 +70,6 @@ COPY --from=build /source/src/Admin/out /app
 COPY --from=node-build /app/wwwroot /app/wwwroot
 COPY ./src/Admin/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-HEALTHCHECK CMD curl -f https://localhost:5000/alive || exit 1
+HEALTHCHECK CMD curl -f https://192.168.168.40:5000/alive || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

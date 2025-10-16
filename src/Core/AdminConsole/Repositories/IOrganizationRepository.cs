@@ -30,7 +30,7 @@ public interface IOrganizationRepository : IRepository<Organization, Guid>
     /// <summary>
     /// Returns the number of occupied seats for an organization.
     /// OrganizationUsers occupy a seat, unless they are revoked.
-    /// As of https://vault.deepsafer.atlassian.net/browse/PM-17772, a seat is also occupied by a Families for Enterprise sponsorship sent by an
+    /// As of https://deepsafer.atlassian.net/browse/PM-17772, a seat is also occupied by a Families for Enterprise sponsorship sent by an
     /// organization admin, even if the user sent the invitation doesn't have a corresponding OrganizationUser in the Enterprise organization.
     /// </summary>
     /// <param name="organizationId">The ID of the organization to get the occupied seat count for.</param>

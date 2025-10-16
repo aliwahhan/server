@@ -1,4 +1,4 @@
-CREATE PROCEDURE [dbo].[Collection_ReadSharedCollectionsByOrganizationId]
+﻿CREATE PROCEDURE [dbo].[Collection_ReadSharedCollectionsByOrganizationId]
     @OrganizationId UNIQUEIDENTIFIER
 AS
 BEGIN

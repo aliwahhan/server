@@ -189,7 +189,6 @@ public class InviteOrganizationUsersCommand(IEventService eventService,
     {
         if (validatedResult.Value.PasswordManagerSubscriptionUpdate is { Seats: > 0, SeatsRequiredToAdd: > 0 })
         {
-
             organization.Seats = (short?)validatedResult.Value.PasswordManagerSubscriptionUpdate.Seats;
 
             await organizationRepository.ReplaceAsync(organization);
@@ -299,7 +298,6 @@ public class InviteOrganizationUsersCommand(IEventService eventService,
             organization.Seats = validatedResult.Value.PasswordManagerSubscriptionUpdate.UpdatedSeatTotal;
             organization.SyncSeats = true;
 
-            await organizationRepository.ReplaceAsync(organization); // could optimize this with only a property update
             await applicationCacheService.UpsertOrganizationAbilityAsync(organization);
         }
     }

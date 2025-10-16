@@ -1,4 +1,4 @@
-namespace Bit.Identity.IdentityServer.Enums;
+﻿namespace Bit.Identity.IdentityServer.Enums;
 
 /// <summary>
 /// A class containing custom grant types used in the Deepsafer IdentityServer implementation

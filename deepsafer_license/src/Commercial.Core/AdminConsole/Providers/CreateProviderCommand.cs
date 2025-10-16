@@ -60,7 +60,7 @@ public class CreateProviderCommand : ICreateProviderCommand
         var owner = await _userRepository.GetByEmailAsync(ownerEmail);
         if (owner == null)
         {
-            throw new BadRequestException("Invalid owner. Owner must be an existing deepsafer user.");
+            throw new BadRequestException("Invalid owner. Owner must be an existing Deepsafer user.");
         }
 
         provider.Gateway = GatewayType.Stripe;

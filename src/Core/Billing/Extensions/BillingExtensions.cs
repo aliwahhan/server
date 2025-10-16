@@ -53,7 +53,6 @@ public static class BillingExtensions
     public static bool IsStripeSupported(this ProviderType providerType) =>
         providerType is ProviderType.Msp or ProviderType.BusinessUnit;
 
-
     public static bool SupportsConsolidatedBilling(this ProviderType providerType)
         => providerType is ProviderType.Msp or ProviderType.BusinessUnit;
 

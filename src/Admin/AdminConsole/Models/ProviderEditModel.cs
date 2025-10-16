@@ -94,6 +94,7 @@ public class ProviderEditModel : ProviderViewModel, IValidatableObject
             existingProvider.GatewayCustomerId = GatewayCustomerId;
             existingProvider.GatewaySubscriptionId = GatewaySubscriptionId;
         }
+
         return existingProvider;
     }
 

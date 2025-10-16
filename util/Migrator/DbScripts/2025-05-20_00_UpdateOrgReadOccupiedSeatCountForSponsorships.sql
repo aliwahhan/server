@@ -14,7 +14,7 @@ BEGIN
         ) as Users,
         (
             -- Count admin-initiated sponsorships towards the seat count
-            -- Introduced in https://bitwarden.atlassian.net/browse/PM-17772
+            -- Introduced in https://deepsafer.atlassian.net/browse/PM-17772
             SELECT COUNT(1)
             FROM [dbo].[OrganizationSponsorship]
             WHERE SponsoringOrganizationId = @OrganizationId

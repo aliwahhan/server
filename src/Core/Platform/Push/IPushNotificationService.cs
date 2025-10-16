@@ -399,7 +399,6 @@ public interface IPushNotificationService
             ExcludeCurrentContext = true,
         });
 
-
     Task PushSyncOrganizationCollectionManagementSettingsAsync(Organization organization)
         => PushAsync(new PushNotification<OrganizationCollectionManagementPushNotification>
         {

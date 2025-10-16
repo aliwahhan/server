@@ -21,3 +21,4 @@ CREATE NONCLUSTERED INDEX [IX_SecurityTask_OrganizationId]
     ON [dbo].[SecurityTask]([OrganizationId] ASC) WHERE OrganizationId IS NOT NULL;
 
 GO
+

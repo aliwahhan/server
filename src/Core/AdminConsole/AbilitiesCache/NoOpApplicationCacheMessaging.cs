@@ -1,4 +1,4 @@
-using Bit.Core.AdminConsole.Entities;
+﻿using Bit.Core.AdminConsole.Entities;
 
 namespace Bit.Core.AdminConsole.AbilitiesCache;
 

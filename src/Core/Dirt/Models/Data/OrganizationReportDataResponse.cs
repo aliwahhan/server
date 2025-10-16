@@ -1,4 +1,4 @@
-namespace Bit.Core.Dirt.Models.Data;
+﻿namespace Bit.Core.Dirt.Models.Data;
 
 public class OrganizationReportDataResponse
 {

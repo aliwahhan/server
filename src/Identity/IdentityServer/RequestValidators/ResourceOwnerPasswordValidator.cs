@@ -180,4 +180,3 @@ public class ResourceOwnerPasswordValidator : BaseRequestValidator<ResourceOwner
     }
 
 }
-

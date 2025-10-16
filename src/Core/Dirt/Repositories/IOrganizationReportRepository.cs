@@ -22,3 +22,4 @@ public interface IOrganizationReportRepository : IRepository<OrganizationReport,
     Task<OrganizationReportApplicationDataResponse> GetApplicationDataAsync(Guid reportId);
     Task<OrganizationReport> UpdateApplicationDataAsync(Guid orgId, Guid reportId, string applicationData);
 }
+

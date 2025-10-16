@@ -1,4 +1,4 @@
-using Bit.Core.Auth.IdentityServer;
+﻿using Bit.Core.Auth.IdentityServer;
 using Bit.Core.Enums;
 using Bit.Core.Settings;
 using Bit.Identity.IdentityServer.Enums;
@@ -11,7 +11,7 @@ public static class SendClientBuilder
     {
         return new Client()
         {
-            ClientId = DeepsaferClient.Send,
+            ClientId = BitwardenClient.Send,
             AllowedGrantTypes = [CustomGrantTypes.SendAccess],
             AccessTokenLifetime = 60 * globalSettings.SendAccessTokenLifetimeInMinutes,
 

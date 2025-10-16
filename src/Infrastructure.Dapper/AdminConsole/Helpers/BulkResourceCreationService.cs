@@ -1,4 +1,4 @@
-using System.Data;
+﻿using System.Data;
 using Bit.Core.Entities;
 using Bit.Core.Vault.Entities;
 using Bit.Infrastructure.Dapper.Utilities;

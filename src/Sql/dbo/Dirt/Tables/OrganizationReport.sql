@@ -21,3 +21,4 @@ GO
 CREATE NONCLUSTERED INDEX [IX_OrganizationReport_OrganizationId_RevisionDate]
    ON [dbo].[OrganizationReport]([OrganizationId] ASC, [RevisionDate] DESC);
 GO
+

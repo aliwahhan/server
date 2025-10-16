@@ -1,4 +1,4 @@
-namespace Bit.Api.AdminConsole.Authorization.Requirements;
+﻿namespace Bit.Api.AdminConsole.Authorization.Requirements;
 
 public class AccessEventLogsRequirement() : BasePermissionRequirement(p => p.AccessEventLogs);
 public class AccessImportExportRequirement() : BasePermissionRequirement(p => p.AccessImportExport);

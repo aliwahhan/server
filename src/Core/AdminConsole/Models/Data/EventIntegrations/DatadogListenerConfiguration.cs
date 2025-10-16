@@ -1,4 +1,4 @@
-using Bit.Core.Enums;
+﻿using Bit.Core.Enums;
 using Bit.Core.Settings;
 
 namespace Bit.Core.AdminConsole.Models.Data.EventIntegrations;

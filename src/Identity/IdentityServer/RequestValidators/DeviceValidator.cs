@@ -39,6 +39,7 @@ public class DeviceValidator(
     private readonly IDistributedCache distributedCache = distributedCache;
     private readonly ILogger<DeviceValidator> _logger = logger;
     private readonly ITwoFactorEmailService _twoFactorEmailService = twoFactorEmailService;
+
     private const string PasswordGrantType = "password";
 
     public async Task<bool> ValidateRequestDeviceAsync(ValidatedTokenRequest request, CustomValidatorRequestContext context)
@@ -71,12 +72,11 @@ public class DeviceValidator(
             }
         }
 
-        // We have established that the device is unknown at this point; begin new device verification
-        // for standard password grant type requests
-        // Note: the auth request flow re-uses the resource owner password flow but new device verification
-        // is not required for auth requests
+        // The device is either unknown or the request has a NewDeviceOtp (implies unknown device)
+
         var rawAuthRequestId = request.Raw["AuthRequest"]?.ToLowerInvariant();
         var isAuthRequest = !string.IsNullOrEmpty(rawAuthRequestId);
+
         // Device unknown, but if we are in an auth request flow, this is not valid
         // as we only support auth request authN requests on known devices
         // Note: we re-use the resource owner password flow for auth requests
@@ -104,7 +104,6 @@ public class DeviceValidator(
                 return false;
             }
         }
-
 
         // At this point we have established either new device verification is not required or the NewDeviceOtp is valid,
         // so we save the device to the database and proceed with authentication

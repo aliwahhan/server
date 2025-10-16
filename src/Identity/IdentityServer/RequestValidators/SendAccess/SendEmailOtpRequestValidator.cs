@@ -1,6 +1,6 @@
-using System.Security.Claims;
-using Bit.Core.Auth.Identity.TokenProviders;
+﻿using System.Security.Claims;
 using Bit.Core.Auth.Identity;
+using Bit.Core.Auth.Identity.TokenProviders;
 using Bit.Core.Services;
 using Bit.Core.Tools.Models.Data;
 using Bit.Identity.IdentityServer.Enums;

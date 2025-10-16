@@ -14,3 +14,4 @@ BEGIN
         AND [RevisionDate] <= @EndDate
     ORDER BY [RevisionDate] DESC
 END
+

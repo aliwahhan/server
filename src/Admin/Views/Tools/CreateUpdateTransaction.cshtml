@@ -33,25 +33,8 @@
             <div class="form-group">
                 <div class="mb-3">
                     <label asp-for="Type" class="form-label"></label>
-                    <div class="custom-dropdown">
-                        <button type="button" class="dropdown-toggle" aria-expanded="false" aria-haspopup="listbox" role="button" id="typeDropdown">
-                            @if(Model.Type == null)
-                            {
-                                <span>--</span>
-                            }
-                            else
-                            {
-                                <span>@Model.Type</span>
-                            }
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="typeDropdown" role="listbox">
-                            @foreach (var item in Html.GetEnumSelectList<Bit.Core.Enums.TransactionType>())
-                            {
-                                <li><a class="dropdown-item @(Model.Type?.ToString() == item.Value ? "active" : "")" href="#" data-value="@item.Value">@item.Text</a></li>
-                            }
-                        </ul>
-                        <input type="hidden" asp-for="Type" id="typeValue" required />
-                    </div>
+                    <select class="form-select" asp-for="Type" required
+                            asp-items="Html.GetEnumSelectList<Bit.Core.Enums.TransactionType>()"></select>
                 </div>
             </div>
         </div>
@@ -90,26 +73,10 @@
         <div class="col-md">
             <div class="mb-3">
                 <label asp-for="Gateway" class="form-label"></label>
-                <div class="custom-dropdown">
-                    <button type="button" class="dropdown-toggle" aria-expanded="false" aria-haspopup="listbox" role="button" id="gatewayDropdown">
-                        @if(Model.Gateway == null)
-                        {
-                            <span>--</span>
-                        }
-                        else
-                        {
-                            <span>@Model.Gateway</span>
-                        }
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="gatewayDropdown" role="listbox">
-                        <li><a class="dropdown-item @(Model.Gateway == null ? "active" : "")" href="#" data-value="">--</a></li>
-                        @foreach (var item in Html.GetEnumSelectList<Bit.Core.Enums.GatewayType>())
-                        {
-                            <li><a class="dropdown-item @(Model.Gateway?.ToString() == item.Value ? "active" : "")" href="#" data-value="@item.Value">@item.Text</a></li>
-                        }
-                    </ul>
-                    <input type="hidden" asp-for="Gateway" id="gatewayValue" />
-                </div>
+                <select class="form-select" asp-for="Gateway"
+                        asp-items="Html.GetEnumSelectList<Bit.Core.Enums.GatewayType>()">
+                    <option value="">--</option>
+                </select>
             </div>
         </div>
         <div class="col-md">
@@ -123,131 +90,12 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label asp-for="PaymentMethod" class="form-label"></label>
-                <div class="custom-dropdown">
-                    <button type="button" class="dropdown-toggle" aria-expanded="false" aria-haspopup="listbox" role="button" id="paymentMethodDropdown">
-                        @if(Model.PaymentMethod == null)
-                        {
-                            <span>--</span>
-                        }
-                        else
-                        {
-                            <span>@Model.PaymentMethod</span>
-                        }
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="paymentMethodDropdown" role="listbox">
-                        <li><a class="dropdown-item @(Model.PaymentMethod == null ? "active" : "")" href="#" data-value="">--</a></li>
-                        @foreach (var item in Html.GetEnumSelectList<Bit.Core.Enums.PaymentMethodType>())
-                        {
-                            <li><a class="dropdown-item @(Model.PaymentMethod?.ToString() == item.Value ? "active" : "")" href="#" data-value="@item.Value">@item.Text</a></li>
-                        }
-                    </ul>
-                    <input type="hidden" asp-for="PaymentMethod" id="paymentMethodValue" />
-                </div>
+                <select class="form-select" asp-for="PaymentMethod"
+                        asp-items="Html.GetEnumSelectList<Bit.Core.Enums.PaymentMethodType>()">
+                    <option value="">--</option>
+                </select>
             </div>
         </div>
     </div>
     <button type="submit" class="btn btn-primary mb-2">@action Transaction</button>
 </form>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = document.querySelectorAll('.custom-dropdown');
-
-    function closeAll(except) {
-        dropdowns.forEach(function(dd) {
-            if (dd !== except) {
-                const t = dd.querySelector('.dropdown-toggle');
-                const m = dd.querySelector('.dropdown-menu');
-                if (m && m.classList.contains('show')) {
-                    m.classList.remove('show');
-                    if (t) t.setAttribute('aria-expanded', 'false');
-                }
-            }
-        });
-    }
-
-    dropdowns.forEach(function(dropdown) {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        const hiddenInput = dropdown.querySelector('input[type="hidden"]');
-        const items = dropdown.querySelectorAll('.dropdown-item');
-
-        // Initialize button text from active item
-        const active = dropdown.querySelector('.dropdown-item.active');
-        if (active && toggle) {
-            const span = toggle.querySelector('span');
-            if (span) span.textContent = active.textContent;
-            if (hiddenInput) hiddenInput.value = active.getAttribute('data-value') || '';
-        }
-
-        function open() {
-            if (!menu.classList.contains('show')) {
-                closeAll(dropdown);
-                menu.classList.add('show');
-                toggle.setAttribute('aria-expanded', 'true');
-            }
-        }
-
-        function close() {
-            if (menu.classList.contains('show')) {
-                menu.classList.remove('show');
-                toggle.setAttribute('aria-expanded', 'false');
-            }
-        }
-
-        // Toggle dropdown
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (menu.classList.contains('show')) {
-                close();
-            } else {
-                open();
-            }
-        });
-
-        // Handle item selection
-        items.forEach(function(item) {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // Update button text
-                const span = toggle.querySelector('span');
-                if (span) span.textContent = this.textContent;
-
-                // Update hidden input value
-                if (hiddenInput) hiddenInput.value = this.getAttribute('data-value') || '';
-
-                // Update active state
-                items.forEach(function(i) { i.classList.remove('active'); });
-                this.classList.add('active');
-
-                // Close dropdown
-                close();
-            });
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target)) {
-                close();
-            }
-        });
-
-        // Keyboard support
-        toggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                if (menu.classList.contains('show')) close(); else open();
-            } else if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                open();
-                const first = menu.querySelector('.dropdown-item');
-                if (first) first.focus();
-            } else if (e.key === 'Escape') {
-                close();
-            }
-        });
-    });
-});
-</script>

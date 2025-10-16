@@ -43,10 +43,12 @@ ARG TARGETPLATFORM
 LABEL ye.vault.deepsafer.product="deepsafer"
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV ASPNETCORE_URLS=http://+:5000
-ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificateENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+ENV SSL_CERT_DIR=/etc/deepsafer/ca-certificates
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 EXPOSE 5000
 
 RUN apk add --no-cache \
+    curl \
     icu-libs \
     shadow \
     && apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community gosu
@@ -57,6 +59,6 @@ COPY --from=build /source/util/Server/out /deepsafer_server
 COPY util/Attachments/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-HEALTHCHECK CMD curl -f https://localhost:5000/alive || exit 1
+HEALTHCHECK CMD curl -f https://192.168.168.40:5000/alive || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

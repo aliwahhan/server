@@ -1,4 +1,4 @@
-using Bit.Api.Billing.Models.Requests.Organizations;
+﻿using Bit.Api.Billing.Models.Requests.Organizations;
 using Bit.Core.Billing.Organizations.Models;
 
 namespace Bit.Api.Billing.Models.Requests.Tax;

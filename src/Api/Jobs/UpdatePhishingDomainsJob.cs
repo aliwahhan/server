@@ -67,7 +67,7 @@ public class UpdatePhishingDomainsJob : BaseJob
 
         _logger.LogInformation(Constants.BypassFiltersEventId,
             "Checksums differ (current: {CurrentChecksum}, remote: {RemoteChecksum}). Fetching updated domains from {Source}.",
-            currentChecksum, remoteChecksum, _globalSettings.SelfHosted ? "Deepsafer cloud API" : "external source");
+            currentChecksum, remoteChecksum, _globalSettings.SelfHosted ? "Bitwarden cloud API" : "external source");
 
         try
         {

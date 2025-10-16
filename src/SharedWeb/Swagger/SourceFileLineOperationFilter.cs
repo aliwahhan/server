@@ -1,4 +1,4 @@
-#nullable enable
+﻿#nullable enable
 
 using System.Reflection;
 using System.Reflection.Metadata;
@@ -17,14 +17,12 @@ namespace Bit.SharedWeb.Swagger;
 /// </summary>
 public class SourceFileLineOperationFilter : IOperationFilter
 {
-
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
 
         var (fileName, lineNumber) = GetSourceFileLine(context.MethodInfo);
         if (fileName != null && lineNumber > 0)
         {
-
             // Also add the information as extensions, so other tools can use it in the future
             operation.Extensions.Add("x-source-file", new OpenApiString(fileName));
             operation.Extensions.Add("x-source-line", new OpenApiInteger(lineNumber));

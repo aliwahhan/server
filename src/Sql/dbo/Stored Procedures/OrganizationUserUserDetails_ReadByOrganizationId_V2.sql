@@ -7,8 +7,8 @@ BEGIN
     SET NOCOUNT ON
 
     -- Result Set 1: User Details (always returned)
-    SELECT *
-    FROM [dbo].[OrganizationUserUserDetailsView]
+    SELECT * 
+    FROM [dbo].[OrganizationUserUserDetailsView] 
     WHERE OrganizationId = @OrganizationId
 
     -- Result Set 2: Group associations (if requested)
@@ -20,14 +20,14 @@ BEGIN
         WHERE ou.OrganizationId = @OrganizationId
     END
 
-    -- Result Set 3: Collection associations (if requested)
+    -- Result Set 3: Collection associations (if requested)  
     IF @IncludeCollections = 1
     BEGIN
         SELECT cu.*
         FROM [dbo].[CollectionUser] cu
         INNER JOIN [dbo].[OrganizationUser] ou ON cu.OrganizationUserId = ou.Id
         INNER JOIN [dbo].[Collection] c ON cu.CollectionId = c.Id
-        WHERE ou.OrganizationId = @OrganizationId
+        WHERE ou.OrganizationId = @OrganizationId 
             AND c.Type = 0 -- SharedCollections only
     END
 END

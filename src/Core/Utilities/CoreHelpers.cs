@@ -656,10 +656,10 @@ public static class CoreHelpers
             // Safari extension origin
             origin == "file://" ||
             // Product website
-            //
             origin == "https://localhost:8080" ||
             origin == "https://127.0.0.1:8080" ||
-            (!globalSettings.SelfHosted && origin == "https://localhost:8080");
+            origin == "https://192.168.168.40:8080" ||
+            (!globalSettings.SelfHosted && origin == "https://vault.deepsafer.ye");
     }
 
     public static X509Certificate2? GetIdentityServerCertificate(GlobalSettings globalSettings)
@@ -718,7 +718,7 @@ public static class CoreHelpers
             new(Claims.Premium, isPremium ? "true" : "false"),
             new(JwtClaimTypes.Email, user.Email),
             new(JwtClaimTypes.EmailVerified, user.EmailVerified ? "true" : "false"),
-            // TODO: [https://vault.deepsafer.atlassian.net/browse/PM-22171] Remove this since it is already added from the persisted grant
+            // TODO: [https://deepsafer.atlassian.net/browse/PM-22171] Remove this since it is already added from the persisted grant
             new(Claims.SecurityStamp, user.SecurityStamp),
         };
 

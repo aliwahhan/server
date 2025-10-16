@@ -1,4 +1,4 @@
-CREATE PROCEDURE [dbo].[Cipher_Archive]
+﻿CREATE PROCEDURE [dbo].[Cipher_Archive]
     @Ids AS [dbo].[GuidIdArray] READONLY,
     @UserId AS UNIQUEIDENTIFIER
 AS

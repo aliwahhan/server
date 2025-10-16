@@ -42,6 +42,7 @@ public class CustomValidatorRequestContext
     /// This will be null if the authentication request is successful.
     /// </summary>
     public Dictionary<string, object> CustomResponse { get; set; }
+
     /// <summary>
     /// A validated auth request
     /// <see cref="AuthRequest.IsValidForAuthentication"/>

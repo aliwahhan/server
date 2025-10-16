@@ -1,4 +1,4 @@
-namespace Bit.Core.AdminConsole.Models.Data.EventIntegrations;
+﻿namespace Bit.Core.AdminConsole.Models.Data.EventIntegrations;
 
 public interface IEventListenerConfiguration
 {

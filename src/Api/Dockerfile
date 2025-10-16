@@ -59,6 +59,6 @@ WORKDIR /app
 COPY --from=build /source/src/Api/out /app
 COPY ./src/Api/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-HEALTHCHECK CMD curl -f https://localhost:5000/alive || exit 1
+HEALTHCHECK CMD curl -f https://192.168.168.40:5000/alive || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

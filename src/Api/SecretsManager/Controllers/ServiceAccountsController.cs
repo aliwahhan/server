@@ -137,7 +137,7 @@ public class ServiceAccountsController : Controller
         if (newServiceAccountSlotsRequired > 0)
         {
             var org = await _organizationRepository.GetByIdAsync(organizationId);
-            // TODO: https://vault.deepsafer.atlassian.net/browse/PM-17002
+            // TODO: https://bitwarden.atlassian.net/browse/PM-17002
             var plan = await _pricingClient.GetPlanOrThrow(org!.PlanType);
             var update = new SecretsManagerSubscriptionUpdate(org, plan, true)
                 .AdjustServiceAccounts(newServiceAccountSlotsRequired);

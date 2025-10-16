@@ -197,6 +197,7 @@ public abstract class BaseRequestValidator<T> where T : class
             await FailAuthForLegacyUserAsync(user, context);
             return;
         }
+
         // TODO: PM-24324 - This should be its own validator at some point.
         // 6. Auth request handling
         if (validatorContext.ValidatedAuthRequest != null)

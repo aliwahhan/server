@@ -667,7 +667,7 @@ public class OrganizationUsersController : Controller
         if (additionalSmSeatsRequired > 0)
         {
             var organization = await _organizationRepository.GetByIdAsync(orgId);
-            // TODO: https://vault.deepsafer.atlassian.net/browse/PM-17000
+            // TODO: https://deepsafer.atlassian.net/browse/PM-17000
             var plan = await _pricingClient.GetPlanOrThrow(organization!.PlanType);
             var update = new SecretsManagerSubscriptionUpdate(organization, plan, true)
                 .AdjustSeats(additionalSmSeatsRequired);
