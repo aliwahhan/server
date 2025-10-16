@@ -250,3 +250,11 @@ cd ~/Desktop/server/dev
 
 sudo cp identity_server_dev.crt /usr/local/share/ca-certificates/identity_server_dev.crt
 sudo update-ca-certificates
+
+# ----------------------- secret 
+Desktop/server/src/Api$ dotnet user-secrets list
+
+# ----------------------- database docker
+cd dev
+# ------------------ references
+https://learn.microsoft.com/en-us/ef/core/cli/dotnet
